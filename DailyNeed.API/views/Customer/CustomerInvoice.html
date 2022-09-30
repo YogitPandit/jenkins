@@ -1,0 +1,716 @@
+﻿
+<style>
+    .modal-dialog {
+        width: 70% !important;
+    }
+
+    .redispatch {
+        color: blue;
+    }
+
+    .delivered {
+        color: forestgreen;
+    }
+
+    .canceled {
+        color: red;
+    }
+</style>
+<style>
+    @media screen {
+        #printSection {
+            display: none;
+        }
+    }
+
+    @media print {
+        body * {
+            visibility: hidden;
+        }
+
+        #printSection, #printSection * {
+            visibility: visible;
+        }
+
+        #printSection {
+            position: absolute;
+            left: 0;
+            top: 0;
+        }
+
+        #printThisElement {
+            display: block !important;
+        }
+
+        #page-break {
+            display: block;
+            page-break-before: always;
+        }
+    }
+
+    #printThisElement {
+        display: none;
+    }
+
+    /* =============================================================
+      GENERAL STYLES
+    ============================================================ */
+    body {
+        font-family: 'Open Sans', sans-serif;
+        font-size: 16px;
+        line-height: 30px;
+    }
+
+    .pad-top-botm {
+        padding-bottom: 40px;
+        padding-top: 22px;
+    }
+
+    h4 {
+        text-transform: uppercase;
+    }
+    /* =============================================================
+      PAGE STYLES
+    ============================================================ */
+
+    .contact-info span {
+        font-size: 14px;
+        padding: 0px 50px 0px 50px;
+    }
+
+    .contact-info hr {
+        margin-top: 0px;
+        margin-bottom: 0px;
+    }
+
+    .client-info {
+        font-size: 15px;
+    }
+
+    .ttl-amts {
+        text-align: right;
+        padding-right: 50px;
+    }
+
+    .containers {
+        padding-left: 45px;
+        padding-right: 45px;
+    }
+
+    .box-size {
+        font-size: 16px !important;
+        height: 30px;
+        width: 50%;
+    }
+</style>
+<style>
+    @media print {
+        btn-sm.btn-primary.no-print {
+            display: none !important;
+        }
+
+        glyphicon.glyphicon-print.no-print {
+            display: none !important;
+        }
+    }
+
+    .modal-dialog {
+        width: 90% !important;
+    }
+
+    .hd {
+        display: none;
+    }
+</style>
+
+<head>
+    <!--<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.1.135/jspdf.min.js"></script>-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/0.9.0rc1/jspdf.min.js"></script>
+    <script type="text/javascript">
+       
+            $('#pdfview').click(function () {
+                var doc = new jsPDF();
+                var specialElementHandlers = {
+                    '#editor': function (element, renderer) {
+                        return true;
+                    }
+                };
+                doc.fromHTML($('#printThisElement').html(), 15, 15, {
+                    'width': 800,
+                    'elementHandlers': specialElementHandlers
+                });
+                doc.save('file.pdf');
+            });
+     
+    </script>
+    <style>
+        #dragandrophandler {
+            border: 2px dashed #92AAB0;
+            width: 650px;
+            height: 200px;
+            color: #92AAB0;
+            text-align: center;
+            vertical-align: middle;
+            padding: 10px 0px 10px 10px;
+            font-size: 200%;
+            display: table-cell;
+        }
+
+        .progressBar {
+            width: 200px;
+            height: 22px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            overflow: hidden;
+            display: inline-block;
+            margin: 0px 10px 5px 5px;
+            vertical-align: top;
+        }
+
+            .progressBar div {
+                height: 100%;
+                color: #fff;
+                text-align: right;
+                line-height: 22px; /* same as #progressBar height if we want text middle aligned */
+                width: 0;
+                background-color: #0ba1b5;
+                border-radius: 3px;
+            }
+
+        .statusbar {
+            border-top: 1px solid #A9CCD1;
+            min-height: 25px;
+            width: 700px;
+            padding: 10px 10px 0px 10px;
+            vertical-align: top;
+        }
+
+            .statusbar:nth-child(odd) {
+                background: #EBEFF0;
+            }
+
+        .filename {
+            display: inline-block;
+            vertical-align: top;
+            width: 250px;
+        }
+
+        .filesize {
+            display: inline-block;
+            vertical-align: top;
+            color: #30693D;
+            width: 100px;
+            margin-left: 10px;
+            margin-right: 5px;
+        }
+
+        .abort {
+            background-color: #A8352F;
+            -moz-border-radius: 4px;
+            -webkit-border-radius: 4px;
+            border-radius: 4px;
+            display: inline-block;
+            color: #fff;
+            font-family: arial;
+            font-size: 13px;
+            font-weight: normal;
+            padding: 4px 15px;
+            cursor: pointer;
+            vertical-align: top;
+        }
+
+        .form-group.required .control-label:after {
+            content: "*";
+            color: red;
+        }
+           @media print {
+        body * {
+            visibility: hidden;
+        }
+
+        #printSection, #printSection * {
+            visibility: visible;
+        }
+
+        #printSection {
+            position: absolute;
+            left: 0;
+            top: 0;
+        }
+
+        #printThisElement {
+            display: block !important;
+        }
+
+        #page-break {
+            display: block;
+            page-break-before: always;
+        }
+    }
+
+    #printThisElement {
+        display: none;
+    }
+
+    </style>
+</head>
+
+<div class="page page-table">
+    <section class="panel panel-default table-dynamic" id="test">
+        <div class="panel-heading"> <strong> <span class="glyphicon glyphicon-th"> </span>Customer Invoice List</strong> </div>
+         <br />
+        <div class="table-filters">
+            <div class="row">
+                <div class="col-sm-3 col-xs-6 filter-result-info">
+                    <span>
+                        Showing {{filteredStores.length}}/{{stores.length}} entries
+                    </span>
+                </div>
+            </div>
+        </div>
+        <table class="table table-bordered table-striped table-responsive">
+            <thead>
+                <tr>
+                    <th>
+                        <div class="th">
+                            S.No.
+                            <span class="glyphicon glyphicon-chevron-up"
+                                  data-ng-click="order('Email')"
+                                  data-ng-class="{active: row == 'Email'}"></span>
+                            <span class="glyphicon glyphicon-chevron-down"
+                                  data-ng-click="order('-Email')"
+                                  data-ng-class="{active: row == '-Email'}"></span>
+                        </div>
+                    </th>
+                    <th>
+                        <div class="th">
+                            Customer Name
+                            <span class="glyphicon glyphicon-chevron-up"
+                                  data-ng-click="order('PeopleFirstName')"
+                                  data-ng-class="{active: row == 'Name'}"></span>
+                            <span class="glyphicon glyphicon-chevron-down"
+                                  data-ng-click="order('-PeopleFirstName')"
+                                  data-ng-class="{active: row == '-Name'}"></span>
+                        </div>
+                    </th>
+                    <th>
+                        <div class="th">
+                            Total Price
+                            <span class="glyphicon glyphicon-chevron-up"
+                                  data-ng-click="order('PeopleFirstName')"
+                                  data-ng-class="{active: row == 'TotalPrice'}"></span>
+                            <span class="glyphicon glyphicon-chevron-down"
+                                  data-ng-click="order('-PeopleFirstName')"
+                                  data-ng-class="{active: row == '-TotalPrice'}"></span>
+                        </div>
+                    </th>
+                    <th>
+                        <div class="th">
+                            Total Quantity
+                            <span class="glyphicon glyphicon-chevron-up"
+                                  data-ng-click="order('PeopleLastName')"
+                                  data-ng-class="{active: row == 'TotalQty'}"></span>
+                            <span class="glyphicon glyphicon-chevron-down"
+                                  data-ng-click="order('-PeopleLastName')"
+                                  data-ng-class="{active: row == '-TotalQty'}"></span>
+                        </div>
+                    </th>
+                    <th>
+                        <div class="th">
+                            From Date
+                            <span class="glyphicon glyphicon-chevron-up"
+                                  data-ng-click="order('DisplayName')"
+                                  data-ng-class="{active: row == 'FromDate'}"></span>
+                            <span class="glyphicon glyphicon-chevron-down"
+                                  data-ng-click="order('-DisplayName')"
+                                  data-ng-class="{active: row == '-FromDate'}"></span>
+                        </div>
+                    </th>
+                    <th>
+                        <div class="th">
+                           To Date
+                            <span class="glyphicon glyphicon-chevron-up"
+                                  data-ng-click="order('DisplayName')"
+                                  data-ng-class="{active: row == 'ToDate'}"></span>
+                            <span class="glyphicon glyphicon-chevron-down"
+                                  data-ng-click="order('-DisplayName')"
+                                  data-ng-class="{active: row == '-ToDate'}"></span>
+                        </div>
+                    </th>
+                    <th>
+                        <div class="th">
+                            Statement
+                        </div>
+                    </th>
+                    <th>
+                        <div class="th">
+                            Send Email
+                        </div>
+                    </th>
+                    <th>
+                        <div class="th">
+                            Invoice
+                        </div>
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr data-ng-repeat="trade in currentPageStores">
+                    <td>{{$index+1}}</td>
+                    <td>{{trade.Name}}</td>
+                    <td>{{trade.TotalPrice}}</td>
+                    <td>{{trade.TotalQty}}</td>
+                    <td>{{trade.FromDate| date: 'dd/MM/yyyy'}}</td>
+                    <td>{{trade.ToDate| date: 'dd/MM/yyyy'}}</td>                    
+                    <td><button type="button" class="btn btn-ar btn-primary" ng-click="customerStatement(trade)">Statement</button></td>
+                    <td><button type="button" class="btn btn-ar btn-primary" ng-click="sendemail(trade)">SendEmail</button></td>
+                    <td><button class="btn btn-primary" ng-click="printDi1('printThisElement',trade)">Get Invoice</button></td>
+                    <td ng-hide="{{trade.Mobile}}" hidden></td>
+                    <td ng-hide="{{trade.BillingAddress}}" hidden></td>
+                    <!--onclick="printDi1('printThisElement')-->"
+                </tr>
+            </tbody>
+        </table>
+        <footer class="table-footer">
+            <div class="row">
+                <div class="col-md-6 page-num-info">
+                    <span>
+                        Show
+                        <select data-ng-model="numPerPage"
+                                data-ng-options="num for num in numPerPageOpt"
+                                data-ng-change="onNumPerPageChange()"></select>
+                        entries per page
+                    </span>
+                </div>
+                <div class="col-md-6 text-right pagination-container">
+                    <pagination class="pagination-sm"
+                                page="currentPage"
+                                total-items="filteredStores.length"
+                                max-size="4"
+                                on-select-page="select(page)"
+                                items-per-page="numPerPage"
+                                rotate="false"
+                                boundary-links="true"></pagination>
+                </div>
+            </div>
+        </footer>
+        
+        
+        <div id="pdfdiv">
+            <h3 style="color:green;">WWW.SANWEBCORNER.COM</h3>
+            <img src="404.png">
+            <p>
+                A newspaper acts an important medium to control corruption and scams. The chief topics of general interest in newspaper includes politics, social issues, sports, economy, movies, and share market.
+
+                Newspaper is a mode of mass communication. It is very helpful in creating social awareness. Newspaper raises voices against social issues such as child labor, dowry system, etc. They urge the common people to act and behave in a rational manner.
+
+                We get the information of the forthcoming movies and television shows through a newspaper. It also contains a list of multiplexes with time-schedule for the movies.
+
+                A wide coverage of information is obtained at low cost though newspaper. It also influences the habit of thinking in men. It has also seen that illiterate adults are taking up education to read newspaper.
+
+                There are such dailies that trade on such dirty tricks for survival. Being politically left or right, they misrepresent strikes and lockouts. Events like bank robbery and train accident or similar untoward events are distorted or exaggerated. They deliberately make their news sensational because it appeals to the less educated and less cultured more directly.
+
+                The dignity and reputation of a newspaper rests on the degree of their fidelity to truth and fearless reporting. It is our cheapest and most powerful weapon in the last analysis.
+            </p>
+        </div>
+        <div id="editor"></div>
+        <button id="pdfview" onclick="pdfview();">Download PDF</button>
+    </section>
+    <div id="testPdf" style="display:none">
+        <table>
+            <thead>
+                <tr><td>hello</td></tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>
+                        test
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<!--Show Customer Statement Date Waise-->
+<script type="text/ng-template" id="myModalCustomerStatement.html">
+    <form name="myFormSiteModal">
+        <div class="modal-header">
+            <button type="button" class="close" ng-click="cancel()" data-dismiss="modal">
+                <span class="icon icon-x" aria-hidden="true">
+                </span>
+                <span class="sr-only">Close</span>
+            </button>
+            <button aria-hidden="true" class="close" data-dismiss="modal" type="button" ng-click="ok()">×</button>
+        </div>
+        <table class="table table-bordered table-striped table-responsive">
+            <thead>
+                <tr>
+                    <th>
+                        <div class="th text-center">
+                             S.No.
+                        </div>
+                    </th>
+                    <th>
+                        <div class="th text-center">
+                            Customer Name
+                        </div>
+                    </th>
+                    <th>
+                        <div class="th text-center">
+                            Final Quantity
+                        </div>
+                    </th>
+                    <th>
+                        <div class="th text-center">
+                            Price 
+                        </div>
+                    </th>
+                    <th>
+                        <div class="th text-center">
+                            Date
+                        </div>
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr data-ng-repeat="trade in CustomerData">
+                    <td>{{$index+1}}</td>
+                    <td>{{trade.Name}}</td>
+                    <td>{{trade.FinalQty}}</td>
+                    <td>{{trade.Price}}</td>
+                    <td>{{trade.Date| date: 'dd/MM/yyyy'}}</td>
+                </tr>
+            </tbody>
+        </table>
+    </form>
+</script>
+<!--<script>
+   
+</script>-->
+<!--<script>
+    function printDiv(divID) {
+        //Get the HTML of div
+        var divElements = document.getElementById(divID).innerHTML;
+        printDivThroughTrick("divtoPrint");
+        onRouteChangeOff();
+        window.location.reload();
+    }
+    function printDivThroughTrick(divName) {
+
+        var printContents = document.getElementById(divName).innerHTML;
+        var originalContents = document.body.innerHTML;
+
+        if (navigator.userAgent.toLowerCase().indexOf('chrome') > -1) {
+            var popupWin = window.open('', '_blank', 'width=900,height=600,scrollbars=no,menubar=no,toolbar=no,location=no,status=no,titlebar=no');
+            popupWin.window.focus();
+            popupWin.document.write('<!DOCTYPE html><html><head>' +
+                '<link rel="stylesheet" type="text/css" href="style.css" />' +
+                '</head><body onload="window.print()"><div class="reward-body">' + printContents + '</div></html>');
+            popupWin.onbeforeunload = function (event) {
+                popupWin.close();
+                return '.\n';
+            };
+            popupWin.onabort = function (event) {
+                popupWin.document.close();
+                popupWin.close();
+            }
+        } else {
+            var popupWin = window.open('', '_blank', 'width=900,height=600');
+            popupWin.document.open();
+            popupWin.document.write('<html><head><link rel="stylesheet" type="text/css" href="style.css" /></head><body onload="window.print()">' + printContents + '</html>');
+            popupWin.document.close();
+        }
+        popupWin.document.close();
+
+        return true;
+    }
+
+    function printElement(elem) {
+        var domClone = elem.cloneNode(true);
+
+        $printSection = document.getElementById("printSection");
+
+        if (!$printSection) {
+            var $printSection = document.createElement("div");
+            $printSection.id = "printSection";
+            document.body.appendChild($printSection);
+        }
+
+        $printSection.innerHTML = "";
+        $printSection.appendChild(domClone);
+
+    }
+</script>-->
+<!--Statement Sending to Email-->
+<script type="text/ng-template" id="myModalSendEmail.html">
+
+    <form name="myFormTaskTypeModal1">
+
+        <div class="modal-header">
+            <button type="button" class="close" ng-click="cancel()" data-dismiss="modal">
+
+                <span class="icon icon-x" aria-hidden="true">
+                </span>
+                <span class="sr-only">Close</span>
+            </button>
+            <button aria-hidden="true" class="close" data-dismiss="modal" type="button" ng-click="ok()">×</button>
+            <h4 class="modal-title">Send Email</h4>
+        </div>
+        <!--<div class="form-group">
+            <label for="site-name">From:</label><br />
+            <input id="site-name" type="text" class="form-control" ng-model="trade.From" placeholder="Enter Category name" />
+        </div>
+        <div class="form-group">
+            <label for="site-name">To:</label><br />
+            <input id="site-name" type="text" class="form-control" ng-model="trade.To" placeholder="Enter Category name" />
+        </div>
+        <div class="form-group">
+            <label for="site-name">Subject:</label><br />
+            <input id="site-name" type="text" class="form-control" ng-model="trade.Subject" placeholder="Enter Category name" />
+        </div>
+        <div class="form-group">
+            <label for="site-name">Body:</label><br />
+            <input id="site-name" type="text" class="form-control" ng-model="trade.Body" placeholder="Enter Category name" />
+        </div>-->
+        <div class="modal-body">
+            <div class="form-group">
+                <label for="TaskType-name">Are you sure you want to Send?</label><br />
+            </div>
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-ar btn-warning" ng-click="cancel()" data-dismiss="modal">Cancel</button>
+            <button type="button" class="btn btn-ar btn-primary" ng-click="sendemail(trade)">Yes</button>
+        </div>
+    </form>
+</script>
+
+<!--Invoice-->
+
+<div id="printThisElement">
+        <form>
+            <!--<div ng-repeat="CustomerData in dataList">-->
+                <div class="containers">
+                    <!--Phone no.-->
+                    <div class="row contact-info">
+                        <span style="float:right;padding-right:20px!important">
+                            <strong>Phone No. : </strong>  0731-XXXXXXX
+                        </span>
+                        <hr />
+                    </div><br />
+                    <!--Company Information-->
+                    <div class="row pad-top-botm">
+                        <div class="col-lg-12 col-md-12 col-sm-12">
+                            <div class="col-lg-6 col-md-6 col-sm-6" style="float:left">
+                                <b class="col-md-3">Invoice No.: </b>
+                                <strong class="col-md-9">{{CustomerData.Id}}</strong>
+                                <br /></div>
+                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6" style="float:right; width:50%!important">
+                                <span>Company Name </span>  <strong>{{CompanyName}}</strong><br />
+                                <span>Address </span> <!--{{warehou[0].Address}},--><br />
+                                {{StateName}} ,India<br />
+                                <span>Phone  </span>  <!--{{warehou[0].Phone}}-->
+                            </div>
+                        </div>
+                    </div><br />
+                    <div class="row text-center contact-info">
+                        <div class="col-lg-12 col-md-12 col-sm-12">
+                            <hr />
+                        </div>
+                    </div>
+
+                    <!--Customer Information-->
+                    <div class="row pad-top-botm client-info" style="height:160px;">
+                        <div class="col-lg-12 col-md-12 col-sm-12" style="width:100% !important">
+                            <div class="col-lg-12 col-md-12 col-sm-12" style="float:left">
+                                <h4>  <strong>Customer Information</strong></h4>
+                                <b>Customer Name :</b>
+                                <strong style="font-size: 13px; padding-left:10px!important"> {{CustomerData.Name}}</strong>
+                                <br />
+                                <b>Mobile No. :</b>
+                                <strong style="font-size: 13px; padding-left:10px!important">{{CustomerData.Mobile}}</strong>
+                                <br />
+                                <b>Address :</b>
+                                <span style="padding-left:12px!important">{{CustomerData.BillingAddress}}</span>
+                                <br />
+                            </div>
+                            <div class="col-lg-12 col-md-12 col-sm-12" style="float:right">
+                                <h4><strong>Payment Details </strong></h4>
+                                <b class="col-md-3">Bill Amount :</b>
+                                <strong class="col-md-9" style="font-size: 12px;"> {{CustomerData.TotalPrice | number:0}}&nbsp;<i class="fa fa-inr"></i></strong>
+                                <br />
+                                <b class="col-md-3">Bill Date :</b>
+                                <span class="col-md-9" style="font-size: 12px;">{{CustomerData.ToDate}}</span>
+                            </div>
+                        </div>
+                    </div><br /><hr /><br />
+
+                    <!--Main Invoice Table-->
+                    <div class="row">
+                        <div class="col-lg-12 col-md-12 col-sm-12">
+                            <div class="table-responsive">
+                                <div class="table-responsive">
+                                    <table class="table table-bordered" style="font-size:10px!important;">
+                                        <thead class="">
+                                            <tr>
+                                                <th class="">S.no.</th>
+                                                <th class="">Item Name</th>
+                                                <th class="">MRP</th>
+                                                <th class="">Unit Price</th>
+                                                <th class="">Total Qty(pcs)</th>
+                                                <th class="">Total Amt</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody class="">
+                                            <tr>
+                                                <td>1</td>
+                                                <td>Fresh Milk</td>
+                                                <td>{{CustomerData1.TotalPrice}}</td>
+                                                <td>{{CustomerData1.UnitPrice| number : 2}}</td>
+                                                <td>{{CustomerData1.TotalQty}}</td>
+                                                <td>{{CustomerData1.TotalPrice}}</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                            <hr />
+                            <div class="ttl-amts">
+
+                            </div>
+                            <hr />
+
+                        </div>
+                        <div class="col-lg-12 col-md-12 col-sm-12">
+                            <div class="table-responsive col-md-6 col-lg-6 col-sm-6 col-xs-6 taxtable" style="float:left!important">
+                                <div class="table-responsive">
+                                </div>
+                            </div>
+                            <div class="col-md-6 col-lg-6 col-sm-6 col-xs-6" style="float:left!important ;font-size:12px;">
+                                <strong>Total Amount Incl. Tax : {{(CustomerData.TotalAmount - CustomerData.deliveryCharge)| number:2}}&nbsp;<i class="fa fa-inr"></i></strong><br />
+                                <strong>Discount : {{CustomerData.DiscountAmount | number:2}}&nbsp;<i class="fa fa-inr"></i></strong><br />
+                                <strong>Total Tax Amount : {{CustomerData.TaxAmount | number:2}}&nbsp;<i class="fa fa-inr"></i></strong><br />
+                                <strong>Delivery Charge : {{CustomerData.deliveryCharge | number:0}}&nbsp;<i class="fa fa-inr"></i></strong><br />
+                                <strong>Wallet Amount used  : {{CustomerData.WalletAmount | number:0}}&nbsp;<i class="fa fa-inr"></i></strong><br />
+                                <strong>Net Amount (Rounded Off) : {{CustomerData1.TotalPrice}}&nbsp;<i class="fa fa-inr"></i></strong><br />
+                            </div>
+                        </div>
+                    </div>
+                    <hr /><hr />
+                    <br />
+
+                    <!--Notes-->
+                    <div class="row client-info col-md-12 col-lg-12 col-xs-12" style="width:100% !important">
+                        <div class="col-md-12 col-lg-12 col-xs-12" style="width:100% !important">
+                            <div class="col-md-8 col-lg-8 col-xs-8" style="float:left;font-size: 11px;">
+                                <div style="font-size: 12px;"><u>This is a Computer Generated Invoice.</u></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <footer style="page-break-before: always;"></footer>
+            <!--</div>-->
+        </form>
+    </div>
+

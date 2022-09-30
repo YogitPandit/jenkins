@@ -1,0 +1,499 @@
+﻿<head>
+    <style>
+        #dragandrophandler {
+            border: 2px dashed #92AAB0;
+            width: 650px;
+            height: 200px;
+            color: #92AAB0;
+            text-align: center;
+            vertical-align: middle;
+            padding: 10px 0px 10px 10px;
+            font-size: 200%;
+            display: table-cell;
+        }
+
+        .progressBar {
+            width: 200px;
+            height: 22px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            overflow: hidden;
+            display: inline-block;
+            margin: 0px 10px 5px 5px;
+            vertical-align: top;
+        }
+
+            .progressBar div {
+                height: 100%;
+                color: #fff;
+                text-align: right;
+                line-height: 22px; /* same as #progressBar height if we want text middle aligned */
+                width: 0;
+                background-color: #0ba1b5;
+                border-radius: 3px;
+            }
+
+        .statusbar {
+            border-top: 1px solid #A9CCD1;
+            min-height: 25px;
+            width: 700px;
+            padding: 10px 10px 0px 10px;
+            vertical-align: top;
+        }
+
+            .statusbar:nth-child(odd) {
+                background: #EBEFF0;
+            }
+
+        .filename {
+            display: inline-block;
+            vertical-align: top;
+            width: 250px;
+        }
+
+        .filesize {
+            display: inline-block;
+            vertical-align: top;
+            color: #30693D;
+            width: 100px;
+            margin-left: 10px;
+            margin-right: 5px;
+        }
+
+        .abort {
+            background-color: #A8352F;
+            -moz-border-radius: 4px;
+            -webkit-border-radius: 4px;
+            border-radius: 4px;
+            display: inline-block;
+            color: #fff;
+            font-family: arial;
+            font-size: 13px;
+            font-weight: normal;
+            padding: 4px 15px;
+            cursor: pointer;
+            vertical-align: top;
+        }
+
+        .form-group.required .control-label:after {
+            content: "*";
+            color: red;
+        }
+    </style>
+
+</head>
+
+<div class="page page-table">
+    <section class="panel panel-default table-dynamic">
+        <div class="panel-heading"> <strong> <span class="glyphicon glyphicon-th"> </span> Add Customer Services Table</strong> </div>
+        <br />
+        <div>
+            <button class="btn btn-primary" ng-click="open()" ng-show="(UserRole.role== 'HQ Master login')"> <span class="glyphicon glyphicon-plus"> </span> New Customer</button>
+
+        </div>
+        <br />
+
+
+        <table class="table table-bordered table-striped table-responsive">
+            <thead>
+                <tr>
+                    <th>
+                        <div class="th">
+                            Provider Name
+                            <span class="glyphicon glyphicon-chevron-up"
+                                  data-ng-click="order('PeopleFirstName')"
+                                  data-ng-class="{active: row == 'PeopleFirstName'}"></span>
+                            <span class="glyphicon glyphicon-chevron-down"
+                                  data-ng-click="order('-PeopleFirstName')"
+                                  data-ng-class="{active: row == '-PeopleFirstName'}"></span>
+                        </div>
+                    </th>
+                    <th>
+                        <div class="th">
+                            Warehouse
+                            <span class="glyphicon glyphicon-chevron-up"
+                                  data-ng-click="order('DisplayName')"
+                                  data-ng-class="{active: row == 'DisplayName'}"></span>
+                            <span class="glyphicon glyphicon-chevron-down"
+                                  data-ng-click="order('-DisplayName')"
+                                  data-ng-class="{active: row == '-DisplayName'}"></span>
+                        </div>
+                    </th>
+
+                    <th>
+                        <div class="th">
+                            Customer Name
+                            <span class="glyphicon glyphicon-chevron-up"
+                                  data-ng-click="order('PeopleLastName')"
+                                  data-ng-class="{active: row == 'PeopleLastName'}"></span>
+                            <span class="glyphicon glyphicon-chevron-down"
+                                  data-ng-click="order('-PeopleLastName')"
+                                  data-ng-class="{active: row == '-PeopleLastName'}"></span>
+                        </div>
+                    </th>
+                    <th>
+                        <div class="th">
+                            Item
+                            <span class="glyphicon glyphicon-chevron-up"
+                                  data-ng-click="order('Department')"
+                                  data-ng-class="{active: row == 'Department'}"></span>
+                            <span class="glyphicon glyphicon-chevron-down"
+                                  data-ng-click="order('-Department')"
+                                  data-ng-class="{active: row == '-Department'}"></span>
+                        </div>
+                    </th>
+                    <th>
+                        <div class="th">
+                            Prices
+                            <span class="glyphicon glyphicon-chevron-up"
+                                  data-ng-click="order('Department')"
+                                  data-ng-class="{active: row == 'Department'}"></span>
+                            <span class="glyphicon glyphicon-chevron-down"
+                                  data-ng-click="order('-Department')"
+                                  data-ng-class="{active: row == '-Department'}"></span>
+                        </div>
+                    </th>
+                    <th>
+                        <div class="th">
+                            Quantity
+                            <span class="glyphicon glyphicon-chevron-up"
+                                  data-ng-click="order('Email')"
+                                  data-ng-class="{active: row == 'Email'}"></span>
+                            <span class="glyphicon glyphicon-chevron-down"
+                                  data-ng-click="order('-Email')"
+                                  data-ng-class="{active: row == '-Email'}"></span>
+                        </div>
+                    </th>
+                    <th>
+                        <div class="th">
+                            Start Date
+                            <span class="glyphicon glyphicon-chevron-up"
+                                  data-ng-click="order('Mobile')"
+                                  data-ng-class="{active: row == 'Mobile'}"></span>
+                            <span class="glyphicon glyphicon-chevron-down"
+                                  data-ng-click="order('-Mobile')"
+                                  data-ng-class="{active: row == '-Mobile'}"></span>
+                        </div>
+                    </th>
+                    <th>
+                        <div class="th">
+                            Edit
+                        </div>
+                    </th>
+                    <th>
+                        <div class="th">
+                            Delete
+                        </div>
+                    </th>
+                </tr>
+
+            </thead>
+            <tbody>
+                <tr data-ng-repeat="trade in currentPageStores">
+                    <td>{{trade.PeopleFirstName}}</td>
+                    <td>{{trade.WarehouseName}}</td>
+                    <td>{{trade.Name}}</td>
+                    <td>{{trade.ItemName}}</td>
+                    <td>{{trade.Price}}</td>
+                    <td>{{trade.Quantity}}</td>
+                    <td>{{trade.StartDate|date: 'dd/MM/yyyy'}}</td>
+                    <td><button class="btn-sm btn-primary" ng-click="edit(trade)">Edit</button> </td>
+                    <td><button class="btn-sm btn-danger" ng-click="opendelete(trade,$index)">Remove</button> </td>
+                </tr>
+            </tbody>
+        </table>
+        <footer class="table-footer">
+
+            <div class="row">
+                <div class="col-md-6 page-num-info">
+                    <span>
+                        Show
+                        <select data-ng-model="numPerPage"
+                                data-ng-options="num for num in numPerPageOpt"
+                                data-ng-change="onNumPerPageChange()"></select>
+                        entries per page
+                    </span>
+                </div>
+                <div class="col-md-6 text-right pagination-container">
+                    <pagination class="pagination-sm"
+                                page="currentPage"
+                                total-items="filteredStores.length"
+                                max-size="4"
+                                on-select-page="select(page)"
+                                items-per-page="numPerPage"
+                                rotate="false"
+                                boundary-links="true"></pagination>
+                </div>
+            </div>
+        </footer>
+    </section>
+</div>
+
+<!-- /site tiles -->
+<!-- Add Customer Services- site modal -->
+<script type="text/ng-template" id="myModalContentAdd.html">
+
+    <form name="myFormSiteModal">
+        <div class="modal-header">
+            <button type="button" class="close" ng-click="cancel()" data-dismiss="modal">
+                <span class="icon icon-x" aria-hidden="true">
+                </span>
+                <span class="sr-only">Close</span>
+            </button>
+            <button aria-hidden="true" class="close" data-dismiss="modal" type="button" ng-click="ok()">×</button>
+            <h4 class="modal-title"> Add Customer Services</h4>
+        </div>
+
+        <section class="panel panel-default table-dynamic">
+            <div id="divscroll" class="scroll">
+                <div class="row">
+                    <div class="modal-body" id="myModal">
+                        <div class="form-group col-md-6">
+                            <label for="site-name">Warehouse<span style="color:red;">*</span></label><br />
+                            <select class="form-control" id="site-name" ng-model="CustomerService.PWarehouseId">
+                                <option value="">--Select--</option>
+                                <option value="{{WareHouse.PWarehouseId}}" ng-repeat="WareHouse in getWarehouse"> {{WareHouse.Warehouse.WarehouseName}}</option>
+                            </select>
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="site-name">Customer<span style="color:red;">*</span></label><br />
+                            <select class="form-control" id="site-name-issue" ng-model="CustomerService.CustomerLinkId">
+                                <option value="">--Select--</option>
+                                <option value="{{customer.CustomerLinkId}}" ng-repeat="customer in getCustomerLink"> {{customer.Name}}</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group col-md-6">
+                            <label for="site-name">Item<span style="color:red;">*</span></label><br />
+                            <select class="form-control" id="site-name-Shift" ng-model="CustomerService.PItemId">
+                                <option value="">--Select--</option>
+                                <option value="{{Items.PItemId}}" ng-repeat="Items in getItem"> {{Items.ItemMasters.ItemName}}</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group col-md-6">
+                            <!--style="display:none;" id="divShift"-->
+                            <label for="site-name">Shift<span style="color:red;">*</span></label><br />
+                            <select class="form-control" id="site-name-service" ng-model="CustomerService.ShiftID">
+                                <option value="">--Select--</option>
+                                <option value="{{Shifts.ShiftID}}" ng-repeat="Shifts in shift"> {{Shifts.ShiftName}}</option><!--ng-selected="(CustomerService.BaseCategoryId == Shifts.BaseCategoryId)"-->
+                            </select>
+                        </div>
+
+
+                        <div class="form-group col-md-6">
+                            <label for="site-name">Start Date<span style="color:red;">*</span></label><br />
+                            <input id="site-name-sdate" type="date" class="form-control" value="dd/MM/yyyy" ng-model="CustomerService.StartDate" />
+                        </div>
+
+                        <div class="form-group col-md-6">
+                            <label for="site-name">Price<span style="color:red;">*</span></label><br />
+                            <input id="site-name" type="text" class="form-control" ng-model="CustomerService.Price" placeholder="Enter Price" />
+                        </div>
+
+                        <div class="form-group col-md-6">
+                            <label for="site-name">Quantity</label><br />
+                            <input id="site-name-qty" type="text" class="form-control" ng-model="CustomerService.Qty" placeholder="Enter Quantity" />
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="site-name">Time</label><br />
+                            <input id="site-name-qty" type="time" class="form-control" ng-model="CustomerService.DeliveryTime" placeholder="Enter Time" />
+                        </div>
+                        <div class="form-group col-md-12">
+                            <label for="site-name">Recuring<span style="color:red;"></span></label><br />
+                            <div class="radio">
+                                <label><input type="radio" id="site-Everyday" name="optradio" ng-click="Everyday()">Everyday</label>
+                            </div>
+                            <div class="radio">
+                                <label><input type="radio" id="site-Alternate" name="optradio" ng-click="Alternate()">Alternate days</label>
+                            </div>
+                            <div class="radio">
+                                <label><input type="radio" id="site-Custome" name="optradio" ng-click="Custom()">Custom days</label>
+                            </div>
+                        </div>
+                        <br />
+                        <div class="form-group col-md-12">
+                            <div class="checkbox col-md-1" style="margin-top: -5px">
+                                <label><input type="checkbox" id="site-Mon" ng-model="CustomerService.Monday" name="day" value="Monday">M</label>
+                            </div>
+                            <div class="checkbox col-md-1">
+                                <label><input type="checkbox" id="site-Tue" ng-model="CustomerService.Tuesday" name="day" value="Tuesday">T</label>
+                            </div>
+                            <div class="checkbox col-md-1">
+                                <label><input type="checkbox" id="site-Wed" ng-model="CustomerService.Wednesday" name="day" value="Wednesday">W</label>
+                            </div>
+                            <div class="checkbox col-md-1">
+                                <label><input type="checkbox" id="site-Thu" ng-model="CustomerService.Thursday" name="day" value="Thursday">T</label>
+                            </div>
+                            <div class="checkbox col-md-1">
+                                <label><input type="checkbox" id="site-Fri" ng-model="CustomerService.Friday" name="day" value="Friday">F</label>
+                            </div>
+                            <div class="checkbox col-md-1">
+                                <label><input type="checkbox" id="site-Sat" ng-model="CustomerService.Saturday" name="day" value="Saturday">S</label>
+                            </div>
+                            <div class="checkbox col-md-1">
+                                <label><input type="checkbox" id="site-Sun" ng-model="CustomerService.Sunday" name="day" value="Sunday">S</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </section>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-ar btn-primary" ng-click="AddCustomerServices(CustomerService)">Save</button>
+            <button type="button" class="btn btn-ar btn-warning" ng-click="cancel()" data-dismiss="modal">Cancel</button>
+        </div>
+
+    </form>
+</script>
+
+
+<!--Update Customer Services-->
+<script type="text/ng-template" id="myModalContentPut.html">
+
+    <form name="myFormSiteModal">
+        <div class="modal-header">
+            <button type="button" class="close" ng-click="cancel()" data-dismiss="modal">
+                <span class="icon icon-x" aria-hidden="true">
+                </span>
+                <span class="sr-only">Close</span>
+            </button>
+            <button aria-hidden="true" class="close" data-dismiss="modal" type="button" ng-click="ok()">×</button>
+            <h4 class="modal-title"> Update Customer Services</h4>
+
+        </div>
+
+        <section class="panel panel-default table-dynamic">
+            <div id="divscroll" class="scroll">
+                <div class="row">
+                    <div class="modal-body" id="myModal">
+
+                        <div class="form-group col-md-6">
+                            <label for="site-name">Warehouse<span style="color:red;">*</span></label><br />
+                            <select class="form-control" id="site-name" ng-model="CustomerService.PWarehouseId">
+                                <option value="">--Select--</option>
+                                <option value="{{WareHouse.PWarehouseId}}" ng-selected="CustomerService.PWarehouseId==CustomerService.PWarehouseId" ng-repeat="WareHouse in getWarehouse"> {{WareHouse.Warehouse.WarehouseName}}</option>
+                            </select>
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="site-name">Customer<span style="color:red;">*</span></label><br />
+                            <select class="form-control" id="site-name-issue" ng-model="CustomerService.CustomerLinkId">
+                                <option value="">--Select--</option>
+                                <option value="{{customer.CustomerLinkId}}" ng-selected="CustomerService.CustomerLinkId==CustomerService.CustomerLinkId" ng-repeat="customer in getCustomerLink"> {{customer.Name}}</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group col-md-6">
+                            <label for="site-name">Item<span style="color:red;">*</span></label><br />
+                            <select class="form-control" id="site-name-Shift" ng-model="CustomerService.PItemId">
+                                <option value="">--Select--</option>
+                                <option value="{{Items.PItemId}}" ng-selected="CustomerService.PItemId==CustomerService.PItemId" ng-repeat="Items in getItem"> {{Items.ItemMasters.ItemName}}</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group col-md-6">
+                            <!--style="display:none;" id="divShift"-->
+                            <label for="site-name">Shift<span style="color:red;">*</span></label><br />
+                            <select class="form-control" id="site-name-service" ng-model="CustomerService.ShiftID">
+                                <option value="">--Select--</option>
+                                <option value="{{Shifts.ShiftID}}" ng-selected="CustomerService.ShiftID==CustomerService.ShiftID" ng-repeat="Shifts in shift"> {{Shifts.ShiftName}}</option><!--ng-selected="(CustomerService.BaseCategoryId == Shifts.BaseCategoryId)"-->
+                            </select>
+                        </div>
+
+
+                        <div class="form-group col-md-6">
+                            <label for="site-name">Start Date<span style="color:red;">*</span></label><br />
+                            <input id="site-name-sdate" type="date" class="form-control" value="dd/MM/yyyy" ng-model="CustomerService.StartDate" />
+                        </div>
+
+                        <div class="form-group col-md-6">
+                            <label for="site-name">Price<span style="color:red;">*</span></label><br />
+                            <input id="site-name" type="text" class="form-control" ng-model="CustomerService.Price" placeholder="Enter Price" />
+                        </div>
+
+                        <div class="form-group col-md-6">
+                            <label for="site-name">Quantity</label><br />
+                            <input id="site-name-qty" type="text" class="form-control" ng-model="CustomerService.Quantity" placeholder="Enter Quantity" />
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="site-name">Time</label><br />
+                            <input id="site-name-qty" type="time" class="form-control" ng-model="CustomerService.DeliveryTime" placeholder="Enter Time" />
+                        </div>
+                        <div class="form-group col-md-12">
+                            <label for="site-name">Recuring<span style="color:red;"></span></label><br />
+                            <div class="radio">
+                                <label><input type="radio" id="site-Everyday" name="optradio" ng-click="Everyday()">Everyday</label>
+                            </div>
+                            <div class="radio">
+                                <label><input type="radio" id="site-Alternate" name="optradio" ng-click="Alternate()">Alternate days</label>
+                            </div>
+                            <div class="radio">
+                                <label><input type="radio" id="site-Custome" name="optradio" ng-click="Custom()">Custom days</label>
+                            </div>
+                        </div>
+                        <br />
+                        <div class="form-group col-md-12">
+                            <div class="checkbox col-md-1" style="margin-top: -5px">
+                                <label><input type="checkbox" id="site-Mon" ng-model="CustomerService.Monday" name="day" value="Monday">M</label>
+                            </div>
+                            <div class="checkbox col-md-1">
+                                <label><input type="checkbox" id="site-Tue" ng-model="CustomerService.Tuesday" name="day" value="Tuesday">T</label>
+                            </div>
+                            <div class="checkbox col-md-1">
+                                <label><input type="checkbox" id="site-Wed" ng-model="CustomerService.Wednesday" name="day" value="Wednesday">W</label>
+                            </div>
+                            <div class="checkbox col-md-1">
+                                <label><input type="checkbox" id="site-Thu" ng-model="CustomerService.Thursday" name="day" value="Thursday">T</label>
+                            </div>
+                            <div class="checkbox col-md-1">
+                                <label><input type="checkbox" id="site-Fri" ng-model="CustomerService.Friday" name="day" value="Friday">F</label>
+                            </div>
+                            <div class="checkbox col-md-1">
+                                <label><input type="checkbox" id="site-Sat" ng-model="CustomerService.Saturday" name="day" value="Saturday">S</label>
+                            </div>
+                            <div class="checkbox col-md-1">
+                                <label><input type="checkbox" id="site-Sun" ng-model="CustomerService.Sunday" name="day" value="Sunday">S</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </section>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-ar btn-primary" ng-click="PutCustomerServices(CustomerService)">Save</button>
+            <button type="button" class="btn btn-ar btn-warning" ng-click="cancel()" data-dismiss="modal">Cancel</button>
+
+        </div>
+
+    </form>
+</script>
+
+<!--Delete Customer Services-->
+<script type="text/ng-template" id="myCustomerModaldelete.html">
+
+    <form name="myFormTaskTypeModal1">
+
+        <div class="modal-header">
+            <button type="button" class="close" ng-click="cancel()" data-dismiss="modal">
+
+                <span class="icon icon-x" aria-hidden="true">
+                </span>
+                <span class="sr-only">Close</span>
+            </button>
+            <button aria-hidden="true" class="close" data-dismiss="modal" type="button" ng-click="ok()">×</button>
+            <h4 class="modal-title">Delete Customer</h4>
+        </div>
+        <div class="modal-body">
+            <div class="form-group">
+                <label for="TaskType-name">Are you sure you want to Delete?</label><br />
+            </div>
+
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-ar btn-warning" ng-click="cancel()" data-dismiss="modal">No</button>
+            <button type="submit" class="btn btn-ar btn-primary" ng-click="deletecustomers(CaseData,$index)">Yes</button>
+        </div>
+    </form>
+</script>

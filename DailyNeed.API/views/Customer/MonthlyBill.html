@@ -1,0 +1,168 @@
+﻿<style>
+    #dragandrophandler {
+        border: 2px dashed #92AAB0;
+        width: 650px;
+        height: 200px;
+        color: #92AAB0;
+        text-align: center;
+        vertical-align: middle;
+        padding: 10px 0px 10px 10px;
+        font-size: 200%;
+        display: table-cell;
+    }
+</style>
+
+<div class="page page-table">
+    <section class="panel panel-default table-dynamic">
+        <div class="panel-heading"> <strong> <span class="glyphicon glyphicon-th"> </span> Monthly Bill List</strong> </div>
+        <br />
+        <div class="form-group col-md-3">
+            <label for="site-name">Customer Name</label><br>
+            <input class="form-control" ng-model="Name" placeholder="Enter Customer Name" />
+        </div>
+
+        <div class="form-group col-md-3">
+            <label for="site-name">Bill Type</label><br>
+            <select class="form-control" id="site-name-btype" ng-model="user.name" ng-change="GetGridData(user.name)">
+                <option value="">--Select--</option>
+                <option value="{{user.name}}" ng-repeat="user in BillingType" ng-change="GridData()"> {{user.name}}</option>
+            </select>
+        </div>
+       
+        <div class="form-group col-md-3">
+            <label for="site-name"></label><br />
+            <button type="button" class="btn btn-ar btn-primary" ng-click="GetCustomerListByName()">Search</button>
+            <button type="button" class="btn btn-ar btn-primary" ng-click="MonthBillList(currentPageStores,$index)">All Go</button>
+        </div>
+
+        <br />
+        <div class="table-filters">
+            <div class="row">
+                <div class="col-sm-3 col-xs-6 filter-result-info">
+                    <span>
+                        Showing {{filteredStores.length}}/{{stores.length}} entries
+                    </span>
+                </div>
+            </div>
+        </div>
+        <table class="table table-bordered table-striped table-responsive">
+            <thead>
+                <tr>
+                    <th>
+                        <div class="th">
+                            S.No.
+                            <span class="glyphicon glyphicon-chevron-up"
+                                  data-ng-click="order('Email')"
+                                  data-ng-class="{active: row == 'Email'}"></span>
+                            <span class="glyphicon glyphicon-chevron-down"
+                                  data-ng-click="order('-Email')"
+                                  data-ng-class="{active: row == '-Email'}"></span>
+                        </div>
+                    </th>
+                    <th>
+                        <div class="th">
+                            Customer Name
+                            <span class="glyphicon glyphicon-chevron-up"
+                                  data-ng-click="order('PeopleFirstName')"
+                                  data-ng-class="{active: row == 'PeopleFirstName'}"></span>
+                            <span class="glyphicon glyphicon-chevron-down"
+                                  data-ng-click="order('-PeopleFirstName')"
+                                  data-ng-class="{active: row == '-PeopleFirstName'}"></span>
+                        </div>
+                    </th>
+                    <th>
+                        <div class="th">
+                            Base Price
+                            <span class="glyphicon glyphicon-chevron-up"
+                                  data-ng-click="order('PeopleFirstName')"
+                                  data-ng-class="{active: row == 'PeopleFirstName'}"></span>
+                            <span class="glyphicon glyphicon-chevron-down"
+                                  data-ng-click="order('-PeopleFirstName')"
+                                  data-ng-class="{active: row == '-PeopleFirstName'}"></span>
+                        </div>
+                    </th>
+                    <th>
+                        <div class="th">
+                          Base Quantity
+                            <span class="glyphicon glyphicon-chevron-up"
+                                  data-ng-click="order('PeopleLastName')"
+                                  data-ng-class="{active: row == 'PeopleLastName'}"></span>
+                            <span class="glyphicon glyphicon-chevron-down"
+                                  data-ng-click="order('-PeopleLastName')"
+                                  data-ng-class="{active: row == '-PeopleLastName'}"></span>
+                        </div>
+                    </th>
+                    <th>
+                        <div class="th">
+                            Billing Type
+                            <span class="glyphicon glyphicon-chevron-up"
+                                  data-ng-click="order('DisplayName')"
+                                  data-ng-class="{active: row == 'DisplayName'}"></span>
+                            <span class="glyphicon glyphicon-chevron-down"
+                                  data-ng-click="order('-DisplayName')"
+                                  data-ng-class="{active: row == '-DisplayName'}"></span>
+                        </div>
+                    </th>
+                    <th>
+                        <div class="th">
+                           Last Billing Date
+                            <span class="glyphicon glyphicon-chevron-up"
+                                  data-ng-click="order('DisplayName')"
+                                  data-ng-class="{active: row == 'DisplayName'}"></span>
+                            <span class="glyphicon glyphicon-chevron-down"
+                                  data-ng-click="order('-DisplayName')"
+                                  data-ng-class="{active: row == '-DisplayName'}"></span>
+                        </div>
+                    </th>
+                    <th>
+                        <div class="th">
+                           Generate Bill
+                            <span class="glyphicon glyphicon-chevron-up"
+                                  data-ng-click="order('DisplayName')"
+                                  data-ng-class="{active: row == 'DisplayName'}"></span>
+                            <span class="glyphicon glyphicon-chevron-down"
+                                  data-ng-click="order('-DisplayName')"
+                                  data-ng-class="{active: row == '-DisplayName'}"></span>
+                        </div>
+                    </th>
+
+                </tr>
+            </thead>
+            <tbody>
+                <tr data-ng-repeat="trade in currentPageStores">
+                    <td>{{$index+1}}</td>
+                    <td>{{trade.Name}}</td>
+                    <td>{{trade.Price}}</td>
+                    <td ng-hide="{{trade.PeopleID}}"></td>
+                    <td>{{trade.Quantity}}</td>
+                    <td>{{trade.BillingType}}</td>
+                    <td>{{trade.LastBillingDate| date: 'dd/MM/yyyy'}}</td>
+                    <td><button type="button" class="btn btn-ar btn-primary" ng-click="monthBillListSingle(trade)">Go</button></td>
+                </tr>
+            </tbody>
+        </table>
+        <footer class="table-footer">
+            <div class="row">
+                <div class="col-md-6 page-num-info">
+                    <span>
+                        Show
+                        <select data-ng-model="numPerPage"
+                                data-ng-options="num for num in numPerPageOpt"
+                                data-ng-change="onNumPerPageChange()"></select>
+                        entries per page
+                    </span>
+                </div>
+                <div class="col-md-6 text-right pagination-container">
+                    <pagination class="pagination-sm"
+                                page="currentPage"
+                                total-items="filteredStores.length"
+                                max-size="4"
+                                on-select-page="select(page)"
+                                items-per-page="numPerPage"
+                                rotate="false"
+                                boundary-links="true"></pagination>
+                </div>
+            </div>
+        </footer>
+    </section>
+</div>

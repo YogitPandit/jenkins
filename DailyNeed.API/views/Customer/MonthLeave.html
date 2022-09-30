@@ -1,0 +1,268 @@
+﻿<style>
+    #dragandrophandler {
+        border: 2px dashed #92AAB0;
+        width: 650px;
+        height: 200px;
+        color: #92AAB0;
+        text-align: center;
+        vertical-align: middle;
+        padding: 10px 0px 10px 10px;
+        font-size: 200%;
+        display: table-cell;
+    }
+</style>
+
+<div class="page page-table">
+    <section class="panel panel-default table-dynamic">
+        <div class="panel-heading"> <strong> <span class="glyphicon glyphicon-th"> </span> Month Leaves table</strong> </div>
+        <br />
+        <div>
+            <!--<button type="button" class="btn btn-ar btn-primary" ng-click="new()">New</button>-->
+            <button class="btn btn-primary" ng-click="open()"> <span class="glyphicon glyphicon-plus"> </span> Add Month Leave</button>
+        </div>
+        <br />
+        <div class="table-filters">
+            <div class="row">
+       <div class="col-sm-4 col-xs-6"> <form> <input type="text" placeholder="search" class="form-control" data-ng-model="searchKeywords" data-ng-keyup="search()"> </form> </div> 
+                <div class="col-sm-3 col-xs-6 filter-result-info">
+                    <span>
+                        Showing {{filteredStores.length}}/{{stores.length}} entries
+                    </span>
+                </div>
+            </div>
+        </div>
+        <table class="table table-bordered table-striped table-responsive">
+            <thead>
+                <tr>
+                    <th>
+                        <div class="th">
+                            S.No.
+                            <span class="glyphicon glyphicon-chevron-up"
+                                  data-ng-click="order('Email')"
+                                  data-ng-class="{active: row == 'Email'}"></span>
+                            <span class="glyphicon glyphicon-chevron-down"
+                                  data-ng-click="order('-Email')"
+                                  data-ng-class="{active: row == '-Email'}"></span>
+                        </div>
+                    </th>
+                    <th>
+                        <div class="th">
+                            Customer Name
+                            <span class="glyphicon glyphicon-chevron-up"
+                                  data-ng-click="order('PeopleFirstName')"
+                                  data-ng-class="{active: row == 'PeopleFirstName'}"></span>
+                            <span class="glyphicon glyphicon-chevron-down"
+                                  data-ng-click="order('-PeopleFirstName')"
+                                  data-ng-class="{active: row == '-PeopleFirstName'}"></span>
+                        </div>
+                    </th>
+
+                    <th>
+                        <div class="th">
+                            Provider Name
+                            <span class="glyphicon glyphicon-chevron-up"
+                                  data-ng-click="order('PeopleLastName')"
+                                  data-ng-class="{active: row == 'PeopleLastName'}"></span>
+                            <span class="glyphicon glyphicon-chevron-down"
+                                  data-ng-click="order('-PeopleLastName')"
+                                  data-ng-class="{active: row == '-PeopleLastName'}"></span>
+                        </div>
+                    </th>
+                    <th>
+                        <div class="th">
+                            Description
+                            <span class="glyphicon glyphicon-chevron-up"
+                                  data-ng-click="order('DisplayName')"
+                                  data-ng-class="{active: row == 'DisplayName'}"></span>
+                            <span class="glyphicon glyphicon-chevron-down"
+                                  data-ng-click="order('-DisplayName')"
+                                  data-ng-class="{active: row == '-DisplayName'}"></span>
+                        </div>
+                    </th>
+                    <th>
+                        <div class="th">
+                            FromDate
+                            <span class="glyphicon glyphicon-chevron-up"
+                                  data-ng-click="order('Department')"
+                                  data-ng-class="{active: row == 'Department'}"></span>
+                            <span class="glyphicon glyphicon-chevron-down"
+                                  data-ng-click="order('-Department')"
+                                  data-ng-class="{active: row == '-Department'}"></span>
+                        </div>
+                    </th>
+                    <th>
+                        <div class="th">
+                            ToDate
+                            <span class="glyphicon glyphicon-chevron-up"
+                                  data-ng-click="order('Department')"
+                                  data-ng-class="{active: row == 'Department'}"></span>
+                            <span class="glyphicon glyphicon-chevron-down"
+                                  data-ng-click="order('-Department')"
+                                  data-ng-class="{active: row == '-Department'}"></span>
+                        </div>
+                    </th>
+                    <th>
+                        <div class="th">
+                            Edit
+                        </div>
+                    </th>
+                    <th>
+                        <div class="th">
+                            Remove
+                        </div>
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr data-ng-repeat="trade in currentPageStores">
+                    <td>{{$index+1}}</td>
+                    <td>{{trade.Name}}</td>
+                    <td>{{trade.PeopleFirstName}}</td>
+                    <td>{{trade.Description}}</td>
+                    <td>{{trade.FromDate| date: 'dd/MM/yyyy'}}</td>
+                    <td>{{trade.ToDate| date: 'dd/MM/yyyy'}}</td>
+                    <!--<td><button class="btn-sm btn-primary">Details</button> </td>-->
+                    <td><button class="btn-sm btn-primary" ng-click="edit(trade)">Edit</button> </td>
+                    <td ng-show="(UserRole.role== 'HQ Master login')"><button class="btn-sm btn-danger" ng-click="opendelete(trade,$index)">Remove</button> </td>
+                </tr>
+            </tbody>
+        </table>
+        <footer class="table-footer">
+            <div class="row">
+                <div class="col-md-6 page-num-info">
+                    <span>
+                        Show
+                        <select data-ng-model="numPerPage"
+                                data-ng-options="num for num in numPerPageOpt"
+                                data-ng-change="onNumPerPageChange()"></select>
+                        entries per page
+                    </span>
+                </div>
+                <div class="col-md-6 text-right pagination-container">
+                    <pagination class="pagination-sm"
+                                page="currentPage"
+                                total-items="filteredStores.length"
+                                max-size="4"
+                                on-select-page="select(page)"
+                                items-per-page="numPerPage"
+                                rotate="false"
+                                boundary-links="true"></pagination>
+                </div>
+            </div>
+        </footer>
+    </section>
+</div>
+
+<!--To Add the Leaves-->
+<script type="text/ng-template" id="myModalContentAdd.html">
+
+    <form name="myFormSiteModal">
+        <div class="modal-header">
+            <button type="button" class="close" ng-click="cancel()" data-dismiss="modal"><span class="icon icon-x" aria-hidden="true"></span><span class="sr-only">Close</span></button>
+            <button aria-hidden="true" class="close" data-dismiss="modal" type="button" ng-click="ok()">×</button>
+            <h4 class="modal-title">Add Month Leave</h4>
+        </div>
+        <div class="modal-body">
+            <div class="colasdasdasd">
+                <p style="color: #FF0000" ng-show="gotErrors"> Unable To Create Site  ! Please Try Again</p>
+                <p style="color: #FF0000" ng-show="AlreadyExist"> Site Already Exist  ! Please Try Another Site</p>
+            </div>
+
+            <div class="col-md-6 form-group">
+                <label for="site-name">From Date:</label><br />
+                <input id="FP_name" type="date" class="form-control" name="FPName" ng-model="LeaveData.FromDate" />
+            </div>
+            <div class="col-md-6 form-group">
+                <label for="site-name">To Date:</label><br />
+                <input id="LP_name" type="date" class="form-control" name="LPName" ng-model="LeaveData.ToDate" />
+            </div>
+            
+            <div class="form-group col-md-6">
+                <label for="site-name">Customer<span style="color:red;">*</span></label><br />
+                <select class="form-control" id="site-name-issue" ng-model="LeaveData.CustomerLinkId">
+                    <option value="">--Select--</option>
+                    <option value="{{customer.CustomerLinkId}}" ng-repeat="customer in getCustomerLink"> {{customer.Name}}</option>
+                </select>
+            </div>
+
+            <div class="col-md-6 form-group">
+                <label for="People-name">Comment:</label><br />
+                <input id="PChek" name="pcbox" type="text" class="form-control" ng-model="LeaveData.Description" />
+            </div>
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-ar btn-warning" id="PCancel" name="Pclose" ng-click="cancel()" data-dismiss="modal">Cancel</button>
+            <button type="button" class="btn btn-ar btn-primary" id="PSave" name="Pconfirm" ng-click="AddMonthLeave(LeaveData)">Save</button>
+        </div>
+    </form>
+</script>
+
+<!-- To Update the Leaves-->
+<script type="text/ng-template" id="myModalContentPut.html">
+    <form name="myFormSiteModal">
+        <div class="modal-header">
+            <button type="button" class="close" ng-click="cancel()" data-dismiss="modal"><span class="icon icon-x" aria-hidden="true"></span><span class="sr-only">Close</span></button>
+            <button aria-hidden="true" class="close" data-dismiss="modal" type="button" ng-click="ok()">×</button>
+            <h4 class="modal-title">Add Month Leave</h4>
+        </div>
+        <div class="modal-body">
+            <div class="colasdasdasd">
+                <p style="color: #FF0000" ng-show="gotErrors"> Unable To Create Site  ! Please Try Again</p>
+                <p style="color: #FF0000" ng-show="AlreadyExist"> Site Already Exist  ! Please Try Another Site</p>
+            </div>
+
+            <div class="col-md-6 form-group">
+                <label for="site-name">From Date:</label><br />
+                <input id="FP_name" type="date" class="form-control" name="FPName" ng-model="LeaveData.FromDate" />
+            </div>
+            <div class="col-md-6 form-group">
+                <label for="site-name">To Date:</label><br />
+                <input id="LP_name" type="date" class="form-control" name="LPName" ng-model="LeaveData.ToDate" />
+            </div>
+
+            <div class="form-group col-md-6">
+                <label for="site-name">Customer<span style="color:red;">*</span></label><br />
+                <select class="form-control" id="site-name-issue" ng-model="LeaveData.CustomerLinkId">
+                    <option value="">--Select--</option>
+                    <option value="{{customer.CustomerLinkId}}" ng-repeat="customer in getCustomerLink"> {{customer.Name}}</option>
+                </select>
+            </div>
+
+            <div class="col-md-6 form-group">
+                <label for="People-name">Comment:</label><br />
+                <input id="PChek" name="pcbox" type="text" class="form-control" ng-model="LeaveData.Description" />
+            </div>
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-ar btn-warning" id="PCancel" name="Pclose" ng-click="cancel()" data-dismiss="modal">Cancel</button>
+            <button type="button" class="btn btn-ar btn-primary" id="PSave" name="Pconfirm" ng-click="PutAddMonthLeave(CaseData)">Save</button>
+        </div>
+    </form>
+</script>
+<!--To Delete the Leaves-->
+<script type="text/ng-template" id="myModaldeleteMonthLeave.html">
+
+    <form name="myFormTaskTypeModal1">
+
+        <div class="modal-header">
+            <button type="button" class="close" ng-click="cancel()" data-dismiss="modal">
+
+                <span class="icon icon-x" aria-hidden="true">
+                </span>
+                <span class="sr-only">Close</span>
+            </button>
+            <button aria-hidden="true" class="close" data-dismiss="modal" type="button" ng-click="ok()">×</button>
+            <h4 class="modal-title">Delete Month Leave</h4>
+        </div>
+        <div class="modal-body">
+            <div class="form-group">
+                <label for="TaskType-name">Are you sure you want to Delete?</label><br />
+            </div>
+
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-ar btn-warning" ng-click="cancel()" data-dismiss="modal">No</button>
+            <button type="submit" class="btn btn-ar btn-primary" ng-click="deleteMonthLeave(CaseData,$index)">Yes</button>
+        </div>
+    </form>
+</script>

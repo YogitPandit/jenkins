@@ -1,0 +1,463 @@
+﻿<head>
+    <style>
+        #dragandrophandler {
+            border: 2px dashed #92AAB0;
+            width: 650px;
+            height: 200px;
+            color: #92AAB0;
+            text-align: center;
+            vertical-align: middle;
+            padding: 10px 0px 10px 10px;
+            font-size: 200%;
+            display: table-cell;
+        }
+
+        .modal-dialog {
+            width: 60% !important;
+        }
+
+        .modal-footer {
+            padding: 18px !important;
+            padding-right: 35px !important;
+        }
+
+        .progressBar {
+            width: 200px;
+            height: 22px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            overflow: hidden;
+            display: inline-block;
+            margin: 0px 10px 5px 5px;
+            vertical-align: top;
+        }
+
+            .progressBar div {
+                height: 100%;
+                color: #fff;
+                text-align: right;
+                line-height: 22px; /* same as #progressBar height if we want text middle aligned */
+                width: 0;
+                background-color: #0ba1b5;
+                border-radius: 3px;
+            }
+
+        .statusbar {
+            border-top: 1px solid #A9CCD1;
+            min-height: 25px;
+            width: 700px;
+            padding: 10px 10px 0px 10px;
+            vertical-align: top;
+        }
+
+            .statusbar:nth-child(odd) {
+                background: #EBEFF0;
+            }
+
+        .filename {
+            display: inline-block;
+            vertical-align: top;
+            width: 250px;
+        }
+
+        .filesize {
+            display: inline-block;
+            vertical-align: top;
+            color: #30693D;
+            width: 100px;
+            margin-left: 10px;
+            margin-right: 5px;
+        }
+
+        .abort {
+            background-color: #A8352F;
+            -moz-border-radius: 4px;
+            -webkit-border-radius: 4px;
+            border-radius: 4px;
+            display: inline-block;
+            color: #fff;
+            font-family: arial;
+            font-size: 13px;
+            font-weight: normal;
+            padding: 4px 15px;
+            cursor: pointer;
+            vertical-align: top;
+        }
+
+
+        .autocomplete-options-container {
+            position: relative;
+        }
+
+        .autocomplete-options-dropdown {
+            position: absolute;
+            top: -1px;
+            left: 0px;
+            border: 1px solid #ccc;
+            border-top-color: #d9d9d9;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+            -webkit-box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+            cursor: default;
+            z-index: 1001;
+            background: green;
+        }
+
+        .autocomplete-options-list {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        .autocomplete-option {
+            padding: 4px 10px;
+            line-height: 22px;
+            overflow: hidden;
+            font: normal normal normal 13.3333330154419px/normal Arial;
+        }
+
+            .autocomplete-option.selected {
+                background-color: #eee;
+            }
+    </style>
+</head>
+
+<div class="page page-table">
+    <section class="panel panel-default table-dynamic">
+        <div class="panel-heading">
+            <strong>
+                <span class="glyphicon glyphicon-th"> </span>  Item Master
+            </strong>
+        </div>
+        <br />
+        <div>
+            <div class="form-group col-md-12">
+                <div class="form-group col-md-6">
+                    <button class="btn-sm btn-primary" ng-click="open()">
+                        <span class="glyphicon glyphicon-plus">
+                        </span> Add new Item
+                    </button>
+                </div>
+            </div>
+            <br />
+            <br />
+        </div>
+        <!--Start Admin Item Master Table-->
+        <table class="table table-bordered table-striped table-responsive">
+            <thead>
+                <tr>
+                    <th>
+                        <div class="th">
+                            S.No.
+                            <span class="glyphicon glyphicon-chevron-up"
+                                  data-ng-click="order('Email')"
+                                  data-ng-class="{active: row == 'Email'}"></span>
+                            <span class="glyphicon glyphicon-chevron-down"
+                                  data-ng-click="order('-Email')"
+                                  data-ng-class="{active: row == '-Email'}"></span>
+                        </div>
+                    </th>
+                    <th>
+                        <div class="th">
+                            Item Name
+                            <span class="glyphicon glyphicon-chevron-up"
+                                  data-ng-click="order('itemname')"
+                                  data-ng-class="{active: row == 'itemname'}"></span>
+                            <span class="glyphicon glyphicon-chevron-down"
+                                  data-ng-click="order('-itemname')"
+                                  data-ng-class="{active: row == '-itemname'}"></span>
+                        </div>
+                    </th>
+                    <th>
+                        <div class="th">
+                            Base Price
+                            <span class="glyphicon glyphicon-chevron-up"
+                                  data-ng-click="order('WarehouseName')"
+                                  data-ng-class="{active: row == 'WarehouseName'}"></span>
+                            <span class="glyphicon glyphicon-chevron-down"
+                                  data-ng-click="order('-WarehouseName')"
+                                  data-ng-class="{active: row == '-WarehouseName'}"></span>
+                        </div>
+                    </th>
+                    <th>
+                        <div class="th">
+                            Quantity
+                            <span class="glyphicon glyphicon-chevron-up"
+                                  data-ng-click="order('SubsubcategoryName')"
+                                  data-ng-class="{active: row == 'SubsubcategoryName'}"></span>
+                            <span class="glyphicon glyphicon-chevron-down"
+                                  data-ng-click="order('-SubsubcategoryName')"
+                                  data-ng-class="{active: row == '-SubsubcategoryName'}"></span>
+                        </div>
+                    </th>
+                    <th>
+                        <div class="th">
+                            Warehouse Name
+                            <span class="glyphicon glyphicon-chevron-up"
+                                  data-ng-click="order('SubcategoryName')"
+                                  data-ng-class="{active: row == 'SubcategoryName'}"></span>
+                            <span class="glyphicon glyphicon-chevron-down"
+                                  data-ng-click="order('-SubcategoryName')"
+                                  data-ng-class="{active: row == '-SubcategoryName'}"></span>
+                        </div>
+                    </th>
+                    <th>
+                        <div class="th">
+                            City
+                            <span class="glyphicon glyphicon-chevron-up"
+                                  data-ng-click="order('SubcategoryName')"
+                                  data-ng-class="{active: row == 'SubcategoryName'}"></span>
+                            <span class="glyphicon glyphicon-chevron-down"
+                                  data-ng-click="order('-SubcategoryName')"
+                                  data-ng-class="{active: row == '-SubcategoryName'}"></span>
+                        </div>
+                    </th>
+                    <th>
+                        <div class="th">
+                            Edit
+                        </div>
+                    </th>
+                    <th>
+                        <div class="th">
+                            Delete
+                        </div>
+                    </th>
+                </tr>
+
+            </thead>
+            <tbody>
+                <tr data-ng-repeat="trade in currentPageStores">
+                    <td>{{$index+1}}</td>
+                    <td>{{trade.ItemName}}</td>
+                    <td>{{trade.BasePrice}}</td>
+                    <td>{{trade.Quantity}}</td>
+                    <td>{{trade.WarehouseName}}</td>
+                    <td>{{trade.CityName}}</td>
+                    <td><button class="btn-sm btn-primary" ng-click="edit(trade)">Edit</button> </td>
+                    <td><button class="btn-sm btn-danger" ng-click="opendelete(trade,$index)">Remove</button> </td>
+                </tr>
+            </tbody>
+        </table>
+        <footer class="table-footer">
+            <div class="row">
+                <div class="col-md-6 page-num-info">
+                    <span>
+                        Show
+                        <select data-ng-model="numPerPage"
+                                data-ng-options="num for num in numPerPageOpt"
+                                data-ng-change="onNumPerPageChange()"></select>
+                        entries per page
+                    </span>
+                </div>
+                <div class="col-md-6 text-right pagination-container">
+                    <pagination class="pagination-sm"
+                                page="currentPage"
+                                total-items="filteredStores.length"
+                                max-size="4"
+                                on-select-page="select(page)"
+                                items-per-page="numPerPage"
+                                rotate="false"
+                                boundary-links="true"></pagination>
+                </div>
+            </div>
+        </footer>
+    </section>
+</div>
+
+<!--price model-->
+<style>
+    .w3-red {
+        color: #fff !important;
+        background-color: #f44336 !important;
+    }
+
+    .w1-red {
+        color: #fff !important;
+        background-color: #4c4948 !important;
+    }
+</style>
+<!-------Start Central Item Master Oparetion------->
+<!-- new site modal -->
+
+<script type="text/ng-template" id="myitemMasterNewModal.html">
+    <form name="myFormSiteModal">
+        <div class="modal-header w1-red">
+            <button type="button" class="close" ng-click="cancel()" data-dismiss="modal">
+                <span class="icon icon-x" aria-hidden="true">
+                </span>
+                <span class="sr-only">Close</span>
+            </button>
+            <button aria-hidden="true" class="close" data-dismiss="modal" type="button" ng-click="ok()">×</button>
+            <h4 class="modal-title">Add New Item </h4>
+        </div>
+        <br />
+        <div class="modal-body" ng-init="GetUniqueitemMaster()">
+            <div class="form-group col-md-6">
+                <label for="site-name">Item Name <span style="color:red;"></span></label><br />
+
+                <input id="ItemName" name="ItemName" type="text" class="form-control" placeholder="Enter Item Name" ng-model="itemMasterData.ItemName" />
+            </div>
+            <div class="form-group col-md-6">
+                <label for="site-name">Select City<span style="color:red;"></span></label><br />
+                <select class="form-control" ng-model="itemMasterData.Cityid">
+                    <option value="">---SELECT---</option>
+                    <option value="{{citys.Cityid}}" ng-selected="(itemMasterData.Cityid == citys.Cityid)" ng-repeat="citys in city"> {{citys.CityName}}</option>
+                </select>
+            </div>
+
+            <div class="form-group col-md-6">
+                <label for="site-name">Select Base Category<span style="color:red;"></span></label><br />
+                <select class="form-control" ng-model="itemMasterData.BaseCategoryId">
+                    <option value="">---SELECT---</option>
+                    <option value="{{basecategorys.BaseCategoryId}}" ng-repeat="basecategorys in basecategory"> {{basecategorys.BaseCategoryName}}</option>
+                </select>
+            </div>
+            <div class="form-group col-md-6">
+                <label for="site-name">Select Category<span style="color:red;"></span></label><br />
+                <select class="form-control" ng-model="itemMasterData.Categoryid">
+                    <option value="">---SELECT---</option>
+                    <option value="{{categorys.Categoryid}}" ng-repeat="categorys in category"> {{categorys.CategoryName}}</option>
+                </select>
+            </div>
+            <div class="form-group col-md-6">
+                <label for="site-name">Select Sub Category<span style="color:red;"></span></label><br />
+                <select class="form-control" ng-model="itemMasterData.SubCategoryId">
+                    <option value="">---SELECT---</option>
+                    <option value="{{subcategorys.SubCategoryId}}" ng-repeat="subcategorys in subcategory"> {{subcategorys.SubcategoryName}}</option>
+                </select>
+            </div>
+
+            <div class="form-group col-md-6">
+                <label for="site-name">Select Warehouse</label><br />
+                <select class="form-control" ng-model="itemMasterData.WarehouseId" >
+                    <option value="">---SELECT---</option>
+                    <option value="{{warehouses.WarehouseId}}" ng-repeat="warehouses in warehouse"> {{warehouses.WarehouseName}}</option>
+                </select>
+            </div>
+            <div class="form-group col-md-6">
+                <label for="site-name">Item Code <span style="color:red;"></span></label><br />
+
+                <input id="ItemCode" name="ItemCode" type="text" class="form-control" placeholder="Enter Item Code " ng-model="itemMasterData.ItemCode" />
+            </div>
+            <div class="form-group col-md-6">
+                <label for="site-name">Base Price</label><br />
+                <input id="NIMRP" name="NIprimr" type="text" class="form-control" placeholder="Enter Item Price " ng-model="itemMasterData.BasePrice" />
+            </div>
+            <div class="form-group col-md-6">
+                <label for="site-name">Quantity</label><br />
+                <input id="Quantity" name="Quantity" type="text" class="form-control" placeholder="Enter Item Quantity " ng-model="itemMasterData.Quantity" />
+            </div>
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-ar btn-warning" ng-click="cancel()" id="NICancel" name="NIclose" data-dismiss="modal">Cancel</button>
+            <button type="button" class="btn btn-ar btn-primary" ng-click="AdditemMaster(itemMasterData)" id="NISave" name="NIconfirm">Save</button>
+        </div>
+    </form>
+</script>
+
+<!--Update ItemMaster-->
+<script type="text/ng-template" id="myitemMasterPut.html">
+    <form name="myFormSiteModal">
+        <div class="modal-header w1-red">
+            <button type="button" class="close" ng-click="cancel()" data-dismiss="modal">
+                <span class="icon icon-x" aria-hidden="true">
+                </span>
+                <span class="sr-only">Close</span>
+            </button>
+            <button aria-hidden="true" class="close" data-dismiss="modal" type="button" ng-click="ok()">×</button>
+            <h4 class="modal-title">Edit Item</h4>
+        </div>
+        
+        <br />
+        <div class="modal-body" ng-init="GetUniqueitemMaster()">
+            <div class="colasdasdasd">
+                <p style="color: #FF0000" ng-show="gotErrors"> Unable To Create Site  ! Please Try Again</p>
+                <p style="color: #FF0000" ng-show="AlreadyExist"> Site Already Exist  ! Please Try Another Site</p>
+            </div>
+
+            <div class="form-group col-md-6">
+                <label for="site-name">Item Name <span style="color:red;"></span></label><br />
+
+                <input id="ItemName" name="ItemName" type="text" class="form-control" placeholder="Enter Item Name" ng-model="itemMasterData.ItemName" />
+            </div>
+            <div class="form-group col-md-6">
+                <label for="site-name">Select City<span style="color:red;"></span></label><br />
+                <select class="form-control" ng-model="itemMasterData.Cityid">
+                    <option value="">---SELECT---</option>
+                    <option value="{{citys.Cityid}}" ng-selected="(itemMasterData.Cityid == citys.Cityid)" ng-repeat="citys in city"> {{citys.CityName}}</option>
+                </select>
+            </div>
+
+            <div class="form-group col-md-6">
+                <label for="site-name">Select Base Category<span style="color:red;"></span></label><br />
+                <select class="form-control" ng-model="itemMasterData.BaseCategoryId">
+                    <option value="">---SELECT---</option>
+                    <option value="{{basecategorys.BaseCategoryId}}" ng-selected="(itemMasterData.BaseCategoryId == basecategorys.BaseCategoryId)" ng-repeat="basecategorys in basecategory"> {{basecategorys.BaseCategoryName}}</option>
+                </select>
+            </div>
+            <div class="form-group col-md-6">
+                <label for="site-name">Select Category<span style="color:red;"></span></label><br />
+                <select class="form-control" ng-model="itemMasterData.Categoryid">
+                    <option value="">---SELECT---</option>
+                    <option value="{{categorys.Categoryid}}"  ng-selected="(itemMasterData.Categoryid == categorys.Categoryid)" ng-repeat="categorys in category"> {{categorys.CategoryName}}</option>
+                </select>
+            </div>
+            <div class="form-group col-md-6">
+                <label for="site-name">Select Sub Category<span style="color:red;"></span></label><br />
+                <select class="form-control" ng-model="itemMasterData.SubCategoryId">
+                    <option value="">---SELECT---</option>
+                    <option value="{{subcategorys.SubCategoryId}}" ng-selected="(itemMasterData.SubCategoryId == subcategorys.SubCategoryId)" ng-repeat="subcategorys in subcategory"> {{subcategorys.SubcategoryName}}</option>
+                </select>
+            </div>
+
+            <div class="form-group col-md-6">
+                <label for="site-name">Select Warehouse</label><br />
+                <select class="form-control" ng-model="itemMasterData.WarehouseId">
+                    <option value="">---SELECT---</option>
+                    <option value="{{warehouses.WarehouseId}}" ng-selected="itemMasterData.WarehouseId==warehouses.WarehouseId" ng-repeat="warehouses in warehouse"> {{warehouses.WarehouseName}}</option>
+                </select>
+            </div>
+            <!--<div class="form-group col-md-6">
+                <label for="site-name">Item Code <span style="color:red;"></span></label><br />
+
+                <input id="ItemCode" name="ItemCode" type="text" class="form-control" placeholder="Enter Item Code " ng-model="itemMasterData.ItemCode" />
+            </div>-->
+            <div class="form-group col-md-6">
+                <label for="site-name">Base Price</label><br />
+                <input id="NIMRP" name="NIprimr" type="text" class="form-control" placeholder="Enter Item Price " ng-model="itemMasterData.BasePrice" />
+            </div>
+            <div class="form-group col-md-6">
+                <label for="site-name">Quantity</label><br />
+                <input id="Quantity" name="Quantity" type="text" class="form-control" placeholder="Enter Item Quantity " ng-model="itemMasterData.Quantity" />
+            </div>
+        </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-ar btn-warning" ng-click="cancel()" data-dismiss="modal">Cancel</button>
+                <button type="button" class="btn btn-ar btn-primary" ng-click="PutitemMaster(itemMasterData)">Save</button>
+            </div>
+</form>
+</script>
+
+<!-- /new site modal -->
+<script type="text/ng-template" id="MyItemDelete.html">
+    <form name="myFormTaskTypeModal">
+        <div class="modal-header w1-red">
+            <button type="button" class="close" ng-click="cancel()" data-dismiss="modal">
+                <span class="icon icon-x" aria-hidden="true">
+                </span>
+                <span class="sr-only">Close</span>
+            </button>
+            <button aria-hidden="true" class="close" data-dismiss="modal" type="button" ng-click="ok()">×</button>
+            <h4 class="modal-title">Delete Item</h4>
+        </div>
+        <div class="modal-body">
+            <div class="form-group">
+                <label for="TaskType-name">Are you sure you want to Delete?</label><br />
+            </div>
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-ar btn-warning" ng-click="cancel()" data-dismiss="modal">No</button>
+            <button type="submit" class="btn btn-ar btn-primary" ng-click="deleteitemMaster(CaseData,$index)">Yes</button>
+        </div>
+    </form>
+</script>
+

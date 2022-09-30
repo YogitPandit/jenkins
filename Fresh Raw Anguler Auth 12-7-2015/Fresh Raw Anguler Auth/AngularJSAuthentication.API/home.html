@@ -1,0 +1,238 @@
+﻿<!doctype html>
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <title>Web Application</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+        <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+        <link href="http://fonts.googleapis.com/css?family=Lato:300,400,700,300italic,400italic" rel="stylesheet" type="text/css">
+        <!-- needs images, font... therefore can not be part of ui.css -->
+        <link rel="stylesheet" href="bower_components/font-awesome/css/font-awesome.min.css">
+        <link rel="stylesheet" href="bower_components/weather-icons/css/weather-icons.min.css">
+        <link href="styles/styles_timesheets-1c161cfbef2ca54c47143503d901cf4b.css" rel="stylesheet" />
+        <link href="styles/loading-bar.min.css" rel="stylesheet" />
+        <!-- end needs images -->
+        <link href="styles/bootstrap-select.min.css" rel="stylesheet" />
+            <link rel="stylesheet" href="styles/main.css">
+        <link href="styles/ui.css" rel="stylesheet" />
+        <!--<link rel="stylesheet" href="http://bootstrapdocs.com/v3.1.1/docs/dist/css/bootstrap.min.css" />-->
+        <link href="styles/daterangepicker-bs3.css" rel="stylesheet" />
+        <link rel="stylesheet" href="http://mugifly.github.io/jquery-simple-datetimepicker/jquery.simple-dtpicker.css">
+    </head>
+    <body data-ng-app="app" id="app" data-custom-background="" data-off-canvas-nav="">
+        <!--[if lt IE 9]>
+            <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+        <![endif]-->
+
+        <div data-ng-controller="AppCtrl">
+            <div data-ng-hide="isSpecificPage()" data-ng-cloak="">
+                <section data-ng-include=" 'views/header.html' " id="header" class="top-header"></section>
+
+                <aside data-ng-include=" 'views/nav.html' " id="nav-container"></aside>
+            </div>
+
+            <div class="view-container">
+                <section data-ng-view="" id="content" class="animate-fade-up"></section>
+            </div>
+        </div>
+        
+        <script src="http://mugifly.github.io/jquery-simple-datetimepicker/jquery.simple-dtpicker.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+        
+        <script type="text/javascript">
+
+
+            $(function () {
+               
+						$('#startdate').appendDtpicker({
+						    "onShow": function (handler) {
+						    window.alert('Picker is shown!');
+							},
+							"onHide": function(handler){
+								window.alert('Picker is hidden!');
+							}
+						});
+					});
+        </script>
+
+
+        <script src="scripts/angularjs-dropdown-multiselect.js"></script>
+        <script src="scripts/bootstrap-select.js"></script>
+        <script src="scripts/lodash.js"></script>
+        <!--<script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+        <script src="http://bootstrapdocs.com/v3.1.1/docs/dist/js/bootstrap.min.js"></script>-->
+        <script src="scripts/vendor.js"></script>
+        <script src="scripts/vendor/ng-table-export.js"></script>
+        <script src="scripts/vendor/animate.js"></script>
+        <script src="scripts/vendor/moment.min.js"></script>
+        <script src="scripts/vendor/circles.min.js"></script>
+        <script src="scripts/vendor/daterangepicker.js"></script>
+        <script src="scripts/vendor/bootstrap-select.js"></script>
+        <script src="scripts/ui.js"></script>
+        <script src="scripts/vendor/angular-local-storage.min.js"></script>
+        <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/lodash.js/2.4.1/lodash.min.js"></script>
+        <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.0/highlight.min.js"></script>
+        <script type="text/javascript" src="https://rawgit.com/pc035860/angular-highlightjs/master/angular-highlightjs.js"></script>
+        <script type="text/javascript"  src="https://rawgit.com/dotansimha/angularjs-dropdown-multiselect/master/src/angularjs-dropdown-multiselect.js"></script>
+        <script src="scripts/vendor/ng-table.min.js"></script>
+        <script src="scripts/app.js"></script>
+        <script src="scripts/appmain.js"></script>
+        <script src="scripts/angular-file-upload.min.js"></script>
+        <script src="scripts/angular-file-upload.js"></script>
+        <script src="scripts/loading-bar.min.js"></script>
+        <script src="scripts/example.js"></script>
+        <script src="scripts/xlsx.core.min.js"></script>
+        <script src="scripts/alasql.min.js"></script>
+        <script src="scripts/vendor/angular-daterangepicker.min.js"></script>
+        <script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?libraries=places&sensor=false"></script>
+        <!--<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.0.8/angular.js"></script>-->
+
+        <!-- Load services -->
+        <script src="services/SearchPOService.js"></script>
+        <script src="services/getsetdata.js"></script>
+        <script src="services/ItemPramotionService.js"></script>
+        <script src="services/DemandService.js"></script>
+        <script src="services/authInterceptorService.js?v=2"></script>
+        <script src="services/authService.js?v=2"></script>
+        <script src="services/ordersService.js?v=2"></script>
+        <script src="services/tokensManagerService.js?v=2"></script>
+        <script src="services/projectsService.js"></script>
+        <script src="services/customerService.js"></script>
+        <script src="services/tasktypesService.js"></script>
+        <script src="services/tasksService.js"></script>
+        <!--<script src="services/projectsTasksService.js"></script>-->
+        <script src="services/ClientProjectService.js"></script>
+        <script src="services/peoplesService.js"></script>
+        <script src="services/RoleService.js"></script>
+        <script src="services/categorysService.js"></script>
+        <script src="services/PurchaseODetailsService.js"></script>
+        <script src="services/settingService.js"></script>
+        <script src="services/profilesService.js"></script>
+        <script src="services/InvoiceProductService.js"></script>
+        <script src="services/invoiceService.js"></script>
+        <script src="services/leavesService.js"></script>
+        <script src="services/travelRequestService.js"></script>
+        <script src="services/AssetsCategoryService.js"></script>
+        <script src="services/AssetsService .js"></script>
+        <script src="services/PurchaseOrderService.js"></script>
+        <script src="services/supplierCategoryService.js"></script>
+        <script src="services/CopyItemService.js"></script>
+        <script src="services/OrderDetailsService.js"></script>
+        <script src="services/OrderMasterService.js"></script>
+        <script src="services/supplierService.js"></script>
+        <script src="services/CustomerCategoryService.js"></script>
+        <script src="services/CategoryService.js"></script>
+        <script src="services/CityService.js"></script>
+        <script src="services/StateService.js"></script>
+        <script src="services/SubCategoryService.js"></script>
+        <script src="services/SubsubCategoryService.js"></script>
+        <script src="services/WarehouseService.js"></script>
+        <script src="services/WarehouseCategoryService.js"></script>
+        <script src="services/WarehouseSubCategoryService.js"></script>
+        <script src="services/WarehouseSubsubCategoryService.js"></script>
+        <script src="services/mappService.js"></script>
+        <script src="services/unitMasterService.js"></script>
+        <script src="services/itemMasterService.js"></script>
+        <script src="services/FinancialYearService.js"></script>
+        <script src="services/OrderDetailsService.js"></script>
+        <script src="services/OrderMasterService.js"></script>
+        <script src="services/ItemBrandService.js"></script>
+        <script src="services/WarehouseSupplierService.js"></script>
+        <script src="services/TaxGroupDetailsService.js"></script>
+        <script src="services/TaxGroupService.js"></script>
+        <script src="services/TaxMasterService.js"></script>
+        <script src="services/PurchaseOrderListService.js"></script>
+        <script src="controller/PurchaseOrderListController.js"></script>
+        <!-- Load controllers -->
+        <script src="controller/SearchPODetailsController.js"></script>
+        <script src="controller/searchPOController.js"></script>
+        <script src="controller/ItemPramotionController.js"></script>
+        <script src="controller/DemandController.js"></script>
+        <script src="controller/orderdetailsController.js"></script>
+        <script src="controller/OrderInvoiceController.js"></script>
+        <script src="controller/orderMasterController.js"></script>
+        <script src="controller/TaxGroupController.js"></script>
+        <script src="controller/TaxmasterController.js"></script>
+        <script src="controller/purchaseorderController.js"></script>
+        <script src="controller/orderMasterController.js"></script>
+        <script src="controller/CopyItemController.js"></script>
+        <script src="controller/unitMasterController.js"></script>
+        <script src="controller/FinancialYearController.js"></script>
+        <script src="controller/ItembrandController.js"></script>
+        <script src="controller/supplierCategoryController.js"></script>
+        <script src="controller/supplierController.js"></script>
+        <script src="controller/categoryController.js"></script>
+        <script src="controller/categorysController.js"></script>
+        <script src="controller/cityController.js"></script>
+        <script src="controller/stateController.js"></script>
+        <script src="controller/subcategoryController.js"></script>
+        <script src="controller/subsubCategoryController.js"></script>
+        <script src="controller/FilterItemsController.js"></script>
+        <script src="controller/warehouseController.js"></script>
+        <script src="controller/WarehouseCategoryController.js"></script>
+        <script src="controller/WarehousesubcategoryController.js"></script>
+        <script src="controller/WarehousesubsubCategoryController.js"></script>
+        <script src="controller/WarehouseSupplierController.js"></script>
+        <script src="controller/orderMasterController.js"></script>
+        <script src="controller/indexController.js?v=2"></script>
+        <script src="controller/homeController.js?v=2"></script>
+        <script src="controller/loginController.js?v=2"></script>
+        <script src="controller/signupController.js?v=2"></script>
+        <script src="controller/ordersController.js?v=2"></script>
+        <script src="controller/refreshController.js?v=2"></script>
+        <script src="controller/tokensManagerController.js?v=2"></script>
+        <script src="controller/associateController.js?v=2"></script>
+        <script src="controller/tasktypesController.js"></script>
+        <script src="controller/customerController.js"></script>
+        <script src="controller/projectsController.js"></script>
+        <script src="controller/tasksController.js"></script>
+        <script src="controller/peoplesController.js"></script>
+
+        <script src="controller/roleController.js"></script>
+        <script src="controller/categorysController.js"></script>
+        <script src="controller/mappController.js"></script>
+        <script src="controller/dashboardController.js"></script>
+        <script src="controller/reportsController.js"></script>
+        <!--<script src="controller/projectsController.js"></script>-->
+        <script src="controller/menuController.js"></script>
+        <script src="controller/signupController.js"></script>
+        <script src="controller/headerController.js"></script>
+        <!--<script src="controller/projectsTaskController.js"></script>-->
+
+        <script src="controller/TFSController.js"></script>
+        <script src="controller/invoiceController.js"></script>
+        <script src="controller/invoicemoreyeahController.js"></script>
+        <script src="controller/createRecurringInvoiceController.js"></script>
+        <script src="controller/AddInvoiceController.js"></script>
+        <script src="controller/leavesController.js"></script>
+
+        <script src="controller/travelRequestController.js"></script>
+        <script src="controller/assetsCategoryController.js"></script>
+        <script src="controller/assetsController.js"></script>
+
+        <script src="controller/itemMasterController.js"></script>
+
+        <script src="scripts/ngAutocomplete.js"></script>
+        <script src="controller/customerCategoryController.js"></script>
+
+
+        <!-- Load menu and time sheet Controller -->
+        <script src="controller/weektimesheetController.js"></script>
+        <script src="controller/daytimesheetController.js"></script>
+        <script src="controller/monthtimesheetController.js"></script>
+        <script src="controller/calenderController.js"></script>
+        <script src="controller/typeaheadController.js"></script>
+        <script src="controller/settingController.js"></script>
+        <script src="controller/profilesController.js"></script>
+        <script src="controller/userdashboardController.js"></script>
+        <script src="controller/o365dashboardController.js"></script>
+        <script src="controller/clientdashboardController.js"></script>
+        <script src="controller/projectdashboardController.js"></script>
+        <script src="controller/weektasktimesheetController.js"></script>
+        <script src="controller/daytasktimesheetController.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js"></script>
+
+    </body>
+</html>

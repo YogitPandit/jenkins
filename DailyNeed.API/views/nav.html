@@ -1,0 +1,500 @@
+﻿
+<div id="nav-wrapper" style="overflow-y: auto;">
+    <ul id="nav" data-ng-controller="NavCtrl" data-collapse-nav data-slim-scroll data-highlight-active>
+        <li>
+            <a href="#/dashboard" ng-show="(UserRole.role== 'HQ Master login')">
+                <i class="fa fa-dashboard">
+                    <span class="icon-bg bg-danger"></span>
+                </i>
+                <span data-i18n="Dashboard"></span>
+            </a>
+        </li>
+        <!--Start  admin Navegation-->
+        <li>
+            <a href="#/form" ng-show="(UserRole.role== 'HQ Master login' && UserRole.Admin == 'True' || UserRole.role== 'WH Master login' && UserRole.Admin == 'True'|| UserRole.role== 'HQ HR lead' && UserRole.Admin == 'True'|| UserRole.role== 'HQ Accounts Associate' && UserRole.Admin == 'True'|| UserRole.role== 'HQ Accounts Executive' && UserRole.Admin == 'True'|| UserRole.role== 'HQ Accounts Lead' && UserRole.Admin == 'True'|| UserRole.role== 'HQ CS Associate' && UserRole.Admin == 'True'|| UserRole.role== 'HQ CS EXECUTIVE' && UserRole.Admin == 'True'|| UserRole.role== 'HQ CS LEAD' && UserRole.Admin == 'True'|| UserRole.role== 'HQ Growth Associate' && UserRole.Admin == 'True'|| UserRole.role== 'HQ Growth Executive' && UserRole.Admin == 'True'|| UserRole.role== 'HQ Growth Lead' && UserRole.Admin == 'True'|| UserRole.role== 'HQ HR associate' && UserRole.Admin == 'True'|| UserRole.role== 'HQ HR executive' && UserRole.Admin == 'True'|| UserRole.role== 'HQ IC Associate' && UserRole.Admin == 'True'|| UserRole.role== 'HQ IC Executive' && UserRole.Admin == 'True'|| UserRole.role== 'HQ IC Lead' && UserRole.Admin == 'True'|| UserRole.role== 'HQ Marketing Associate' && UserRole.Admin == 'True'|| UserRole.role== 'HQ Marketing Executive' && UserRole.Admin == 'True'|| UserRole.role== 'HQ Marketing Lead' && UserRole.Admin == 'True'|| UserRole.role== 'HQ MIS Associate' && UserRole.Admin == 'True'|| UserRole.role== 'HQ MIS EXECUTIVE' && UserRole.Admin == 'True'|| UserRole.role== 'HQ MIS LEAD' && UserRole.Supplier == 'True'|| UserRole.role== 'HQ Ops Associate' && UserRole.Admin == 'True'|| UserRole.role== 'HQ Ops Executive' && UserRole.Admin == 'True'|| UserRole.role== 'HQ Ops Lead' && UserRole.Admin == 'True'|| UserRole.role== 'HQ Purchase Associate' && UserRole.Admin == 'True'|| UserRole.role== 'HQ Purchase Executive ' && UserRole.Admin == 'True'|| UserRole.role== 'HQ Purchase Lead' && UserRole.Admin == 'True'|| UserRole.role== 'HQ Sales Associate' && UserRole.Admin == 'True'|| UserRole.role== 'HQ Sales Executive' && UserRole.Admin == 'True'|| UserRole.role== 'HQ Sales Lead' && UserRole.Admin == 'True'|| UserRole.role== 'HQ Sourcing Associate' && UserRole.Admin == 'True'|| UserRole.role== 'HQ Sourcing Executive' && UserRole.Admin == 'True'|| UserRole.role== 'HQ Sourcing Lead' && UserRole.Admin == 'True'|| UserRole.role== 'WH Agents' && UserRole.Admin == 'True'|| UserRole.role== 'WH cash manager' && UserRole.Admin == 'True'|| UserRole.role== 'WH Admin planner' && UserRole.Admin == 'True'|| UserRole.role== 'WH Ops associate' && UserRole.Admin == 'True'|| UserRole.role== 'WH Purchase executive' && UserRole.Admin == 'True')|| UserRole.role== 'WH Super visor' && UserRole.Admin == 'True'|| UserRole.role== 'WH Service lead' && UserRole.Admin == 'True'|| UserRole.role== 'WH Sales lead' && UserRole.Admin == 'True'|| UserRole.role== 'WH sales executives' && UserRole.Admin == 'True'|| UserRole.role== 'WH sales associates' && UserRole.Admin == 'True'"><i class="glyphicon glyphicon-user"><span class="icon-bg bg-success"></span></i><span data-i18n="Admin"></span></a>
+            <ul>
+                <li>
+                    <a href="#/people"><i class="fa fa-caret-right"></i> <span data-i18n="People"></span></a>
+                </li>
+
+                <!--<li>
+                    <a href="#/Document"><i class="fa fa-caret-right"></i> <span data-i18n="Document"></span></a>
+                </li>
+                <li>
+                    <a href="#/Agent"><i class="fa fa-caret-right"></i> <span data-i18n="Agent Data"></span></a>
+                </li>
+                <li>
+                    <a href="#/AgentDashboard"><i class="fa fa-caret-right"></i> <span data-i18n="Agent Dashboard"></span></a>
+                </li>-->
+
+                <li>
+                    <a href="#/state"><i class="fa fa-caret-right"></i><span data-i18n="State "></span></a>
+                </li>
+
+                <li>
+                    <a href="#/city"><i class="fa fa-caret-right"></i><span data-i18n="City "></span></a>
+                </li>
+
+                <!--<li ng-show="(UserRole.role== 'HQ Master login')">
+                    <a href="#/Slider"><i class="fa fa-caret-right"></i><span data-i18n="Slider"></span></a>
+                </li>
+
+                <li>
+                    <a href="#/Notification"><i class="fa fa-caret-right"></i><span data-i18n="Notification"></span></a>
+                </li>
+                <li ng-show="(UserRole.role== 'HQ Master login')">
+                    <a href="#/NotificationByDeviceId"><i class="fa fa-caret-right"></i><span data-i18n="Notification By DeviceId"></span></a>
+                </li>
+                <li><a href="#/SalesAsignDay" id="SAD_P" name="salesassignday"><i class="fa fa-caret-right"></i> <span data-i18n="Sales Asign Day"></span></a></li>
+
+                <li>
+                    <a href="#/UserAccessPermission"><i class="fa fa-caret-right"></i> <span data-i18n="User Access Permission"></span></a>
+                </li>
+                <li>
+                    <a href="#/Murli"><i class="fa fa-caret-right"></i> <span data-i18n="Murli"></span></a>
+                </li>
+                <li>
+                    <a href="#/trackuser"> <i class="fa fa-caret-right"> </i><span data-i18n="Tracking Report"></span></a>
+                </li>
+                <li>
+                    <a href="#/Case"> <i class="fa fa-caret-right"> </i><span data-i18n="Case Managment "></span></a>
+                </li>
+                <li><a href="#/Tally" id="SAD_P" name="salesassignday"><i class="fa fa-caret-right"></i> <span data-i18n="Tally"></span></a>
+                </li>-->
+
+                <li ng-show="(UserRole.role== 'HQ Master login')">
+                    <a href="#/CreateCompany">
+                        <i class="fa fa-caret-right">
+                        </i>
+                        <span data-i18n="Create New Company">
+                        </span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#/PendingApproval"> <i class="fa fa-caret-right"> </i><span data-i18n="Pending Approval"></span></a>
+                </li>
+                <li>
+                    <a href="#/DeliveryChallan"><i class="fa fa-caret-right"></i><span data-i18n="Delivery Challan "></span></a>
+                </li>
+            </ul>
+        </li>
+
+        <!--<li>
+            <a href="#/form" ng-show="(UserRole.role== 'HQ Master login' && UserRole.Delivery == 'True' || UserRole.role== 'WH Master login' && UserRole.Delivery == 'True'|| UserRole.role== 'HQ HR lead' && UserRole.Delivery == 'True'|| UserRole.role== 'HQ Accounts Associate' && UserRole.Delivery == 'True'|| UserRole.role== 'HQ Accounts Executive' && UserRole.Delivery == 'True'|| UserRole.role== 'HQ Accounts Lead' && UserRole.Delivery == 'True'|| UserRole.role== 'HQ CS Associate' && UserRole.Delivery == 'True'|| UserRole.role== 'HQ CS EXECUTIVE' && UserRole.Delivery == 'True'|| UserRole.role== 'HQ CS LEAD' && UserRole.Delivery == 'True'|| UserRole.role== 'HQ Growth Associate' && UserRole.Delivery == 'True'|| UserRole.role== 'HQ Growth Executive' && UserRole.Delivery == 'True'|| UserRole.role== 'HQ Growth Lead' && UserRole.Delivery == 'True'|| UserRole.role== 'HQ HR associate' && UserRole.Delivery == 'True'|| UserRole.role== 'HQ HR executive' && UserRole.Delivery == 'True'|| UserRole.role== 'HQ IC Associate' && UserRole.Delivery == 'True'|| UserRole.role== 'HQ IC Executive' && UserRole.Delivery == 'True'|| UserRole.role== 'HQ IC Lead' && UserRole.Delivery == 'True'|| UserRole.role== 'HQ Marketing Associate' && UserRole.Delivery == 'True'|| UserRole.role== 'HQ Marketing Executive' && UserRole.Delivery == 'True'|| UserRole.role== 'HQ Marketing Lead' && UserRole.Delivery == 'True'|| UserRole.role== 'HQ MIS Associate' && UserRole.Delivery == 'True'|| UserRole.role== 'HQ MIS EXECUTIVE' && UserRole.Delivery == 'True'|| UserRole.role== 'HQ MIS LEAD' && UserRole.Supplier == 'True'|| UserRole.role== 'HQ Ops Associate' && UserRole.Delivery == 'True'|| UserRole.role== 'HQ Ops Executive' && UserRole.Delivery == 'True'|| UserRole.role== 'HQ Ops Lead' && UserRole.Delivery == 'True'|| UserRole.role== 'HQ Purchase Associate' && UserRole.Delivery == 'True'|| UserRole.role== 'HQ Purchase Executive ' && UserRole.Delivery == 'True'|| UserRole.role== 'HQ Purchase Lead' && UserRole.Delivery == 'True'|| UserRole.role== 'HQ Sales Associate' && UserRole.Delivery == 'True'|| UserRole.role== 'HQ Sales Executive' && UserRole.Delivery == 'True'|| UserRole.role== 'HQ Sales Lead' && UserRole.Delivery == 'True'|| UserRole.role== 'HQ Sourcing Associate' && UserRole.Delivery == 'True'|| UserRole.role== 'HQ Sourcing Executive' && UserRole.Delivery == 'True'|| UserRole.role== 'HQ Sourcing Lead' && UserRole.Delivery == 'True'|| UserRole.role== 'WH Agents' && UserRole.Delivery == 'True'|| UserRole.role== 'WH cash manager' && UserRole.Delivery == 'True'|| UserRole.role== 'WH delivery planner' && UserRole.Delivery == 'True'|| UserRole.role== 'WH Ops associate' && UserRole.Delivery == 'True'|| UserRole.role== 'WH Purchase executive' && UserRole.Delivery == 'True')|| UserRole.role== 'WH Super visor' && UserRole.Delivery == 'True'|| UserRole.role== 'WH Service lead' && UserRole.Delivery == 'True'|| UserRole.role== 'WH Sales lead' && UserRole.Delivery == 'True'|| UserRole.role== 'WH sales executives' && UserRole.Delivery == 'True'|| UserRole.role== 'WH sales associates' && UserRole.Delivery == 'True'" id="Del" name="delevry">
+                <i class="glyphicon glyphicon-plane"><span class="icon-bg bg-success"></span></i><span data-i18n="Delivery"></span>
+            </a>
+            <ul>
+                <li>
+                    <a href="#/Vehicles"><i class="fa fa-caret-right"></i><span data-i18n="Vehicles"></span></a>
+                </li>
+                <li>
+                    <a href="#/DeliveryBoy"><i class="fa fa-caret-right"></i><span data-i18n="Delivery Boy"></span></a>
+                </li>
+                <li>
+                    <a href="#/deliveryCharge" id="DEL_Chrg" name="delcharge"><i class="fa fa-caret-right"></i><span data-i18n="Delivery Charge"></span></a>
+                </li>
+                <li>
+                    <a href="#/Delivery"><i class="fa fa-caret-right"></i><span data-i18n="Delivery"></span></a>
+                </li>
+                <li>
+                    <a href="#/ChangeDBoy"><i class="fa fa-caret-right"></i><span data-i18n="Change Delivery Boy"></span></a>
+                </li>
+                <li>
+                    <a href="#/DeliveryBoyHistory"><i class="fa fa-caret-right"></i><span data-i18n="Delivery Boy History"></span></a>
+                </li>
+                <li>
+                    <a href="#/VehicleAssissment"><i class="fa fa-caret-right"></i><span data-i18n="Vehicle Assissment"></span></a>
+                <li>
+                    <a href="#/CurrencySettle"><i class="fa fa-caret-right"></i><span data-i18n="Currency Settle"></span></a>
+                </li>
+                <li>
+                    <a href="#/CurrencyStock"><i class="fa fa-caret-right"></i> <span data-i18n="Currency Stock"></span></a>
+                </li>
+                <li>
+                    <a href="#/BankSettle"><i class="fa fa-caret-right"></i><span data-i18n="Bank Settle"></span></a>
+                </li>
+
+
+            </ul>
+        </li>
+        <li>
+            <a href="#/form" ng-show="(UserRole.role== 'HQ Master login' && UserRole.TaxMaster == 'True' || UserRole.role== 'WH Master login' && UserRole.TaxMaster == 'True'|| UserRole.role== 'HQ HR lead' && UserRole.TaxMaster == 'True'|| UserRole.role== 'HQ Accounts Associate' && UserRole.TaxMaster == 'True'|| UserRole.role== 'HQ Accounts Executive' && UserRole.TaxMaster == 'True'|| UserRole.role== 'HQ Accounts Lead' && UserRole.TaxMaster == 'True'|| UserRole.role== 'HQ CS Associate' && UserRole.TaxMaster == 'True'|| UserRole.role== 'HQ CS EXECUTIVE' && UserRole.TaxMaster == 'True'|| UserRole.role== 'HQ CS LEAD' && UserRole.TaxMaster == 'True'|| UserRole.role== 'HQ Growth Associate' && UserRole.TaxMaster == 'True'|| UserRole.role== 'HQ Growth Executive' && UserRole.TaxMaster == 'True'|| UserRole.role== 'HQ Growth Lead' && UserRole.TaxMaster == 'True'|| UserRole.role== 'HQ HR associate' && UserRole.TaxMaster == 'True'|| UserRole.role== 'HQ HR executive' && UserRole.TaxMaster == 'True'|| UserRole.role== 'HQ IC Associate' && UserRole.TaxMaster == 'True'|| UserRole.role== 'HQ IC Executive' && UserRole.TaxMaster == 'True'|| UserRole.role== 'HQ IC Lead' && UserRole.TaxMaster == 'True'|| UserRole.role== 'HQ Marketing Associate' && UserRole.TaxMaster == 'True'|| UserRole.role== 'HQ Marketing Executive' && UserRole.TaxMaster == 'True'|| UserRole.role== 'HQ Marketing Lead' && UserRole.TaxMaster == 'True'|| UserRole.role== 'HQ MIS Associate' && UserRole.TaxMaster == 'True'|| UserRole.role== 'HQ MIS EXECUTIVE' && UserRole.TaxMaster == 'True'|| UserRole.role== 'HQ MIS LEAD' && UserRole.Supplier == 'True'|| UserRole.role== 'HQ Ops Associate' && UserRole.TaxMaster == 'True'|| UserRole.role== 'HQ Ops Executive' && UserRole.TaxMaster == 'True'|| UserRole.role== 'HQ Ops Lead' && UserRole.TaxMaster == 'True'|| UserRole.role== 'HQ Purchase Associate' && UserRole.TaxMaster == 'True'|| UserRole.role== 'HQ Purchase Executive ' && UserRole.TaxMaster == 'True'|| UserRole.role== 'HQ Purchase Lead' && UserRole.TaxMaster == 'True'|| UserRole.role== 'HQ Sales Associate' && UserRole.TaxMaster == 'True'|| UserRole.role== 'HQ Sales Executive' && UserRole.TaxMaster == 'True'|| UserRole.role== 'HQ Sales Lead' && UserRole.TaxMaster == 'True'|| UserRole.role== 'HQ Sourcing Associate' && UserRole.TaxMaster == 'True'|| UserRole.role== 'HQ Sourcing Executive' && UserRole.TaxMaster == 'True'|| UserRole.role== 'HQ Sourcing Lead' && UserRole.TaxMaster == 'True'|| UserRole.role== 'WH Agents' && UserRole.TaxMaster == 'True'|| UserRole.role== 'WH cash manager' && UserRole.TaxMaster == 'True'|| UserRole.role== 'WH delivery planner' && UserRole.TaxMaster == 'True'|| UserRole.role== 'WH Ops associate' && UserRole.TaxMaster == 'True'|| UserRole.role== 'WH Purchase executive' && UserRole.TaxMaster == 'True')|| UserRole.role== 'WH Super visor' && UserRole.TaxMaster == 'True'|| UserRole.role== 'WH Service lead' && UserRole.TaxMaster == 'True'|| UserRole.role== 'WH Sales lead' && UserRole.TaxMaster == 'True'|| UserRole.role== 'WH sales executives' && UserRole.TaxMaster == 'True'|| UserRole.role== 'WH sales associates' && UserRole.TaxMaster == 'True'"><i class="glyphicon glyphicon-text-width"><span class="icon-bg bg-success"></span></i><span data-i18n="Tax Master"></span></a>
+            <ul>
+                <li>
+                    <a href="#/TaxGroup"><i class="fa fa-caret-right"></i><span data-i18n="Tax Group"></span></a>
+                </li>
+                <li>
+                    <a href="#/TaxMaster"><i class="fa fa-caret-right"></i><span data-i18n="Tax Master"></span></a>
+                </li>
+            </ul>
+        </li>-->
+
+        <li>
+            <a href="#/form" ng-show="(UserRole.role== 'HQ Master login' && UserRole.Customer == 'True' || UserRole.role== 'WH Master login' && UserRole.Customer == 'True'|| UserRole.role== 'HQ HR lead' && UserRole.Customer == 'True'|| UserRole.role== 'HQ Accounts Associate' && UserRole.Customer == 'True'|| UserRole.role== 'HQ Accounts Executive' && UserRole.Customer == 'True'|| UserRole.role== 'HQ Accounts Lead' && UserRole.Customer == 'True'|| UserRole.role== 'HQ CS Associate' && UserRole.Customer == 'True'|| UserRole.role== 'HQ CS EXECUTIVE' && UserRole.Customer == 'True'|| UserRole.role== 'HQ CS LEAD' && UserRole.Customer == 'True'|| UserRole.role== 'HQ Growth Associate' && UserRole.Customer == 'True'|| UserRole.role== 'HQ Growth Executive' && UserRole.Customer == 'True'|| UserRole.role== 'HQ Growth Lead' && UserRole.Customer == 'True'|| UserRole.role== 'HQ HR associate' && UserRole.Customer == 'True'|| UserRole.role== 'HQ HR executive' && UserRole.Customer == 'True'|| UserRole.role== 'HQ IC Associate' && UserRole.Customer == 'True'|| UserRole.role== 'HQ IC Executive' && UserRole.Customer == 'True'|| UserRole.role== 'HQ IC Lead' && UserRole.Customer == 'True'|| UserRole.role== 'HQ Marketing Associate' && UserRole.Customer == 'True'|| UserRole.role== 'HQ Marketing Executive' && UserRole.Customer == 'True'|| UserRole.role== 'HQ Marketing Lead' && UserRole.Customer == 'True'|| UserRole.role== 'HQ MIS Associate' && UserRole.Customer == 'True'|| UserRole.role== 'HQ MIS EXECUTIVE' && UserRole.Customer == 'True'|| UserRole.role== 'HQ MIS LEAD' && UserRole.Supplier == 'True'|| UserRole.role== 'HQ Ops Associate' && UserRole.Customer == 'True'|| UserRole.role== 'HQ Ops Executive' && UserRole.Customer == 'True'|| UserRole.role== 'HQ Ops Lead' && UserRole.Customer == 'True'|| UserRole.role== 'HQ Purchase Associate' && UserRole.Customer == 'True'|| UserRole.role== 'HQ Purchase Executive ' && UserRole.Customer == 'True'|| UserRole.role== 'HQ Purchase Lead' && UserRole.Customer == 'True'|| UserRole.role== 'HQ Sales Associate' && UserRole.Customer == 'True'|| UserRole.role== 'HQ Sales Executive' && UserRole.Customer == 'True'|| UserRole.role== 'HQ Sales Lead' && UserRole.Customer == 'True'|| UserRole.role== 'HQ Sourcing Associate' && UserRole.Customer == 'True'|| UserRole.role== 'HQ Sourcing Executive' && UserRole.Customer == 'True'|| UserRole.role== 'HQ Sourcing Lead' && UserRole.Customer == 'True'|| UserRole.role== 'WH Agents' && UserRole.Customer == 'True'|| UserRole.role== 'WH cash manager' && UserRole.Customer == 'True'|| UserRole.role== 'WH delivery planner' && UserRole.Customer == 'True'|| UserRole.role== 'WH Ops associate' && UserRole.Customer == 'True'|| UserRole.role== 'WH Purchase executive' && UserRole.Customer == 'True')|| UserRole.role== 'WH Super visor' && UserRole.Customer == 'True'|| UserRole.role== 'WH Service lead' && UserRole.Customer == 'True'|| UserRole.role== 'WH Sales lead' && UserRole.Customer == 'True'|| UserRole.role== 'WH sales executives' && UserRole.Customer == 'True'|| UserRole.role== 'WH sales associates' && UserRole.Customer == 'True'"><i class="glyphicon glyphicon-user"><span class="icon-bg bg-success"></span></i><span data-i18n="Customer"></span></a>
+            <ul>
+                <li><a href="#/customers"><i class="fa fa-caret-right" id="Cust_mer" name="cu_mer_2"></i> <span data-i18n="Customer"></span></a></li>
+                <li><a href="#/CustomerService"><i class="fa fa-caret-right"></i> <span data-i18n="CustomerServices"></span></a></li>
+                <li><a href="#/customerAdditionalservice"><i class="fa fa-caret-right"></i> <span data-i18n="Customer Additional"></span></a></li>
+                <li><a href="#/MonthLeave"><i class="fa fa-caret-right"></i> <span data-i18n="Month Leave"></span></a></li>
+                <li><a href="#/MonthlyBill"><i class="fa fa-caret-right"></i> <span data-i18n="Month Bill"></span></a></li>
+                <li><a href="#/CustomerInvoice"><i class="fa fa-caret-right"></i> <span data-i18n="Customer Invoice"></span></a></li>
+                <li><a href="#/CustomerStatement"><i class="fa fa-caret-right"></i> <span data-i18n="Customer Statement"></span></a></li>
+                <li><a href="#/InvoiceBill"><i class="fa fa-caret-right"></i><span data-i18n="Customer Invoice Bill "></span></a></li>
+            </ul>
+        </li>
+
+
+        <li>
+            <a href="#/form" ng-show="(UserRole.role== 'HQ Master login' && UserRole.Customer == 'True' || UserRole.role== 'WH Master login' && UserRole.Customer == 'True'|| UserRole.role== 'HQ HR lead' && UserRole.Customer == 'True'|| UserRole.role== 'HQ Accounts Associate' && UserRole.Customer == 'True'|| UserRole.role== 'HQ Accounts Executive' && UserRole.Customer == 'True'|| UserRole.role== 'HQ Accounts Lead' && UserRole.Customer == 'True'|| UserRole.role== 'HQ CS Associate' && UserRole.Customer == 'True'|| UserRole.role== 'HQ CS EXECUTIVE' && UserRole.Customer == 'True'|| UserRole.role== 'HQ CS LEAD' && UserRole.Customer == 'True'|| UserRole.role== 'HQ Growth Associate' && UserRole.Customer == 'True'|| UserRole.role== 'HQ Growth Executive' && UserRole.Customer == 'True'|| UserRole.role== 'HQ Growth Lead' && UserRole.Customer == 'True'|| UserRole.role== 'HQ HR associate' && UserRole.Customer == 'True'|| UserRole.role== 'HQ HR executive' && UserRole.Customer == 'True'|| UserRole.role== 'HQ IC Associate' && UserRole.Customer == 'True'|| UserRole.role== 'HQ IC Executive' && UserRole.Customer == 'True'|| UserRole.role== 'HQ IC Lead' && UserRole.Customer == 'True'|| UserRole.role== 'HQ Marketing Associate' && UserRole.Customer == 'True'|| UserRole.role== 'HQ Marketing Executive' && UserRole.Customer == 'True'|| UserRole.role== 'HQ Marketing Lead' && UserRole.Customer == 'True'|| UserRole.role== 'HQ MIS Associate' && UserRole.Customer == 'True'|| UserRole.role== 'HQ MIS EXECUTIVE' && UserRole.Customer == 'True'|| UserRole.role== 'HQ MIS LEAD' && UserRole.Supplier == 'True'|| UserRole.role== 'HQ Ops Associate' && UserRole.Customer == 'True'|| UserRole.role== 'HQ Ops Executive' && UserRole.Customer == 'True'|| UserRole.role== 'HQ Ops Lead' && UserRole.Customer == 'True'|| UserRole.role== 'HQ Purchase Associate' && UserRole.Customer == 'True'|| UserRole.role== 'HQ Purchase Executive ' && UserRole.Customer == 'True'|| UserRole.role== 'HQ Purchase Lead' && UserRole.Customer == 'True'|| UserRole.role== 'HQ Sales Associate' && UserRole.Customer == 'True'|| UserRole.role== 'HQ Sales Executive' && UserRole.Customer == 'True'|| UserRole.role== 'HQ Sales Lead' && UserRole.Customer == 'True'|| UserRole.role== 'HQ Sourcing Associate' && UserRole.Customer == 'True'|| UserRole.role== 'HQ Sourcing Executive' && UserRole.Customer == 'True'|| UserRole.role== 'HQ Sourcing Lead' && UserRole.Customer == 'True'|| UserRole.role== 'WH Agents' && UserRole.Customer == 'True'|| UserRole.role== 'WH cash manager' && UserRole.Customer == 'True'|| UserRole.role== 'WH delivery planner' && UserRole.Customer == 'True'|| UserRole.role== 'WH Ops associate' && UserRole.Customer == 'True'|| UserRole.role== 'WH Purchase executive' && UserRole.Customer == 'True')|| UserRole.role== 'WH Super visor' && UserRole.Customer == 'True'|| UserRole.role== 'WH Service lead' && UserRole.Customer == 'True'|| UserRole.role== 'WH Sales lead' && UserRole.Customer == 'True'|| UserRole.role== 'WH sales executives' && UserRole.Customer == 'True'|| UserRole.role== 'WH sales associates' && UserRole.Customer == 'True'"><i class="glyphicon glyphicon-user"><span class="icon-bg bg-success"></span></i><span data-i18n="Customer Link"></span></a>
+            <ul>
+                <li><a href="#/ProviderLink"><i class="fa fa-caret-right"></i> <span data-i18n="Provider Set Up"></span></a></li>
+            </ul>
+        </li>
+
+        <!--<li>
+            <a href="#/form" ng-show="(UserRole.role== 'HQ Master login' && UserRole.Supplier == 'True' || UserRole.role== 'WH Master login' && UserRole.Supplier == 'True'|| UserRole.role== 'HQ HR lead' && UserRole.Supplier == 'True'|| UserRole.role== 'HQ Accounts Associate' && UserRole.Supplier == 'True'|| UserRole.role== 'HQ Accounts Executive' && UserRole.Supplier == 'True'|| UserRole.role== 'HQ Accounts Lead' && UserRole.Supplier == 'True'|| UserRole.role== 'HQ CS Associate' && UserRole.Supplier == 'True'|| UserRole.role== 'HQ CS EXECUTIVE' && UserRole.Supplier == 'True'|| UserRole.role== 'HQ CS LEAD' && UserRole.Supplier == 'True'|| UserRole.role== 'HQ Growth Associate' && UserRole.Supplier == 'True'|| UserRole.role== 'HQ Growth Executive' && UserRole.Supplier == 'True'|| UserRole.role== 'HQ Growth Lead' && UserRole.Supplier == 'True'|| UserRole.role== 'HQ HR associate' && UserRole.Supplier == 'True'|| UserRole.role== 'HQ HR executive' && UserRole.Supplier == 'True'|| UserRole.role== 'HQ IC Associate' && UserRole.Supplier == 'True'|| UserRole.role== 'HQ IC Executive' && UserRole.Supplier == 'True'|| UserRole.role== 'HQ IC Lead' && UserRole.Supplier == 'True'|| UserRole.role== 'HQ Marketing Associate' && UserRole.Supplier == 'True'|| UserRole.role== 'HQ Marketing Executive' && UserRole.Supplier == 'True'|| UserRole.role== 'HQ Marketing Lead' && UserRole.Supplier == 'True'|| UserRole.role== 'HQ MIS Associate' && UserRole.Supplier == 'True'|| UserRole.role== 'HQ MIS EXECUTIVE' && UserRole.Supplier == 'True'|| UserRole.role== 'HQ MIS LEAD' && UserRole.Supplier == 'True'|| UserRole.role== 'HQ Ops Associate' && UserRole.Supplier == 'True'|| UserRole.role== 'HQ Ops Executive' && UserRole.Supplier == 'True'|| UserRole.role== 'HQ Ops Lead' && UserRole.Supplier == 'True'|| UserRole.role== 'HQ Purchase Associate' && UserRole.Supplier == 'True'|| UserRole.role== 'HQ Purchase Executive ' && UserRole.Supplier == 'True'|| UserRole.role== 'HQ Purchase Lead' && UserRole.Supplier == 'True'|| UserRole.role== 'HQ Sales Associate' && UserRole.Supplier == 'True'|| UserRole.role== 'HQ Sales Executive' && UserRole.Supplier == 'True'|| UserRole.role== 'HQ Sales Lead' && UserRole.Supplier == 'True'|| UserRole.role== 'HQ Sourcing Associate' && UserRole.Supplier == 'True'|| UserRole.role== 'HQ Sourcing Executive' && UserRole.Supplier == 'True'|| UserRole.role== 'HQ Sourcing Lead' && UserRole.Supplier == 'True'|| UserRole.role== 'WH Agents' && UserRole.Supplier == 'True'|| UserRole.role== 'WH cash manager' && UserRole.Supplier == 'True'|| UserRole.role== 'WH delivery planner' && UserRole.Supplier == 'True'|| UserRole.role== 'WH Ops associate' && UserRole.Supplier == 'True'|| UserRole.role== 'WH Purchase executive' && UserRole.Supplier == 'True')|| UserRole.role== 'WH Super visor' && UserRole.Supplier == 'True'|| UserRole.role== 'WH Service lead' && UserRole.Supplier == 'True'|| UserRole.role== 'WH Sales lead' && UserRole.Supplier == 'True'|| UserRole.role== 'WH sales executives' && UserRole.Supplier == 'True'|| UserRole.role== 'WH sales associates' && UserRole.Supplier == 'True'"><i class="glyphicon glyphicon-user"><span class="icon-bg bg-success"></span></i><span data-i18n="Supplier"></span></a>
+            <ul>
+                <li>
+                    <a href="#/supplierCategory"><i class="fa fa-caret-right"></i><span data-i18n="Supplier Category"></span></a>
+                </li>
+                <li>
+                    <a href="#/supplier"><i class="fa fa-caret-right"></i><span data-i18n="Supplier"></span></a>
+                </li>
+            </ul>
+        </li>-->
+
+        <li>
+            <a href="#/form" ng-show="(UserRole.role== 'HQ Master login' && UserRole.Warehouse == 'True' || UserRole.role== 'WH Master login' && UserRole.Warehouse == 'True'|| UserRole.role== 'HQ HR lead' && UserRole.Warehouse == 'True'|| UserRole.role== 'HQ Accounts Associate' && UserRole.Warehouse == 'True'|| UserRole.role== 'HQ Accounts Executive' && UserRole.Warehouse == 'True'|| UserRole.role== 'HQ Accounts Lead' && UserRole.Warehouse == 'True'|| UserRole.role== 'HQ CS Associate' && UserRole.Warehouse == 'True'|| UserRole.role== 'HQ CS EXECUTIVE' && UserRole.Warehouse == 'True'|| UserRole.role== 'HQ CS LEAD' && UserRole.Warehouse == 'True'|| UserRole.role== 'HQ Growth Associate' && UserRole.Warehouse == 'True'|| UserRole.role== 'HQ Growth Executive' && UserRole.Warehouse == 'True'|| UserRole.role== 'HQ Growth Lead' && UserRole.Warehouse == 'True'|| UserRole.role== 'HQ HR associate' && UserRole.Warehouse == 'True'|| UserRole.role== 'HQ HR executive' && UserRole.Warehouse == 'True'|| UserRole.role== 'HQ IC Associate' && UserRole.Warehouse == 'True'|| UserRole.role== 'HQ IC Executive' && UserRole.Warehouse == 'True'|| UserRole.role== 'HQ IC Lead' && UserRole.Warehouse == 'True'|| UserRole.role== 'HQ Marketing Associate' && UserRole.Warehouse == 'True'|| UserRole.role== 'HQ Marketing Executive' && UserRole.Warehouse == 'True'|| UserRole.role== 'HQ Marketing Lead' && UserRole.Warehouse == 'True'|| UserRole.role== 'HQ MIS Associate' && UserRole.Warehouse == 'True'|| UserRole.role== 'HQ MIS EXECUTIVE' && UserRole.Warehouse == 'True'|| UserRole.role== 'HQ MIS LEAD' && UserRole.Warehouse == 'True'|| UserRole.role== 'HQ Ops Associate' && UserRole.Warehouse == 'True'|| UserRole.role== 'HQ Ops Executive' && UserRole.Warehouse == 'True'|| UserRole.role== 'HQ Ops Lead' && UserRole.Warehouse == 'True'|| UserRole.role== 'HQ Purchase Associate' && UserRole.Warehouse == 'True'|| UserRole.role== 'HQ Purchase Executive ' && UserRole.Warehouse == 'True'|| UserRole.role== 'HQ Purchase Lead' && UserRole.Warehouse == 'True'|| UserRole.role== 'HQ Sales Associate' && UserRole.Warehouse == 'True'|| UserRole.role== 'HQ Sales Executive' && UserRole.Warehouse == 'True'|| UserRole.role== 'HQ Sales Lead' && UserRole.Warehouse == 'True'|| UserRole.role== 'HQ Sourcing Associate' && UserRole.Warehouse == 'True'|| UserRole.role== 'HQ Sourcing Executive' && UserRole.Warehouse == 'True'|| UserRole.role== 'HQ Sourcing Lead' && UserRole.Warehouse == 'True'|| UserRole.role== 'WH Agents' && UserRole.Warehouse == 'True'|| UserRole.role== 'WH cash manager' && UserRole.Warehouse == 'True'|| UserRole.role== 'WH delivery planner' && UserRole.Warehouse == 'True'|| UserRole.role== 'WH Ops associate' && UserRole.Warehouse == 'True'|| UserRole.role== 'WH Purchase executive' && UserRole.Warehouse == 'True')|| UserRole.role== 'WH Super visor' && UserRole.Warehouse == 'True'|| UserRole.role== 'WH Service lead' && UserRole.Warehouse == 'True'|| UserRole.role== 'WH Sales lead' && UserRole.Warehouse == 'True'|| UserRole.role== 'WH sales executives' && UserRole.Warehouse == 'True'|| UserRole.role== 'WH sales associates' && UserRole.Warehouse == 'True'"><i class="glyphicon glyphicon-road"><span class="icon-bg bg-success"></span></i><span data-i18n="Warehouse"></span></a>
+            <ul>
+                <li ng-show="(UserRole.role== 'HQ Master login')">
+                    <a href="#/warehouse"><i class="fa fa-caret-right"></i><span data-i18n="Add Warehouse"></span></a>
+                </li>
+                <li>
+                    <a href="#/Depot"><i class="fa fa-caret-right"></i><span data-i18n="Depot"></span></a>
+
+                </li>
+                <li>
+                    <a href="#/Zone"><i class="fa fa-caret-right"></i><span data-i18n="Zone"></span></a>
+
+                </li>
+                <!--<li>
+                    <a href="#/cluster"><i class="fa fa-caret-right"></i><span data-i18n="Add Cluster"></span></a>
+                </li>
+                <li>
+                    <a href="#/WarehouseCategory"><i class="fa fa-caret-right"></i><span data-i18n="Warehouse Category"></span></a>
+                </li>
+                <li>
+                    <a href="#/WarehouseSupplier"><i class="fa fa-caret-right"></i><span data-i18n="Warehouse Supplier"></span></a>
+                </li>
+                <li>
+                    <a href="#/Area"><i class="fa fa-caret-right"></i><span data-i18n="Area"></span></a>
+                </li>-->
+
+            </ul>
+        </li>
+
+        <!--<li>
+            <a href="#/form" ng-show="(UserRole.role== 'HQ Master login' && UserRole.CurrentStock == 'True' || UserRole.role== 'WH Master login' && UserRole.CurrentStock == 'True'|| UserRole.role== 'HQ HR lead' && UserRole.CurrentStock == 'True'|| UserRole.role== 'HQ Accounts Associate' && UserRole.CurrentStock == 'True'|| UserRole.role== 'HQ Accounts Executive' && UserRole.CurrentStock == 'True'|| UserRole.role== 'HQ Accounts Lead' && UserRole.CurrentStock == 'True'|| UserRole.role== 'HQ CS Associate' && UserRole.CurrentStock == 'True'|| UserRole.role== 'HQ CS EXECUTIVE' && UserRole.CurrentStock == 'True'|| UserRole.role== 'HQ CS LEAD' && UserRole.CurrentStock == 'True'|| UserRole.role== 'HQ Growth Associate' && UserRole.CurrentStock == 'True'|| UserRole.role== 'HQ Growth Executive' && UserRole.CurrentStock == 'True'|| UserRole.role== 'HQ Growth Lead' && UserRole.CurrentStock == 'True'|| UserRole.role== 'HQ HR associate' && UserRole.CurrentStock == 'True'|| UserRole.role== 'HQ HR executive' && UserRole.CurrentStock == 'True'|| UserRole.role== 'HQ IC Associate' && UserRole.CurrentStock == 'True'|| UserRole.role== 'HQ IC Executive' && UserRole.CurrentStock == 'True'|| UserRole.role== 'HQ IC Lead' && UserRole.CurrentStock == 'True'|| UserRole.role== 'HQ Marketing Associate' && UserRole.CurrentStock == 'True'|| UserRole.role== 'HQ Marketing Executive' && UserRole.CurrentStock == 'True'|| UserRole.role== 'HQ Marketing Lead' && UserRole.CurrentStock == 'True'|| UserRole.role== 'HQ MIS Associate' && UserRole.CurrentStock == 'True'|| UserRole.role== 'HQ MIS EXECUTIVE' && UserRole.CurrentStock == 'True'|| UserRole.role== 'HQ MIS LEAD' && UserRole.CurrentStock == 'True'|| UserRole.role== 'HQ Ops Associate' && UserRole.CurrentStock == 'True'|| UserRole.role== 'HQ Ops Executive' && UserRole.CurrentStock == 'True'|| UserRole.role== 'HQ Ops Lead' && UserRole.CurrentStock == 'True'|| UserRole.role== 'HQ Purchase Associate' && UserRole.CurrentStock == 'True'|| UserRole.role== 'HQ Purchase Executive ' && UserRole.CurrentStock == 'True'|| UserRole.role== 'HQ Purchase Lead' && UserRole.CurrentStock == 'True'|| UserRole.role== 'HQ Sales Associate' && UserRole.CurrentStock == 'True'|| UserRole.role== 'HQ Sales Executive' && UserRole.CurrentStock == 'True'|| UserRole.role== 'HQ Sales Lead' && UserRole.CurrentStock == 'True'|| UserRole.role== 'HQ Sourcing Associate' && UserRole.CurrentStock == 'True'|| UserRole.role== 'HQ Sourcing Executive' && UserRole.CurrentStock == 'True'|| UserRole.role== 'HQ Sourcing Lead' && UserRole.CurrentStock == 'True'|| UserRole.role== 'WH Agents' && UserRole.CurrentStock == 'True'|| UserRole.role== 'WH cash manager' && UserRole.CurrentStock == 'True'|| UserRole.role== 'WH delivery planner' && UserRole.CurrentStock == 'True'|| UserRole.role== 'WH Ops associate' && UserRole.CurrentStock == 'True'|| UserRole.role== 'WH Purchase executive' && UserRole.CurrentStock == 'True')|| UserRole.role== 'WH Super visor' && UserRole.CurrentStock == 'True'|| UserRole.role== 'WH Service lead' && UserRole.CurrentStock == 'True'|| UserRole.role== 'WH Sales lead' && UserRole.CurrentStock == 'True'|| UserRole.role== 'WH sales executives' && UserRole.CurrentStock == 'True'|| UserRole.role== 'WH sales associates' && UserRole.CurrentStock == 'True'"><i class="glyphicon glyphicon-folder-close"><span class="icon-bg bg-success"></span></i><span data-i18n="Current Stock"></span></a>
+            <ul>
+                <li>
+                    <a href="#/CurrentStock"><i class="fa fa-caret-right"></i><span data-i18n="Current Stock"></span></a>
+
+                </li>
+                <li>
+                    <a href="#/EmptyStockItem"><i class="fa fa-caret-right"></i><span data-i18n="Empty Item Stock"></span></a>
+
+                </li>
+            </ul>
+        </li>-->
+
+        <!--<li>
+            <a href="#/form" ng-show="(UserRole.role== 'HQ Master login' && UserRole.OrderMaster == 'True' || UserRole.role== 'WH Master login' && UserRole.OrderMaster == 'True'|| UserRole.role== 'HQ HR lead' && UserRole.OrderMaster == 'True'|| UserRole.role== 'HQ Accounts Associate' && UserRole.OrderMaster == 'True'|| UserRole.role== 'HQ Accounts Executive' && UserRole.OrderMaster == 'True'|| UserRole.role== 'HQ Accounts Lead' && UserRole.OrderMaster == 'True'|| UserRole.role== 'HQ CS Associate' && UserRole.OrderMaster == 'True'|| UserRole.role== 'HQ CS EXECUTIVE' && UserRole.OrderMaster == 'True'|| UserRole.role== 'HQ CS LEAD' && UserRole.OrderMaster == 'True'|| UserRole.role== 'HQ Growth Associate' && UserRole.OrderMaster == 'True'|| UserRole.role== 'HQ Growth Executive' && UserRole.OrderMaster == 'True'|| UserRole.role== 'HQ Growth Lead' && UserRole.OrderMaster == 'True'|| UserRole.role== 'HQ HR associate' && UserRole.OrderMaster == 'True'|| UserRole.role== 'HQ HR executive' && UserRole.OrderMaster == 'True'|| UserRole.role== 'HQ IC Associate' && UserRole.OrderMaster == 'True'|| UserRole.role== 'HQ IC Executive' && UserRole.OrderMaster == 'True'|| UserRole.role== 'HQ IC Lead' && UserRole.OrderMaster == 'True'|| UserRole.role== 'HQ Marketing Associate' && UserRole.OrderMaster == 'True'|| UserRole.role== 'HQ Marketing Executive' && UserRole.OrderMaster == 'True'|| UserRole.role== 'HQ Marketing Lead' && UserRole.OrderMaster == 'True'|| UserRole.role== 'HQ MIS Associate' && UserRole.OrderMaster == 'True'|| UserRole.role== 'HQ MIS EXECUTIVE' && UserRole.OrderMaster == 'True'|| UserRole.role== 'HQ MIS LEAD' && UserRole.OrderMaster == 'True'|| UserRole.role== 'HQ Ops Associate' && UserRole.OrderMaster == 'True'|| UserRole.role== 'HQ Ops Executive' && UserRole.OrderMaster == 'True'|| UserRole.role== 'HQ Ops Lead' && UserRole.OrderMaster == 'True'|| UserRole.role== 'HQ Purchase Associate' && UserRole.OrderMaster == 'True'|| UserRole.role== 'HQ Purchase Executive ' && UserRole.OrderMaster == 'True'|| UserRole.role== 'HQ Purchase Lead' && UserRole.OrderMaster == 'True'|| UserRole.role== 'HQ Sales Associate' && UserRole.OrderMaster == 'True'|| UserRole.role== 'HQ Sales Executive' && UserRole.OrderMaster == 'True'|| UserRole.role== 'HQ Sales Lead' && UserRole.OrderMaster == 'True'|| UserRole.role== 'HQ Sourcing Associate' && UserRole.OrderMaster == 'True'|| UserRole.role== 'HQ Sourcing Executive' && UserRole.OrderMaster == 'True'|| UserRole.role== 'HQ Sourcing Lead' && UserRole.OrderMaster == 'True'|| UserRole.role== 'WH Agents' && UserRole.OrderMaster == 'True'|| UserRole.role== 'WH cash manager' && UserRole.OrderMaster == 'True'|| UserRole.role== 'WH delivery planner' && UserRole.OrderMaster == 'True'|| UserRole.role== 'WH Ops associate' && UserRole.OrderMaster == 'True'|| UserRole.role== 'WH Purchase executive' && UserRole.OrderMaster == 'True')|| UserRole.role== 'WH Super visor' && UserRole.OrderMaster == 'True'|| UserRole.role== 'WH Service lead' && UserRole.OrderMaster == 'True'|| UserRole.role== 'WH Sales lead' && UserRole.OrderMaster == 'True'|| UserRole.role== 'WH sales executives' && UserRole.OrderMaster == 'True'|| UserRole.role== 'WH sales associates' && UserRole.OrderMaster == 'True'"><i class="glyphicon glyphicon-shopping-cart"><span class="icon-bg bg-success"></span></i><span data-i18n="Order"></span></a>
+            <ul>
+                <li>
+                    <a href="#/orderSettle"><i class="fa fa-caret-right"></i><span data-i18n="Order Settle"></span></a>
+                </li>
+                <li>
+                    <a href="#/RedispatchAutoCanceled"><i class="fa fa-caret-right"></i><span data-i18n="Redis.AutoCanceled"></span></a>
+                </li>
+                <li>
+                    <a href="#/Redispatch"><i class="fa fa-caret-right"></i><span data-i18n="Redispatched Orders"></span></a>
+                </li>
+                <li>
+                    <a href="#/ShortageSettle"><i class="fa fa-caret-right"></i><span data-i18n="Shortage Settle History"></span></a>
+                </li>
+                <li>
+                    <a href="#/PendingOrder"><i class="fa fa-caret-right"></i><span data-i18n="Pending Order"></span></a>
+                </li>
+                <li>
+                    <a href="#/redeemMaster"><i class="fa fa-caret-right"></i><span data-i18n="Redeem Order"></span></a>
+                </li>
+                <li>
+                    <a href="#/excelorder"><i class="fa fa-caret-right"></i><span data-i18n="Excel Order"></span></a>
+                </li>
+                <li>
+                    <a href="#/OrederProcessReport"><i class="fa fa-caret-right"></i><span data-i18n="OP Report"></span></a>
+                </li>
+                <li>
+                    <a href="#/TurnATime"><i class="fa fa-caret-right"></i><span data-i18n="TurnATime"></span></a>
+                </li>
+
+            </ul>
+        </li>
+        <li>
+            <a href="#/form" ng-show="(UserRole.role== 'HQ Master login' && UserRole.DamageStock == 'True' || UserRole.role== 'WH Master login' && UserRole.DamageStock == 'True'|| UserRole.role== 'HQ HR lead' && UserRole.DamageStock == 'True'|| UserRole.role== 'HQ Accounts Associate' && UserRole.DamageStock == 'True'|| UserRole.role== 'HQ Accounts Executive' && UserRole.DamageStock == 'True'|| UserRole.role== 'HQ Accounts Lead' && UserRole.DamageStock == 'True'|| UserRole.role== 'HQ CS Associate' && UserRole.DamageStock == 'True'|| UserRole.role== 'HQ CS EXECUTIVE' && UserRole.DamageStock == 'True'|| UserRole.role== 'HQ CS LEAD' && UserRole.DamageStock == 'True'|| UserRole.role== 'HQ Growth Associate' && UserRole.DamageStock == 'True'|| UserRole.role== 'HQ Growth Executive' && UserRole.DamageStock == 'True'|| UserRole.role== 'HQ Growth Lead' && UserRole.DamageStock == 'True'|| UserRole.role== 'HQ HR associate' && UserRole.DamageStock == 'True'|| UserRole.role== 'HQ HR executive' && UserRole.DamageStock == 'True'|| UserRole.role== 'HQ IC Associate' && UserRole.DamageStock == 'True'|| UserRole.role== 'HQ IC Executive' && UserRole.DamageStock == 'True'|| UserRole.role== 'HQ IC Lead' && UserRole.DamageStock == 'True'|| UserRole.role== 'HQ Marketing Associate' && UserRole.DamageStock == 'True'|| UserRole.role== 'HQ Marketing Executive' && UserRole.DamageStock == 'True'|| UserRole.role== 'HQ Marketing Lead' && UserRole.DamageStock == 'True'|| UserRole.role== 'HQ MIS Associate' && UserRole.DamageStock == 'True'|| UserRole.role== 'HQ MIS EXECUTIVE' && UserRole.DamageStock == 'True'|| UserRole.role== 'HQ MIS LEAD' && UserRole.DamageStock == 'True'|| UserRole.role== 'HQ Ops Associate' && UserRole.DamageStock == 'True'|| UserRole.role== 'HQ Ops Executive' && UserRole.DamageStock == 'True'|| UserRole.role== 'HQ Ops Lead' && UserRole.DamageStock == 'True'|| UserRole.role== 'HQ Purchase Associate' && UserRole.DamageStock == 'True'|| UserRole.role== 'HQ Purchase Executive ' && UserRole.DamageStock == 'True'|| UserRole.role== 'HQ Purchase Lead' && UserRole.DamageStock == 'True'|| UserRole.role== 'HQ Sales Associate' && UserRole.DamageStock == 'True'|| UserRole.role== 'HQ Sales Executive' && UserRole.DamageStock == 'True'|| UserRole.role== 'HQ Sales Lead' && UserRole.DamageStock == 'True'|| UserRole.role== 'HQ Sourcing Associate' && UserRole.DamageStock == 'True'|| UserRole.role== 'HQ Sourcing Executive' && UserRole.DamageStock == 'True'|| UserRole.role== 'HQ Sourcing Lead' && UserRole.DamageStock == 'True'|| UserRole.role== 'WH Agents' && UserRole.DamageStock == 'True'|| UserRole.role== 'WH cash manager' && UserRole.DamageStock == 'True'|| UserRole.role== 'WH delivery planner' && UserRole.DamageStock == 'True'|| UserRole.role== 'WH Ops associate' && UserRole.DamageStock == 'True'|| UserRole.role== 'WH Purchase executive' && UserRole.DamageStock == 'True')|| UserRole.role== 'WH Super visor' && UserRole.DamageStock == 'True'|| UserRole.role== 'WH Service lead' && UserRole.DamageStock == 'True'|| UserRole.role== 'WH Sales lead' && UserRole.DamageStock == 'True'|| UserRole.role== 'WH sales executives' && UserRole.DamageStock == 'True'|| UserRole.role== 'WH sales associates' && UserRole.DamageStock == 'True'"><i class="glyphicon glyphicon-compressed"><span class="icon-bg bg-success"></span></i><span data-i18n="Damage Stock"></span></a>
+            <ul>
+                <li>
+                    <a href="#/DamageStock"><i class="fa fa-caret-right"></i><span data-i18n="Transfer To DS"></span></a>
+                </li>
+                <li>
+                    <a href="#/CreateDamageOrder"><i class="fa fa-caret-right"></i><span data-i18n="Create DS Order"></span></a>
+                </li>
+                <li>
+                    <a href="#/DamageOrder"><i class="fa fa-caret-right"></i><span data-i18n="DS Ordered"></span></a>
+                </li>
+            </ul>
+        </li>-->
+
+        <li>
+            <a href="#/form" ng-show="(UserRole.role== 'HQ Master login' && UserRole.ItemCategory == 'True' || UserRole.role== 'WH Master login' && UserRole.ItemCategory == 'True'|| UserRole.role== 'HQ HR lead' && UserRole.ItemCategory == 'True'|| UserRole.role== 'HQ Accounts Associate' && UserRole.ItemCategory == 'True'|| UserRole.role== 'HQ Accounts Executive' && UserRole.ItemCategory == 'True'|| UserRole.role== 'HQ Accounts Lead' && UserRole.ItemCategory == 'True'|| UserRole.role== 'HQ CS Associate' && UserRole.ItemCategory == 'True'|| UserRole.role== 'HQ CS EXECUTIVE' && UserRole.ItemCategory == 'True'|| UserRole.role== 'HQ CS LEAD' && UserRole.ItemCategory == 'True'|| UserRole.role== 'HQ Growth Associate' && UserRole.ItemCategory == 'True'|| UserRole.role== 'HQ Growth Executive' && UserRole.ItemCategory == 'True'|| UserRole.role== 'HQ Growth Lead' && UserRole.ItemCategory == 'True'|| UserRole.role== 'HQ HR associate' && UserRole.ItemCategory == 'True'|| UserRole.role== 'HQ HR executive' && UserRole.ItemCategory == 'True'|| UserRole.role== 'HQ IC Associate' && UserRole.ItemCategory == 'True'|| UserRole.role== 'HQ IC Executive' && UserRole.ItemCategory == 'True'|| UserRole.role== 'HQ IC Lead' && UserRole.ItemCategory == 'True'|| UserRole.role== 'HQ Marketing Associate' && UserRole.ItemCategory == 'True'|| UserRole.role== 'HQ Marketing Executive' && UserRole.ItemCategory == 'True'|| UserRole.role== 'HQ Marketing Lead' && UserRole.ItemCategory == 'True'|| UserRole.role== 'HQ MIS Associate' && UserRole.ItemCategory == 'True'|| UserRole.role== 'HQ MIS EXECUTIVE' && UserRole.ItemCategory == 'True'|| UserRole.role== 'HQ MIS LEAD' && UserRole.ItemCategory == 'True'|| UserRole.role== 'HQ Ops Associate' && UserRole.ItemCategory == 'True'|| UserRole.role== 'HQ Ops Executive' && UserRole.ItemCategory == 'True'|| UserRole.role== 'HQ Ops Lead' && UserRole.ItemCategory == 'True'|| UserRole.role== 'HQ Purchase Associate' && UserRole.ItemCategory == 'True'|| UserRole.role== 'HQ Purchase Executive ' && UserRole.ItemCategory == 'True'|| UserRole.role== 'HQ Purchase Lead' && UserRole.ItemCategory == 'True'|| UserRole.role== 'HQ Sales Associate' && UserRole.ItemCategory == 'True'|| UserRole.role== 'HQ Sales Executive' && UserRole.ItemCategory == 'True'|| UserRole.role== 'HQ Sales Lead' && UserRole.ItemCategory == 'True'|| UserRole.role== 'HQ Sourcing Associate' && UserRole.ItemCategory == 'True'|| UserRole.role== 'HQ Sourcing Executive' && UserRole.ItemCategory == 'True'|| UserRole.role== 'HQ Sourcing Lead' && UserRole.ItemCategory == 'True'|| UserRole.role== 'WH Agents' && UserRole.ItemCategory == 'True'|| UserRole.role== 'WH cash manager' && UserRole.ItemCategory == 'True'|| UserRole.role== 'WH delivery planner' && UserRole.ItemCategory == 'True'|| UserRole.role== 'WH Ops associate' && UserRole.ItemCategory == 'True'|| UserRole.role== 'WH Purchase executive' && UserRole.ItemCategory == 'True')|| UserRole.role== 'WH Super visor' && UserRole.ItemCategory == 'True'|| UserRole.role== 'WH Service lead' && UserRole.ItemCategory == 'True'|| UserRole.role== 'WH Sales lead' && UserRole.ItemCategory == 'True'|| UserRole.role== 'WH sales executives' && UserRole.ItemCategory == 'True'|| UserRole.role== 'WH sales associates' && UserRole.ItemCategory == 'True'"><i class="fa fa-pencil"><span class="icon-bg bg-success"></span></i><span data-i18n="Item Category"></span></a>
+            <ul>
+                <li>
+                    <a href="#/basecategory"><i class="fa fa-caret-right"></i><span data-i18n="Base Category"></span></a>
+
+                </li>
+                <li>
+                    <a href="#/category"><i class="fa fa-caret-right"></i><span data-i18n="Category"></span></a>
+
+                </li>
+
+                <li>
+                    <a href="#/categoryImage"><i class="fa fa-caret-right"></i><span data-i18n="Category Image"></span></a>
+
+                </li>
+
+                <li>
+                    <a href="#/subCategory"><i class="fa fa-caret-right"></i><span data-i18n="Sub-Category"></span></a>
+
+                </li>
+
+                <!--<li>
+                    <a href="#/subsubcategory"><i class="fa fa-caret-right"></i><span data-i18n="Sub-Sub-Category"></span></a>
+                </li>-->
+
+            </ul>
+        </li>
+        <li>
+            <a href="#/form" ng-show="(UserRole.role== 'HQ Master login' && UserRole.ItemMaster == 'True' || UserRole.role== 'WH Master login' && UserRole.ItemMaster == 'True'|| UserRole.role== 'HQ HR lead' && UserRole.ItemMaster == 'True'|| UserRole.role== 'HQ Accounts Associate' && UserRole.ItemMaster == 'True'|| UserRole.role== 'HQ Accounts Executive' && UserRole.ItemMaster == 'True'|| UserRole.role== 'HQ Accounts Lead' && UserRole.ItemMaster == 'True'|| UserRole.role== 'HQ CS Associate' && UserRole.ItemMaster == 'True'|| UserRole.role== 'HQ CS EXECUTIVE' && UserRole.ItemMaster == 'True'|| UserRole.role== 'HQ CS LEAD' && UserRole.ItemMaster == 'True'|| UserRole.role== 'HQ Growth Associate' && UserRole.ItemMaster == 'True'|| UserRole.role== 'HQ Growth Executive' && UserRole.ItemMaster == 'True'|| UserRole.role== 'HQ Growth Lead' && UserRole.ItemMaster == 'True'|| UserRole.role== 'HQ HR associate' && UserRole.ItemMaster == 'True'|| UserRole.role== 'HQ HR executive' && UserRole.ItemMaster == 'True'|| UserRole.role== 'HQ IC Associate' && UserRole.ItemMaster == 'True'|| UserRole.role== 'HQ IC Executive' && UserRole.ItemMaster == 'True'|| UserRole.role== 'HQ IC Lead' && UserRole.ItemMaster == 'True'|| UserRole.role== 'HQ Marketing Associate' && UserRole.ItemMaster == 'True'|| UserRole.role== 'HQ Marketing Executive' && UserRole.ItemMaster == 'True'|| UserRole.role== 'HQ Marketing Lead' && UserRole.ItemMaster == 'True'|| UserRole.role== 'HQ MIS Associate' && UserRole.ItemMaster == 'True'|| UserRole.role== 'HQ MIS EXECUTIVE' && UserRole.ItemMaster == 'True'|| UserRole.role== 'HQ MIS LEAD' && UserRole.ItemMaster == 'True'|| UserRole.role== 'HQ Ops Associate' && UserRole.ItemMaster == 'True'|| UserRole.role== 'HQ Ops Executive' && UserRole.ItemMaster == 'True'|| UserRole.role== 'HQ Ops Lead' && UserRole.ItemMaster == 'True'|| UserRole.role== 'HQ Purchase Associate' && UserRole.ItemMaster == 'True'|| UserRole.role== 'HQ Purchase Executive ' && UserRole.ItemMaster == 'True'|| UserRole.role== 'HQ Purchase Lead' && UserRole.ItemMaster == 'True'|| UserRole.role== 'HQ Sales Associate' && UserRole.ItemMaster == 'True'|| UserRole.role== 'HQ Sales Executive' && UserRole.ItemMaster == 'True'|| UserRole.role== 'HQ Sales Lead' && UserRole.ItemMaster == 'True'|| UserRole.role== 'HQ Sourcing Associate' && UserRole.ItemMaster == 'True'|| UserRole.role== 'HQ Sourcing Executive' && UserRole.ItemMaster == 'True'|| UserRole.role== 'HQ Sourcing Lead' && UserRole.ItemMaster == 'True'|| UserRole.role== 'WH Agents' && UserRole.ItemMaster == 'True'|| UserRole.role== 'WH cash manager' && UserRole.ItemMaster == 'True'|| UserRole.role== 'WH delivery planner' && UserRole.ItemMaster == 'True'|| UserRole.role== 'WH Ops associate' && UserRole.ItemMaster == 'True'|| UserRole.role== 'WH Purchase executive' && UserRole.ItemMaster == 'True')|| UserRole.role== 'WH Super visor' && UserRole.ItemMaster == 'True'|| UserRole.role== 'WH Service lead' && UserRole.ItemMaster == 'True'|| UserRole.role== 'WH Sales lead' && UserRole.ItemMaster == 'True'|| UserRole.role== 'WH sales executives' && UserRole.ItemMaster == 'True'|| UserRole.role== 'WH sales associates' && UserRole.ItemMaster == 'True'"><i class="glyphicon glyphicon-folder-open"><span class="icon-bg bg-success"></span></i><span data-i18n="Item Master"></span></a>
+            <ul>
+                <li>
+                    <a href="#/ItemMaster"><i class="fa fa-caret-right"></i><span data-i18n="Items Master"></span></a>
+                </li>
+
+                <!--<li>
+                    <a href="#/ItemsSupplierMapping"><i class="fa fa-caret-right"></i><span data-i18n="Items Supplier Mapping"></span></a>
+                </li>
+                <li>
+                    <a href="#/editPrice"><i class="fa fa-caret-right"></i><span data-i18n="Edit Price"></span></a>
+                </li>
+                <li>
+                    <a href="#/MoveItems"><i class="fa fa-caret-right"></i><span data-i18n="Move Items"></span></a>
+                </li>
+                <li>
+                    <a href="#/HighestDreamPoint"><i class="fa fa-caret-right"></i><span data-i18n="Highest DreamPoint"></span></a>
+                </li>-->
+
+            </ul>
+        </li>
+
+        <!--<li>
+            <a href="#/form" ng-show="(UserRole.role== 'HQ Master login' && UserRole.Reports == 'True' || UserRole.role== 'WH Master login' && UserRole.Reports == 'True'|| UserRole.role== 'HQ HR lead' && UserRole.Reports == 'True'|| UserRole.role== 'HQ Accounts Associate' && UserRole.Reports == 'True'|| UserRole.role== 'HQ Accounts Executive' && UserRole.Reports == 'True'|| UserRole.role== 'HQ Accounts Lead' && UserRole.Reports == 'True'|| UserRole.role== 'HQ CS Associate' && UserRole.Reports == 'True'|| UserRole.role== 'HQ CS EXECUTIVE' && UserRole.Reports == 'True'|| UserRole.role== 'HQ CS LEAD' && UserRole.Reports == 'True'|| UserRole.role== 'HQ Growth Associate' && UserRole.Reports == 'True'|| UserRole.role== 'HQ Growth Executive' && UserRole.Reports == 'True'|| UserRole.role== 'HQ Growth Lead' && UserRole.Reports == 'True'|| UserRole.role== 'HQ HR associate' && UserRole.Reports == 'True'|| UserRole.role== 'HQ HR executive' && UserRole.Reports == 'True'|| UserRole.role== 'HQ IC Associate' && UserRole.Reports == 'True'|| UserRole.role== 'HQ IC Executive' && UserRole.Reports == 'True'|| UserRole.role== 'HQ IC Lead' && UserRole.Reports == 'True'|| UserRole.role== 'HQ Marketing Associate' && UserRole.Reports == 'True'|| UserRole.role== 'HQ Marketing Executive' && UserRole.Reports == 'True'|| UserRole.role== 'HQ Marketing Lead' && UserRole.Reports == 'True'|| UserRole.role== 'HQ MIS Associate' && UserRole.Reports == 'True'|| UserRole.role== 'HQ MIS EXECUTIVE' && UserRole.Reports == 'True'|| UserRole.role== 'HQ MIS LEAD' && UserRole.Reports == 'True'|| UserRole.role== 'HQ Ops Associate' && UserRole.Reports == 'True'|| UserRole.role== 'HQ Ops Executive' && UserRole.Reports == 'True'|| UserRole.role== 'HQ Ops Lead' && UserRole.Reports == 'True'|| UserRole.role== 'HQ Purchase Associate' && UserRole.Reports == 'True'|| UserRole.role== 'HQ Purchase Executive ' && UserRole.Reports == 'True'|| UserRole.role== 'HQ Purchase Lead' && UserRole.Reports == 'True'|| UserRole.role== 'HQ Sales Associate' && UserRole.Reports == 'True'|| UserRole.role== 'HQ Sales Executive' && UserRole.Reports == 'True'|| UserRole.role== 'HQ Sales Lead' && UserRole.Reports == 'True'|| UserRole.role== 'HQ Sourcing Associate' && UserRole.Reports == 'True'|| UserRole.role== 'HQ Sourcing Executive' && UserRole.Reports == 'True'|| UserRole.role== 'HQ Sourcing Lead' && UserRole.Reports == 'True'|| UserRole.role== 'WH Agents' && UserRole.Reports == 'True'|| UserRole.role== 'WH cash manager' && UserRole.Reports == 'True'|| UserRole.role== 'WH delivery planner' && UserRole.Reports == 'True'|| UserRole.role== 'WH Ops associate' && UserRole.Reports == 'True'|| UserRole.role== 'WH Purchase executive' && UserRole.Reports == 'True')|| UserRole.role== 'WH Super visor' && UserRole.Reports == 'True'|| UserRole.role== 'WH Service lead' && UserRole.Reports == 'True'|| UserRole.role== 'WH Sales lead' && UserRole.Reports == 'True'|| UserRole.role== 'WH sales executives' && UserRole.Reports == 'True'|| UserRole.role== 'WH sales associates' && UserRole.Reports == 'True'"><i class="glyphicon glyphicon-briefcase"><span class="icon-bg bg-success"></span></i><span data-i18n="Reports"></span></a>
+            <ul>
+                <li>
+                    <a href="#/PurchaseOrderList"><i class="fa fa-caret-right"></i><span data-i18n="Purchase OrderList"></span></a>
+                    <a href="#/SearchPurchaseOrder"><i class="fa fa-caret-right"></i><span data-i18n="View PurchaseOrder"></span></a>
+                    <a href="#/OrderPaymentReport"><i class="fa fa-caret-right"></i><span data-i18n="Payment Report"></span></a>
+                    <a href="#/demandreport"><i class="fa fa-caret-right"></i><span data-i18n="Demand Report"></span></a>
+                    <a href="#/returnitem"><i class="fa fa-caret-right"></i><span data-i18n="Return Item"></span></a>
+                    <a href="#/TransferOrderSend" ng-show="(UserRole.role== 'WH Master login' && UserRole.Reports == 'True'|| UserRole.role== 'WH Agents' && UserRole.Reports == 'True'|| UserRole.role== 'WH cash manager' && UserRole.Reports == 'True'|| UserRole.role== 'WH delivery planner' && UserRole.Reports == 'True'|| UserRole.role== 'WH Ops associate' && UserRole.Reports == 'True'|| UserRole.role== 'WH Purchase executive' && UserRole.Reports == 'True')|| UserRole.role== 'WH Super visor' && UserRole.Reports == 'True'|| UserRole.role== 'WH Service lead' && UserRole.Reports == 'True'|| UserRole.role== 'WH Sales lead' && UserRole.Reports == 'True'|| UserRole.role== 'WH sales executives' && UserRole.Reports == 'True'|| UserRole.role== 'WH sales associates' && UserRole.Reports == 'True')"><i class="fa fa-caret-right"></i><span data-i18n="Transfer Order Send"></span></a>
+                    <a href="#/TransferOrderRequest" ng-show="(UserRole.role== 'WH Master login' && UserRole.Reports == 'True' || UserRole.role== 'WH Agents' && UserRole.Reports == 'True'|| UserRole.role== 'WH cash manager' && UserRole.Reports == 'True'|| UserRole.role== 'WH delivery planner' && UserRole.Reports == 'True'|| UserRole.role== 'WH Ops associate' && UserRole.Reports == 'True'|| UserRole.role== 'WH Purchase executive' && UserRole.Reports == 'True')|| UserRole.role== 'WH Super visor' && UserRole.Reports == 'True'|| UserRole.role== 'WH Service lead' && UserRole.Reports == 'True'|| UserRole.role== 'WH Sales lead' && UserRole.Reports == 'True'|| UserRole.role== 'WH sales executives' && UserRole.Reports == 'True'|| UserRole.role== 'WH sales associates' && UserRole.Reports == 'True')"><i class="fa fa-caret-right"></i><span data-i18n="Transfer Order Req"></span></a>
+                </li>
+            </ul>
+        </li>-->
+
+        <!--<li>
+            <a href="#/form" ng-show="(UserRole.role== 'HQ Master login' && UserRole.StatisticalRep == 'True' || UserRole.role== 'WH Master login' && UserRole.StatisticalRep == 'True'|| UserRole.role== 'HQ HR lead' && UserRole.StatisticalRep == 'True'|| UserRole.role== 'HQ Accounts Associate' && UserRole.StatisticalRep == 'True'|| UserRole.role== 'HQ Accounts Executive' && UserRole.StatisticalRep == 'True'|| UserRole.role== 'HQ Accounts Lead' && UserRole.StatisticalRep == 'True'|| UserRole.role== 'HQ CS Associate' && UserRole.StatisticalRep == 'True'|| UserRole.role== 'HQ CS EXECUTIVE' && UserRole.StatisticalRep == 'True'|| UserRole.role== 'HQ CS LEAD' && UserRole.StatisticalRep == 'True'|| UserRole.role== 'HQ Growth Associate' && UserRole.StatisticalRep == 'True'|| UserRole.role== 'HQ Growth Executive' && UserRole.StatisticalRep == 'True'|| UserRole.role== 'HQ Growth Lead' && UserRole.StatisticalRep == 'True'|| UserRole.role== 'HQ HR associate' && UserRole.StatisticalRep == 'True'|| UserRole.role== 'HQ HR executive' && UserRole.StatisticalRep == 'True'|| UserRole.role== 'HQ IC Associate' && UserRole.StatisticalRep == 'True'|| UserRole.role== 'HQ IC Executive' && UserRole.StatisticalRep == 'True'|| UserRole.role== 'HQ IC Lead' && UserRole.StatisticalRep == 'True'|| UserRole.role== 'HQ Marketing Associate' && UserRole.StatisticalRep == 'True'|| UserRole.role== 'HQ Marketing Executive' && UserRole.StatisticalRep == 'True'|| UserRole.role== 'HQ Marketing Lead' && UserRole.StatisticalRep == 'True'|| UserRole.role== 'HQ MIS Associate' && UserRole.StatisticalRep == 'True'|| UserRole.role== 'HQ MIS EXECUTIVE' && UserRole.StatisticalRep == 'True'|| UserRole.role== 'HQ MIS LEAD' && UserRole.StatisticalRep == 'True'|| UserRole.role== 'HQ Ops Associate' && UserRole.StatisticalRep == 'True'|| UserRole.role== 'HQ Ops Executive' && UserRole.StatisticalRep == 'True'|| UserRole.role== 'HQ Ops Lead' && UserRole.StatisticalRep == 'True'|| UserRole.role== 'HQ Purchase Associate' && UserRole.StatisticalRep == 'True'|| UserRole.role== 'HQ Purchase Executive ' && UserRole.StatisticalRep == 'True'|| UserRole.role== 'HQ Purchase Lead' && UserRole.StatisticalRep == 'True'|| UserRole.role== 'HQ Sales Associate' && UserRole.StatisticalRep == 'True'|| UserRole.role== 'HQ Sales Executive' && UserRole.StatisticalRep == 'True'|| UserRole.role== 'HQ Sales Lead' && UserRole.StatisticalRep == 'True'|| UserRole.role== 'HQ Sourcing Associate' && UserRole.StatisticalRep == 'True'|| UserRole.role== 'HQ Sourcing Executive' && UserRole.StatisticalRep == 'True'|| UserRole.role== 'HQ Sourcing Lead' && UserRole.StatisticalRep == 'True'|| UserRole.role== 'WH Agents' && UserRole.StatisticalRep == 'True'|| UserRole.role== 'WH cash manager' && UserRole.StatisticalRep == 'True'|| UserRole.role== 'WH delivery planner' && UserRole.StatisticalRep == 'True'|| UserRole.role== 'WH Ops associate' && UserRole.StatisticalRep == 'True'|| UserRole.role== 'WH Purchase executive' && UserRole.StatisticalRep == 'True')|| UserRole.role== 'WH Super visor' && UserRole.StatisticalRep == 'True'|| UserRole.role== 'WH Service lead' && UserRole.StatisticalRep == 'True'|| UserRole.role== 'WH Sales lead' && UserRole.StatisticalRep == 'True'|| UserRole.role== 'WH sales executives' && UserRole.StatisticalRep == 'True'|| UserRole.role== 'WH sales associates' && UserRole.StatisticalRep == 'True'"><i class="glyphicon glyphicon-stats"><span class="icon-bg bg-success"></span></i><span data-i18n="StatisticalRep"></span></a>
+            <ul>
+                <li>
+                    <a href="#/DashboardReport"><i class="fa fa-caret-right"></i><span data-i18n="Dashboard Report"></span></a>
+                </li>
+                <li>
+                    <a href="#/LiveHubKpi"><i class="fa fa-caret-right"></i> <span data-i18n="LiveHub KPI�s"></span></a>
+                </li>
+                <li>
+                    <a href="#/Reports"><i class="fa fa-caret-right"></i> <span data-i18n="Reports(O\S)"></span></a>
+                </li>
+                <li>
+                    <a href="#/HubCity"><i class="fa fa-caret-right"></i> <span data-i18n="Comp(Hub\city)"></span></a>
+                </li>
+                <li>
+                    <a href="#/Comparison"><i class="fa fa-caret-right"></i> <span data-i18n="Comp(Ret\Hub\city)"></span></a>
+                </li>
+                <li>
+                    <a href="#/RetailersReport"><i class="fa fa-caret-right"></i> <span data-i18n="Retlr Report"></span></a>
+                </li>
+                <li>
+                    <a href="#/VisitReport"><i class="fa fa-caret-right"></i> <span data-i18n="SalesMan Report"></span></a>
+                </li>
+                <li>
+                    <a href="#/DeliveryBoyReport"><i class="fa fa-caret-right"></i> <span data-i18n="Del_Boy Report"></span></a>
+                </li>
+                <li>
+                    <a href="#/NetMargin"><i class="fa fa-caret-right"></i> <span data-i18n="Net Margin"></span></a>
+                </li>
+            </ul>
+        </li>
+        <li>
+            <a href="#/form" ng-show="(UserRole.role== 'HQ Master login' && UserRole.CRM == 'True' || UserRole.role== 'WH Master login' && UserRole.CRM == 'True'|| UserRole.role== 'HQ HR lead' && UserRole.CRM == 'True'|| UserRole.role== 'HQ Accounts Associate' && UserRole.CRM == 'True'|| UserRole.role== 'HQ Accounts Executive' && UserRole.CRM == 'True'|| UserRole.role== 'HQ Accounts Lead' && UserRole.CRM == 'True'|| UserRole.role== 'HQ CS Associate' && UserRole.CRM == 'True'|| UserRole.role== 'HQ CS EXECUTIVE' && UserRole.CRM == 'True'|| UserRole.role== 'HQ CS LEAD' && UserRole.CRM == 'True'|| UserRole.role== 'HQ Growth Associate' && UserRole.CRM == 'True'|| UserRole.role== 'HQ Growth Executive' && UserRole.CRM == 'True'|| UserRole.role== 'HQ Growth Lead' && UserRole.CRM == 'True'|| UserRole.role== 'HQ HR associate' && UserRole.CRM == 'True'|| UserRole.role== 'HQ HR executive' && UserRole.CRM == 'True'|| UserRole.role== 'HQ IC Associate' && UserRole.CRM == 'True'|| UserRole.role== 'HQ IC Executive' && UserRole.CRM == 'True'|| UserRole.role== 'HQ IC Lead' && UserRole.CRM == 'True'|| UserRole.role== 'HQ Marketing Associate' && UserRole.CRM == 'True'|| UserRole.role== 'HQ Marketing Executive' && UserRole.CRM == 'True'|| UserRole.role== 'HQ Marketing Lead' && UserRole.CRM == 'True'|| UserRole.role== 'HQ MIS Associate' && UserRole.CRM == 'True'|| UserRole.role== 'HQ MIS EXECUTIVE' && UserRole.CRM == 'True'|| UserRole.role== 'HQ MIS LEAD' && UserRole.CRM == 'True'|| UserRole.role== 'HQ Ops Associate' && UserRole.CRM == 'True'|| UserRole.role== 'HQ Ops Executive' && UserRole.CRM == 'True'|| UserRole.role== 'HQ Ops Lead' && UserRole.CRM == 'True'|| UserRole.role== 'HQ Purchase Associate' && UserRole.CRM == 'True'|| UserRole.role== 'HQ Purchase Executive ' && UserRole.CRM == 'True'|| UserRole.role== 'HQ Purchase Lead' && UserRole.CRM == 'True'|| UserRole.role== 'HQ Sales Associate' && UserRole.CRM == 'True'|| UserRole.role== 'HQ Sales Executive' && UserRole.CRM == 'True'|| UserRole.role== 'HQ Sales Lead' && UserRole.CRM == 'True'|| UserRole.role== 'HQ Sourcing Associate' && UserRole.CRM == 'True'|| UserRole.role== 'HQ Sourcing Executive' && UserRole.CRM == 'True'|| UserRole.role== 'HQ Sourcing Lead' && UserRole.CRM == 'True'|| UserRole.role== 'WH Agents' && UserRole.CRM == 'True'|| UserRole.role== 'WH cash manager' && UserRole.CRM == 'True'|| UserRole.role== 'WH delivery planner' && UserRole.CRM == 'True'|| UserRole.role== 'WH Ops associate' && UserRole.CRM == 'True'|| UserRole.role== 'WH Purchase executive' && UserRole.CRM == 'True')|| UserRole.role== 'WH Super visor' && UserRole.CRM == 'True'|| UserRole.role== 'WH Service lead' && UserRole.CRM == 'True'|| UserRole.role== 'WH Sales lead' && UserRole.CRM == 'True'|| UserRole.role== 'WH sales executives' && UserRole.CRM == 'True'|| UserRole.role== 'WH sales associates' && UserRole.CRM == 'True'"><i class="glyphicon glyphicon-screenshot"><span class="icon-bg bg-success"></span></i><span data-i18n="CRM"></span></a>
+            <ul>
+                <li>
+                    <a href="#/CRM"><i class="fa fa-caret-right"></i><span data-i18n="CRM Report"></span></a>
+                </li>
+                <li>
+                    <a href="#/filtCustomer"><i class="fa fa-caret-right"></i><span data-i18n="CRM Customers"></span></a>
+                </li>
+                <li>
+                    <a href="#/actionTask"><i class="fa fa-caret-right"></i><span data-i18n="CRM Actions"></span></a>
+                </li>
+            </ul>
+        </li>
+        <li>
+            <a href="#/form" ng-show="(UserRole.role== 'HQ Master login' && UserRole.Offer == 'True' || UserRole.role== 'WH Master login' && UserRole.Offer == 'True'|| UserRole.role== 'HQ HR lead' && UserRole.Offer == 'True'|| UserRole.role== 'HQ Accounts Associate' && UserRole.Offer == 'True'|| UserRole.role== 'HQ Accounts Executive' && UserRole.Offer == 'True'|| UserRole.role== 'HQ Accounts Lead' && UserRole.Offer == 'True'|| UserRole.role== 'HQ CS Associate' && UserRole.Offer == 'True'|| UserRole.role== 'HQ CS EXECUTIVE' && UserRole.Offer == 'True'|| UserRole.role== 'HQ CS LEAD' && UserRole.Offer == 'True'|| UserRole.role== 'HQ Growth Associate' && UserRole.Offer == 'True'|| UserRole.role== 'HQ Growth Executive' && UserRole.Offer == 'True'|| UserRole.role== 'HQ Growth Lead' && UserRole.Offer == 'True'|| UserRole.role== 'HQ HR associate' && UserRole.Offer == 'True'|| UserRole.role== 'HQ HR executive' && UserRole.Offer == 'True'|| UserRole.role== 'HQ IC Associate' && UserRole.Offer == 'True'|| UserRole.role== 'HQ IC Executive' && UserRole.Offer == 'True'|| UserRole.role== 'HQ IC Lead' && UserRole.Offer == 'True'|| UserRole.role== 'HQ Marketing Associate' && UserRole.Offer == 'True'|| UserRole.role== 'HQ Marketing Executive' && UserRole.Offer == 'True'|| UserRole.role== 'HQ Marketing Lead' && UserRole.Offer == 'True'|| UserRole.role== 'HQ MIS Associate' && UserRole.Offer == 'True'|| UserRole.role== 'HQ MIS EXECUTIVE' && UserRole.Offer == 'True'|| UserRole.role== 'HQ MIS LEAD' && UserRole.Offer == 'True'|| UserRole.role== 'HQ Ops Associate' && UserRole.Offer == 'True'|| UserRole.role== 'HQ Ops Executive' && UserRole.Offer == 'True'|| UserRole.role== 'HQ Ops Lead' && UserRole.Offer == 'True'|| UserRole.role== 'HQ Purchase Associate' && UserRole.Offer == 'True'|| UserRole.role== 'HQ Purchase Executive ' && UserRole.Offer == 'True'|| UserRole.role== 'HQ Purchase Lead' && UserRole.Offer == 'True'|| UserRole.role== 'HQ Sales Associate' && UserRole.Offer == 'True'|| UserRole.role== 'HQ Sales Executive' && UserRole.Offer == 'True'|| UserRole.role== 'HQ Sales Lead' && UserRole.Offer == 'True'|| UserRole.role== 'HQ Sourcing Associate' && UserRole.Offer == 'True'|| UserRole.role== 'HQ Sourcing Executive' && UserRole.Offer == 'True'|| UserRole.role== 'HQ Sourcing Lead' && UserRole.Offer == 'True'|| UserRole.role== 'WH Agents' && UserRole.Offer == 'True'|| UserRole.role== 'WH cash manager' && UserRole.Offer == 'True'|| UserRole.role== 'WH delivery planner' && UserRole.Offer == 'True'|| UserRole.role== 'WH Ops associate' && UserRole.Offer == 'True'|| UserRole.role== 'WH Purchase executive' && UserRole.Offer == 'True')|| UserRole.role== 'WH Super visor' && UserRole.Offer == 'True'|| UserRole.role== 'WH Service lead' && UserRole.Offer == 'True'|| UserRole.role== 'WH Sales lead' && UserRole.Offer == 'True'|| UserRole.role== 'WH sales executives' && UserRole.Offer == 'True'|| UserRole.role== 'WH sales associates' && UserRole.Offer == 'True'"><i class="glyphicon glyphicon-gift"><span class="icon-bg bg-success"></span></i><span data-i18n="Offer"></span></a>
+            <ul>
+                <li>
+                    <a href="#/Offer"><i class="fa fa-caret-right"></i><span data-i18n="Offer Zone"></span></a>
+                </li>
+                <li>
+                    <a href="#/DialPoint"><i class="fa fa-caret-right"></i><span data-i18n="DialPoint"></span></a>
+                </li>
+                <li>
+                    <a href="#/DialValuePoint"><i class="fa fa-caret-right"></i><span data-i18n="Dial Value Point"></span></a>
+                </li>
+                <li>
+                    <a href="#/Reward"><i class="fa fa-caret-right"></i><span data-i18n="Reward Zone"></span></a>
+                </li>
+                <li>
+                    <a href="#/Wallet" ng-show="(UserRole.role == 'HQ Master login')"><i class="fa fa-caret-right"></i><span data-i18n="Wallet Zone"></span></a>
+                </li>
+                <li>
+                    <a href="#/MileStone"><i class="fa fa-caret-right"></i><span data-i18n="Milestone Point"></span></a>
+                </li>
+                <li>
+                    <a href="#/PointInOut"><i class="fa fa-caret-right"></i> <span data-i18n="PointInOut"></span></a>
+                </li>
+
+                <li>
+                    <a href="#/RedeemItem"><i class="fa fa-caret-right"></i><span data-i18n="Redeem Item"></span></a>
+                </li>
+                <li>
+                    <a href="#/WarehouseExpensePoint"><i class="fa fa-caret-right"></i><span data-i18n="WarehouseExpense"></span></a>
+                </li>
+            </ul>
+        </li>
+        <li>
+            <a href="#/form" ng-show="(UserRole.role== 'HQ Master login' && UserRole.Promopoint == 'True' || UserRole.role== 'WH Master login' && UserRole.Promopoint == 'True'|| UserRole.role== 'HQ HR lead' && UserRole.Promopoint == 'True'|| UserRole.role== 'HQ Accounts Associate' && UserRole.Promopoint == 'True'|| UserRole.role== 'HQ Accounts Executive' && UserRole.Promopoint == 'True'|| UserRole.role== 'HQ Accounts Lead' && UserRole.Promopoint == 'True'|| UserRole.role== 'HQ CS Associate' && UserRole.Promopoint == 'True'|| UserRole.role== 'HQ CS EXECUTIVE' && UserRole.Promopoint == 'True'|| UserRole.role== 'HQ CS LEAD' && UserRole.Promopoint == 'True'|| UserRole.role== 'HQ Growth Associate' && UserRole.Promopoint == 'True'|| UserRole.role== 'HQ Growth Executive' && UserRole.Promopoint == 'True'|| UserRole.role== 'HQ Growth Lead' && UserRole.Promopoint == 'True'|| UserRole.role== 'HQ HR associate' && UserRole.Promopoint == 'True'|| UserRole.role== 'HQ HR executive' && UserRole.Promopoint == 'True'|| UserRole.role== 'HQ IC Associate' && UserRole.Promopoint == 'True'|| UserRole.role== 'HQ IC Executive' && UserRole.Promopoint == 'True'|| UserRole.role== 'HQ IC Lead' && UserRole.Promopoint == 'True'|| UserRole.role== 'HQ Marketing Associate' && UserRole.Promopoint == 'True'|| UserRole.role== 'HQ Marketing Executive' && UserRole.Promopoint == 'True'|| UserRole.role== 'HQ Marketing Lead' && UserRole.Promopoint == 'True'|| UserRole.role== 'HQ MIS Associate' && UserRole.Promopoint == 'True'|| UserRole.role== 'HQ MIS EXECUTIVE' && UserRole.Promopoint == 'True'|| UserRole.role== 'HQ MIS LEAD' && UserRole.Promopoint == 'True'|| UserRole.role== 'HQ Ops Associate' && UserRole.Promopoint == 'True'|| UserRole.role== 'HQ Ops Executive' && UserRole.Promopoint == 'True'|| UserRole.role== 'HQ Ops Lead' && UserRole.Promopoint == 'True'|| UserRole.role== 'HQ Purchase Associate' && UserRole.Promopoint == 'True'|| UserRole.role== 'HQ Purchase Executive ' && UserRole.Promopoint == 'True'|| UserRole.role== 'HQ Purchase Lead' && UserRole.Promopoint == 'True'|| UserRole.role== 'HQ Sales Associate' && UserRole.Promopoint == 'True'|| UserRole.role== 'HQ Sales Executive' && UserRole.Promopoint == 'True'|| UserRole.role== 'HQ Sales Lead' && UserRole.Promopoint == 'True'|| UserRole.role== 'HQ Sourcing Associate' && UserRole.Promopoint == 'True'|| UserRole.role== 'HQ Sourcing Executive' && UserRole.Promopoint == 'True'|| UserRole.role== 'HQ Sourcing Lead' && UserRole.Promopoint == 'True'|| UserRole.role== 'WH Agents' && UserRole.Promopoint == 'True'|| UserRole.role== 'WH cash manager' && UserRole.Promopoint == 'True'|| UserRole.role== 'WH delivery planner' && UserRole.Promopoint == 'True'|| UserRole.role== 'WH Ops associate' && UserRole.Promopoint == 'True'|| UserRole.role== 'WH Purchase executive' && UserRole.Promopoint == 'True')|| UserRole.role== 'WH Super visor' && UserRole.Promopoint == 'True'|| UserRole.role== 'WH Service lead' && UserRole.Promopoint == 'True'|| UserRole.role== 'WH Sales lead' && UserRole.Promopoint == 'True'|| UserRole.role== 'WH sales executives' && UserRole.Promopoint == 'True'|| UserRole.role== 'WH sales associates' && UserRole.Promopoint == 'True'"><i class="glyphicon glyphicon-star-empty"><span class="icon-bg bg-success"></span></i><span data-i18n="Promotion"></span></a>
+            <ul>
+                <li>
+                    <a href="#/pramotion"><i class="fa fa-caret-right"></i><span data-i18n="Item Pramotion"></span></a>
+                </li>
+                <li>
+                    <a href="#/brandpramotion"><i class="fa fa-caret-right"></i><span data-i18n="Brand Pramotion"></span></a>
+                </li>
+                <li>
+                    <a href="#/billpramotion"><i class="fa fa-caret-right"></i><span data-i18n="Bill Pramotion"></span></a>
+                </li>
+
+                <li>
+                    <a href="#/brandwisepramotion"><i class="fa fa-caret-right"></i><span data-i18n="BrandItem Pramotion"></span></a>
+                </li>
+                <li>
+                    <a href="#/Exclusivebrand"><i class="fa fa-caret-right"></i><span data-i18n="Exclusive Brand"></span></a>
+                </li>
+            </ul>
+        </li>
+        <li>
+            <a href="#/form" ng-show="(UserRole.role== 'HQ Master login' && UserRole.Request == 'True' || UserRole.role== 'WH Master login' && UserRole.Request == 'True'|| UserRole.role== 'HQ HR lead' && UserRole.Request == 'True'|| UserRole.role== 'HQ Accounts Associate' && UserRole.Request == 'True'|| UserRole.role== 'HQ Accounts Executive' && UserRole.Request == 'True'|| UserRole.role== 'HQ Accounts Lead' && UserRole.Request == 'True'|| UserRole.role== 'HQ CS Associate' && UserRole.Request == 'True'|| UserRole.role== 'HQ CS EXECUTIVE' && UserRole.Request == 'True'|| UserRole.role== 'HQ CS LEAD' && UserRole.Request == 'True'|| UserRole.role== 'HQ Growth Associate' && UserRole.Request == 'True'|| UserRole.role== 'HQ Growth Executive' && UserRole.Request == 'True'|| UserRole.role== 'HQ Growth Lead' && UserRole.Request == 'True'|| UserRole.role== 'HQ HR associate' && UserRole.Request == 'True'|| UserRole.role== 'HQ HR executive' && UserRole.Request == 'True'|| UserRole.role== 'HQ IC Associate' && UserRole.Request == 'True'|| UserRole.role== 'HQ IC Executive' && UserRole.Request == 'True'|| UserRole.role== 'HQ IC Lead' && UserRole.Request == 'True'|| UserRole.role== 'HQ Marketing Associate' && UserRole.Request == 'True'|| UserRole.role== 'HQ Marketing Executive' && UserRole.Request == 'True'|| UserRole.role== 'HQ Marketing Lead' && UserRole.Request == 'True'|| UserRole.role== 'HQ MIS Associate' && UserRole.Request == 'True'|| UserRole.role== 'HQ MIS EXECUTIVE' && UserRole.Request == 'True'|| UserRole.role== 'HQ MIS LEAD' && UserRole.Request == 'True'|| UserRole.role== 'HQ Ops Associate' && UserRole.Request == 'True'|| UserRole.role== 'HQ Ops Executive' && UserRole.Request == 'True'|| UserRole.role== 'HQ Ops Lead' && UserRole.Request == 'True'|| UserRole.role== 'HQ Purchase Associate' && UserRole.Request == 'True'|| UserRole.role== 'HQ Purchase Executive ' && UserRole.Request == 'True'|| UserRole.role== 'HQ Purchase Lead' && UserRole.Request == 'True'|| UserRole.role== 'HQ Sales Associate' && UserRole.Request == 'True'|| UserRole.role== 'HQ Sales Executive' && UserRole.Request == 'True'|| UserRole.role== 'HQ Sales Lead' && UserRole.Request == 'True'|| UserRole.role== 'HQ Sourcing Associate' && UserRole.Request == 'True'|| UserRole.role== 'HQ Sourcing Executive' && UserRole.Request == 'True'|| UserRole.role== 'HQ Sourcing Lead' && UserRole.Request == 'True'|| UserRole.role== 'WH Agents' && UserRole.Request == 'True'|| UserRole.role== 'WH cash manager' && UserRole.Request == 'True'|| UserRole.role== 'WH delivery planner' && UserRole.Request == 'True'|| UserRole.role== 'WH Ops associate' && UserRole.Request == 'True'|| UserRole.role== 'WH Purchase executive' && UserRole.Request == 'True')|| UserRole.role== 'WH Super visor' && UserRole.Request == 'True'|| UserRole.role== 'WH Service lead' && UserRole.Request == 'True'|| UserRole.role== 'WH Sales lead' && UserRole.Request == 'True'|| UserRole.role== 'WH sales executives' && UserRole.Request == 'True'|| UserRole.role== 'WH sales associates' && UserRole.Request == 'True'"><i class="glyphicon glyphicon-registration-mark"><span class="icon-bg bg-success"></span></i><span data-i18n="Request"></span></a>
+            <ul>
+                <li>
+                    <a href="#/requestbrand"><i class="fa fa-caret-right"></i><span data-i18n="Request"></span></a>
+                    <a href="#/reqService"><i class="fa fa-caret-right"></i><span data-i18n="Request Service"></span></a>
+                </li>
+            </ul>
+        </li>
+        <li>
+            <a href="#/form" ng-show="(UserRole.role== 'HQ Master login' && UserRole.Sales == 'True' || UserRole.role== 'WH Master login' && UserRole.Sales == 'True'|| UserRole.role== 'HQ HR lead' && UserRole.Sales == 'True'|| UserRole.role== 'HQ Accounts Associate' && UserRole.Sales == 'True'|| UserRole.role== 'HQ Accounts Executive' && UserRole.Sales == 'True'|| UserRole.role== 'HQ Accounts Lead' && UserRole.Sales == 'True'|| UserRole.role== 'HQ CS Associate' && UserRole.Sales == 'True'|| UserRole.role== 'HQ CS EXECUTIVE' && UserRole.Sales == 'True'|| UserRole.role== 'HQ CS LEAD' && UserRole.Sales == 'True'|| UserRole.role== 'HQ Growth Associate' && UserRole.Sales == 'True'|| UserRole.role== 'HQ Growth Executive' && UserRole.Sales == 'True'|| UserRole.role== 'HQ Growth Lead' && UserRole.Sales == 'True'|| UserRole.role== 'HQ HR associate' && UserRole.Sales == 'True'|| UserRole.role== 'HQ HR executive' && UserRole.Sales == 'True'|| UserRole.role== 'HQ IC Associate' && UserRole.Sales == 'True'|| UserRole.role== 'HQ IC Executive' && UserRole.Sales == 'True'|| UserRole.role== 'HQ IC Lead' && UserRole.Sales == 'True'|| UserRole.role== 'HQ Marketing Associate' && UserRole.Sales == 'True'|| UserRole.role== 'HQ Marketing Executive' && UserRole.Sales == 'True'|| UserRole.role== 'HQ Marketing Lead' && UserRole.Sales == 'True'|| UserRole.role== 'HQ MIS Associate' && UserRole.Sales == 'True'|| UserRole.role== 'HQ MIS EXECUTIVE' && UserRole.Sales == 'True'|| UserRole.role== 'HQ MIS LEAD' && UserRole.Sales == 'True'|| UserRole.role== 'HQ Ops Associate' && UserRole.Sales == 'True'|| UserRole.role== 'HQ Ops Executive' && UserRole.Sales == 'True'|| UserRole.role== 'HQ Ops Lead' && UserRole.Sales == 'True'|| UserRole.role== 'HQ Purchase Associate' && UserRole.Sales == 'True'|| UserRole.role== 'HQ Purchase Executive ' && UserRole.Sales == 'True'|| UserRole.role== 'HQ Purchase Lead' && UserRole.Sales == 'True'|| UserRole.role== 'HQ Sales Associate' && UserRole.Sales == 'True'|| UserRole.role== 'HQ Sales Executive' && UserRole.Sales == 'True'|| UserRole.role== 'HQ Sales Lead' && UserRole.Sales == 'True'|| UserRole.role== 'HQ Sourcing Associate' && UserRole.Sales == 'True'|| UserRole.role== 'HQ Sourcing Executive' && UserRole.Sales == 'True'|| UserRole.role== 'HQ Sourcing Lead' && UserRole.Sales == 'True'|| UserRole.role== 'WH Agents' && UserRole.Sales == 'True'|| UserRole.role== 'WH cash manager' && UserRole.Sales == 'True'|| UserRole.role== 'WH delivery planner' && UserRole.Sales == 'True'|| UserRole.role== 'WH Ops associate' && UserRole.Sales == 'True'|| UserRole.role== 'WH Purchase executive' && UserRole.Sales == 'True')|| UserRole.role== 'WH Super visor' && UserRole.Sales == 'True'|| UserRole.role== 'WH Service lead' && UserRole.Sales == 'True'|| UserRole.role== 'WH Sales lead' && UserRole.Sales == 'True'|| UserRole.role== 'WH sales executives' && UserRole.Sales == 'True'|| UserRole.role== 'WH sales associates' && UserRole.Sales == 'True'"><i class="glyphicon glyphicon-list-alt"><span class="icon-bg bg-success"></span></i><span data-i18n="Sales"></span></a>
+            <ul>
+                <li>
+                    <a href="#/SalesSettlement"><i class="fa fa-caret-right"></i><span data-i18n="Sales Settlement"></span></a>
+                    <a href="#/SalesSettlementHistory"><i class="fa fa-caret-right"></i><span data-i18n="Sale Settlmnt History"></span></a>
+                    <a href="#/SupplierIR"><i class="fa fa-caret-right"></i><span data-i18n="IR Settlement"></span></a>
+                    <a href="#/BounceCheq"><i class="fa fa-caret-right"></i><span data-i18n="Bounce Cheque"></span></a>
+                    <a href="#/salestarget"><i class="fa fa-caret-right"></i><span data-i18n="Sale Target"></span></a>
+                </li>
+            </ul>
+        </li>
+        <li>
+            <a href="#/form" ng-show="(UserRole.role== 'HQ Master login' && UserRole.AppPromotion == 'True' || UserRole.role== 'WH Master login' && UserRole.AppPromotion == 'True'|| UserRole.role== 'HQ HR lead' && UserRole.AppPromotion == 'True'|| UserRole.role== 'HQ Accounts Associate' && UserRole.AppPromotion == 'True'|| UserRole.role== 'HQ Accounts Executive' && UserRole.AppPromotion == 'True'|| UserRole.role== 'HQ Accounts Lead' && UserRole.AppPromotion == 'True'|| UserRole.role== 'HQ CS Associate' && UserRole.AppPromotion == 'True'|| UserRole.role== 'HQ CS EXECUTIVE' && UserRole.AppPromotion == 'True'|| UserRole.role== 'HQ CS LEAD' && UserRole.AppPromotion == 'True'|| UserRole.role== 'HQ Growth Associate' && UserRole.AppPromotion == 'True'|| UserRole.role== 'HQ Growth Executive' && UserRole.AppPromotion == 'True'|| UserRole.role== 'HQ Growth Lead' && UserRole.AppPromotion == 'True'|| UserRole.role== 'HQ HR associate' && UserRole.AppPromotion == 'True'|| UserRole.role== 'HQ HR executive' && UserRole.AppPromotion == 'True'|| UserRole.role== 'HQ IC Associate' && UserRole.AppPromotion == 'True'|| UserRole.role== 'HQ IC Executive' && UserRole.AppPromotion == 'True'|| UserRole.role== 'HQ IC Lead' && UserRole.AppPromotion == 'True'|| UserRole.role== 'HQ Marketing Associate' && UserRole.AppPromotion == 'True'|| UserRole.role== 'HQ Marketing Executive' && UserRole.AppPromotion == 'True'|| UserRole.role== 'HQ Marketing Lead' && UserRole.AppPromotion == 'True'|| UserRole.role== 'HQ MIS Associate' && UserRole.AppPromotion == 'True'|| UserRole.role== 'HQ MIS EXECUTIVE' && UserRole.AppPromotion == 'True'|| UserRole.role== 'HQ MIS LEAD' && UserRole.AppPromotion == 'True'|| UserRole.role== 'HQ Ops Associate' && UserRole.AppPromotion == 'True'|| UserRole.role== 'HQ Ops Executive' && UserRole.AppPromotion == 'True'|| UserRole.role== 'HQ Ops Lead' && UserRole.AppPromotion == 'True'|| UserRole.role== 'HQ Purchase Associate' && UserRole.AppPromotion == 'True'|| UserRole.role== 'HQ Purchase Executive ' && UserRole.AppPromotion == 'True'|| UserRole.role== 'HQ Purchase Lead' && UserRole.AppPromotion == 'True'|| UserRole.role== 'HQ Sales Associate' && UserRole.AppPromotion == 'True'|| UserRole.role== 'HQ Sales Executive' && UserRole.AppPromotion == 'True'|| UserRole.role== 'HQ Sales Lead' && UserRole.AppPromotion == 'True'|| UserRole.role== 'HQ Sourcing Associate' && UserRole.AppPromotion == 'True'|| UserRole.role== 'HQ Sourcing Executive' && UserRole.AppPromotion == 'True'|| UserRole.role== 'HQ Sourcing Lead' && UserRole.AppPromotion == 'True'|| UserRole.role== 'WH Agents' && UserRole.AppPromotion == 'True'|| UserRole.role== 'WH cash manager' && UserRole.AppPromotion == 'True'|| UserRole.role== 'WH delivery planner' && UserRole.AppPromotion == 'True'|| UserRole.role== 'WH Ops associate' && UserRole.AppPromotion == 'True'|| UserRole.role== 'WH Purchase executive' && UserRole.AppPromotion == 'True')|| UserRole.role== 'WH Super visor' && UserRole.AppPromotion == 'True'|| UserRole.role== 'WH Service lead' && UserRole.AppPromotion == 'True'|| UserRole.role== 'WH Sales lead' && UserRole.AppPromotion == 'True'|| UserRole.role== 'WH sales executives' && UserRole.AppPromotion == 'True'|| UserRole.role== 'WH sales associates' && UserRole.AppPromotion == 'True'"><i class="fa fa-pencil"><span class="icon-bg bg-success"></span></i><span data-i18n="AppPromotion"></span></a>
+            <ul>
+                <li>
+                    <a href="#/AppPromotion"><i class="fa fa-caret-right"></i><span data-i18n="App Promotion"></span></a>
+                </li>
+                <li>
+                    <a href="#/TopAddedItem"><i class="fa fa-caret-right"></i><span data-i18n="Top Added Item"></span></a>
+                </li>
+                <li>
+                    <a href="#/TotalDhamaka"><i class="fa fa-caret-right"></i><span data-i18n="Add Dhamaka Image"></span></a>
+                </li>
+                <li>
+                    <a href="#/BulkDeal"><i class="fa fa-caret-right"></i><span data-i18n="BulK deal"></span></a>
+                </li>
+                <li>
+                    <a href="#/MostSelledItem"><i class="fa fa-caret-right"></i><span data-i18n="Most Selled Item"></span></a>
+                </li>
+                <li>
+                    <a href="#/MostSelledBrand"><i class="fa fa-caret-right"></i><span data-i18n="Most Selled Brand"></span></a>
+                </li>
+            </ul>
+        </li>
+        <li>
+            <a href="#/form" ng-show="(UserRole.role== 'HQ Master login' && UserRole.UnitEconomics == 'True' || UserRole.role== 'WH Master login' && UserRole.UnitEconomics == 'True'|| UserRole.role== 'HQ HR lead' && UserRole.UnitEconomics == 'True'|| UserRole.role== 'HQ Accounts Associate' && UserRole.UnitEconomics == 'True'|| UserRole.role== 'HQ Accounts Executive' && UserRole.UnitEconomics == 'True'|| UserRole.role== 'HQ Accounts Lead' && UserRole.UnitEconomics == 'True'|| UserRole.role== 'HQ CS Associate' && UserRole.UnitEconomics == 'True'|| UserRole.role== 'HQ CS EXECUTIVE' && UserRole.UnitEconomics == 'True'|| UserRole.role== 'HQ CS LEAD' && UserRole.UnitEconomics == 'True'|| UserRole.role== 'HQ Growth Associate' && UserRole.UnitEconomics == 'True'|| UserRole.role== 'HQ Growth Executive' && UserRole.UnitEconomics == 'True'|| UserRole.role== 'HQ Growth Lead' && UserRole.UnitEconomics == 'True'|| UserRole.role== 'HQ HR associate' && UserRole.UnitEconomics == 'True'|| UserRole.role== 'HQ HR executive' && UserRole.UnitEconomics == 'True'|| UserRole.role== 'HQ IC Associate' && UserRole.UnitEconomics == 'True'|| UserRole.role== 'HQ IC Executive' && UserRole.UnitEconomics == 'True'|| UserRole.role== 'HQ IC Lead' && UserRole.UnitEconomics == 'True'|| UserRole.role== 'HQ Marketing Associate' && UserRole.UnitEconomics == 'True'|| UserRole.role== 'HQ Marketing Executive' && UserRole.UnitEconomics == 'True'|| UserRole.role== 'HQ Marketing Lead' && UserRole.UnitEconomics == 'True'|| UserRole.role== 'HQ MIS Associate' && UserRole.UnitEconomics == 'True'|| UserRole.role== 'HQ MIS EXECUTIVE' && UserRole.UnitEconomics == 'True'|| UserRole.role== 'HQ MIS LEAD' && UserRole.UnitEconomics == 'True'|| UserRole.role== 'HQ Ops Associate' && UserRole.UnitEconomics == 'True'|| UserRole.role== 'HQ Ops Executive' && UserRole.UnitEconomics == 'True'|| UserRole.role== 'HQ Ops Lead' && UserRole.UnitEconomics == 'True'|| UserRole.role== 'HQ Purchase Associate' && UserRole.UnitEconomics == 'True'|| UserRole.role== 'HQ Purchase Executive ' && UserRole.UnitEconomics == 'True'|| UserRole.role== 'HQ Purchase Lead' && UserRole.UnitEconomics == 'True'|| UserRole.role== 'HQ Sales Associate' && UserRole.UnitEconomics == 'True'|| UserRole.role== 'HQ Sales Executive' && UserRole.UnitEconomics == 'True'|| UserRole.role== 'HQ Sales Lead' && UserRole.UnitEconomics == 'True'|| UserRole.role== 'HQ Sourcing Associate' && UserRole.UnitEconomics == 'True'|| UserRole.role== 'HQ Sourcing Executive' && UserRole.UnitEconomics == 'True'|| UserRole.role== 'HQ Sourcing Lead' && UserRole.UnitEconomics == 'True'|| UserRole.role== 'WH Agents' && UserRole.UnitEconomics == 'True'|| UserRole.role== 'WH cash manager' && UserRole.UnitEconomics == 'True'|| UserRole.role== 'WH delivery planner' && UserRole.UnitEconomics == 'True'|| UserRole.role== 'WH Ops associate' && UserRole.UnitEconomics == 'True'|| UserRole.role== 'WH Purchase executive' && UserRole.UnitEconomics == 'True')|| UserRole.role== 'WH Super visor' && UserRole.UnitEconomics == 'True'|| UserRole.role== 'WH Service lead' && UserRole.UnitEconomics == 'True'|| UserRole.role== 'WH Sales lead' && UserRole.UnitEconomics == 'True'|| UserRole.role== 'WH sales executives' && UserRole.UnitEconomics == 'True'|| UserRole.role== 'WH sales associates' && UserRole.UnitEconomics == 'True'"><i class="glyphicon glyphicon-record"><span class="icon-bg bg-success"></span></i><span data-i18n="Unit Economic"></span></a>
+            <ul>
+                <li>
+                    <a href="#/unitEconomic"><i class="fa fa-caret-right"></i><span data-i18n="Unit Economics"></span></a>
+                    <a href="#/unitEcoReport"><i class="fa fa-caret-right"></i><span data-i18n="UE Report"></span></a>
+                </li>
+            </ul>
+        </li>
+        <li>
+            <a href="#/form" ng-show="(UserRole.role== 'HQ Master login' && UserRole.Promopoint == 'True' || UserRole.role== 'WH Master login' && UserRole.Promopoint == 'True'|| UserRole.role== 'HQ HR lead' && UserRole.Promopoint == 'True'|| UserRole.role== 'HQ Accounts Associate' && UserRole.Promopoint == 'True'|| UserRole.role== 'HQ Accounts Executive' && UserRole.Promopoint == 'True'|| UserRole.role== 'HQ Accounts Lead' && UserRole.Promopoint == 'True'|| UserRole.role== 'HQ CS Associate' && UserRole.Promopoint == 'True'|| UserRole.role== 'HQ CS EXECUTIVE' && UserRole.Promopoint == 'True'|| UserRole.role== 'HQ CS LEAD' && UserRole.Promopoint == 'True'|| UserRole.role== 'HQ Growth Associate' && UserRole.Promopoint == 'True'|| UserRole.role== 'HQ Growth Executive' && UserRole.Promopoint == 'True'|| UserRole.role== 'HQ Growth Lead' && UserRole.Promopoint == 'True'|| UserRole.role== 'HQ HR associate' && UserRole.Promopoint == 'True'|| UserRole.role== 'HQ HR executive' && UserRole.Promopoint == 'True'|| UserRole.role== 'HQ IC Associate' && UserRole.Promopoint == 'True'|| UserRole.role== 'HQ IC Executive' && UserRole.Promopoint == 'True'|| UserRole.role== 'HQ IC Lead' && UserRole.Promopoint == 'True'|| UserRole.role== 'HQ Marketing Associate' && UserRole.Promopoint == 'True'|| UserRole.role== 'HQ Marketing Executive' && UserRole.Promopoint == 'True'|| UserRole.role== 'HQ Marketing Lead' && UserRole.Promopoint == 'True'|| UserRole.role== 'HQ MIS Associate' && UserRole.Promopoint == 'True'|| UserRole.role== 'HQ MIS EXECUTIVE' && UserRole.Promopoint == 'True'|| UserRole.role== 'HQ MIS LEAD' && UserRole.Promopoint == 'True'|| UserRole.role== 'HQ Ops Associate' && UserRole.Promopoint == 'True'|| UserRole.role== 'HQ Ops Executive' && UserRole.Promopoint == 'True'|| UserRole.role== 'HQ Ops Lead' && UserRole.Promopoint == 'True'|| UserRole.role== 'HQ Purchase Associate' && UserRole.Promopoint == 'True'|| UserRole.role== 'HQ Purchase Executive ' && UserRole.Promopoint == 'True'|| UserRole.role== 'HQ Purchase Lead' && UserRole.Promopoint == 'True'|| UserRole.role== 'HQ Sales Associate' && UserRole.Promopoint == 'True'|| UserRole.role== 'HQ Sales Executive' && UserRole.Promopoint == 'True'|| UserRole.role== 'HQ Sales Lead' && UserRole.Promopoint == 'True'|| UserRole.role== 'HQ Sourcing Associate' && UserRole.Promopoint == 'True'|| UserRole.role== 'HQ Sourcing Executive' && UserRole.Promopoint == 'True'|| UserRole.role== 'HQ Sourcing Lead' && UserRole.Promopoint == 'True'|| UserRole.role== 'WH Agents' && UserRole.Promopoint == 'True'|| UserRole.role== 'WH cash manager' && UserRole.Promopoint == 'True'|| UserRole.role== 'WH delivery planner' && UserRole.Promopoint == 'True'|| UserRole.role== 'WH Ops associate' && UserRole.Promopoint == 'True'|| UserRole.role== 'WH Purchase executive' && UserRole.Promopoint == 'True')|| UserRole.role== 'WH Super visor' && UserRole.Promopoint == 'True'|| UserRole.role== 'WH Service lead' && UserRole.Promopoint == 'True'|| UserRole.role== 'WH Sales lead' && UserRole.Promopoint == 'True'|| UserRole.role== 'WH sales executives' && UserRole.Promopoint == 'True'|| UserRole.role== 'WH sales associates' && UserRole.Promopoint == 'True'"><i class="fa fa-pencil"><span class="icon-bg bg-success"></span></i><span data-i18n="Promo Point"></span></a>
+            <ul>
+                <li>
+                    <a href="#/Promo"><i class="fa fa-caret-right"></i><span data-i18n="PromoItems"></span></a>
+                </li>
+                <li>
+                    <a href="#/SupplierPromo"><i class="fa fa-caret-right"></i><span data-i18n="My Point"></span></a>
+                </li>
+            </ul>
+        </li>-->
+        <!--<li>
+            <a href="#/form" ng-show="(UserRole.role== 'HQ Master login' && UserRole.News == 'True' || UserRole.role== 'WH Master login' && UserRole.News == 'True'|| UserRole.role== 'HQ HR lead' && UserRole.News == 'True'|| UserRole.role== 'HQ Accounts Associate' && UserRole.News == 'True'|| UserRole.role== 'HQ Accounts Executive' && UserRole.News == 'True'|| UserRole.role== 'HQ Accounts Lead' && UserRole.News == 'True'|| UserRole.role== 'HQ CS Associate' && UserRole.News == 'True'|| UserRole.role== 'HQ CS EXECUTIVE' && UserRole.News == 'True'|| UserRole.role== 'HQ CS LEAD' && UserRole.News == 'True'|| UserRole.role== 'HQ Growth Associate' && UserRole.News == 'True'|| UserRole.role== 'HQ Growth Executive' && UserRole.News == 'True'|| UserRole.role== 'HQ Growth Lead' && UserRole.News == 'True'|| UserRole.role== 'HQ HR associate' && UserRole.News == 'True'|| UserRole.role== 'HQ HR executive' && UserRole.News == 'True'|| UserRole.role== 'HQ IC Associate' && UserRole.News == 'True'|| UserRole.role== 'HQ IC Executive' && UserRole.News == 'True'|| UserRole.role== 'HQ IC Lead' && UserRole.News == 'True'|| UserRole.role== 'HQ Marketing Associate' && UserRole.News == 'True'|| UserRole.role== 'HQ Marketing Executive' && UserRole.News == 'True'|| UserRole.role== 'HQ Marketing Lead' && UserRole.News == 'True'|| UserRole.role== 'HQ MIS Associate' && UserRole.News == 'True'|| UserRole.role== 'HQ MIS EXECUTIVE' && UserRole.News == 'True'|| UserRole.role== 'HQ MIS LEAD' && UserRole.News == 'True'|| UserRole.role== 'HQ Ops Associate' && UserRole.News == 'True'|| UserRole.role== 'HQ Ops Executive' && UserRole.News == 'True'|| UserRole.role== 'HQ Ops Lead' && UserRole.News == 'True'|| UserRole.role== 'HQ Purchase Associate' && UserRole.News == 'True'|| UserRole.role== 'HQ Purchase Executive ' && UserRole.News == 'True'|| UserRole.role== 'HQ Purchase Lead' && UserRole.News == 'True'|| UserRole.role== 'HQ Sales Associate' && UserRole.News == 'True'|| UserRole.role== 'HQ Sales Executive' && UserRole.News == 'True'|| UserRole.role== 'HQ Sales Lead' && UserRole.News == 'True'|| UserRole.role== 'HQ Sourcing Associate' && UserRole.News == 'True'|| UserRole.role== 'HQ Sourcing Executive' && UserRole.News == 'True'|| UserRole.role== 'HQ Sourcing Lead' && UserRole.News == 'True'|| UserRole.role== 'WH Agents' && UserRole.News == 'True'|| UserRole.role== 'WH cash manager' && UserRole.News == 'True'|| UserRole.role== 'WH delivery planner' && UserRole.News == 'True'|| UserRole.role== 'WH Ops associate' && UserRole.News == 'True'|| UserRole.role== 'WH Purchase executive' && UserRole.News == 'True')|| UserRole.role== 'WH Super visor' && UserRole.News == 'True'|| UserRole.role== 'WH Service lead' && UserRole.News == 'True'|| UserRole.role== 'WH Sales lead' && UserRole.News == 'True'|| UserRole.role== 'WH sales executives' && UserRole.News == 'True'|| UserRole.role== 'WH sales associates' && UserRole.News == 'True'"><i class="fa fa-pencil"><span class="icon-bg bg-success"></span></i><span data-i18n="News"></span></a>
+            <ul>
+                <li>
+                    <a href="#/News"><i class="fa fa-caret-right"></i><span data-i18n="News"></span></a>
+                </li>
+            </ul>
+        </li>
+        <li>
+            <a href="#/Case"> <i class="fa fa-caret-right"> </i><span data-i18n="Case Managment "></span></a>
+        </li>-->
+    </ul>
+</div> 

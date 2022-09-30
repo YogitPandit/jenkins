@@ -1,0 +1,52 @@
+
+
+<div class="page-signin">
+
+    <div class="signin-header">
+        <div class="container text-center">
+            <section class="logo">
+                <!--<a href="#/">{{main.brand}}</a>-->
+                <img src="http://moreyeahs.com/wp-content/uploads/2015/07/DailyNeed-Logo21.png" class="mpcth-standard-logo" alt="Logo">
+                <p class="text-center">Obhaiya SignUp Panel</p>
+            </section>
+        </div>
+    </div>
+    <div class="signin-body">
+        <div class="container">
+            <div class="form-container" style="border-radius: 7px;
+                        padding: 20px 30px;
+                        margin: 12px auto 10px;
+                        width: 570px;
+                        padding: 25px 40px 40px;
+                        box-shadow: 0px -6px 21px -4px rgba(1, 1, 1, 0.6);">
+                <span class="line-thru">SignUp</span>
+                <form class="form-horizontal">
+                    <fieldset>
+                        <div class="form-group">
+                            <div class="input-group input-group-lg">
+                                <span class="input-group-addon">
+                                    <span class="glyphicon glyphicon-phone-alt"></span>
+                                </span>
+                                <input type="text"
+                                       class="form-control" id="mobilenumber" name="mobilenumber"
+                                       placeholder="Enter Mobile Number" data-ng-model="Data.MobileNumber" required autofocus />
+                            </div>
+                        </div>
+                        <div class="form-group">
+                        </div>
+                        <div class="form-group">
+                            <!--<a href="#/" class="btn btn-primary btn-lg btn-block">Log in</a>-->
+                            <button class="btn btn-primary btn-lg btn-block" type="submit" data-ng-click="OTPlogin()">SendOTP</button>
+                            <!--<div data-ng-hide="message == ''" class="alert alert-danger">
+                                {{message}}
+                            </div>-->
+                        </div>
+                    </fieldset>
+                </form>
+                <section>
+                    <p class="text-center"><a href="javascript:;">Forgot your password?</a></p>
+                </section>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,144 @@
+﻿<style>
+    #dragandrophandler {
+        border: 2px dashed #92AAB0;
+        width: 650px;
+        height: 200px;
+        color: #92AAB0;
+        text-align: center;
+        vertical-align: middle;
+        padding: 10px 0px 10px 10px;
+        font-size: 200%;
+        display: table-cell;
+    }
+</style>
+
+<div class="page page-table">
+    <section class="panel panel-default table-dynamic">
+        <div class="panel-heading"> <strong> <span class="glyphicon glyphicon-th"> </span>Customer Monthly Statement List</strong> </div>
+        <br />
+
+        <div class="form-group col-md-3">
+            <label for="site-name"> Customer Name </label><br>
+            <select class="form-control" id="site-name" ng-model="Customer.CustomerId" ng-change="SelectCustomer(Customer.CustomerId)">
+                <option value="">--Select Customer--</option>
+                <option value="{{name.CustomerId}}" ng-repeat="name in getCustomer"> {{name.Name}}</option>
+            </select>
+        </div>
+
+        <div class="table-filters">
+            <div class="row">
+                <div class="col-sm-3 col-xs-6 filter-result-info">
+                    <span>
+                        Showing {{filteredStores.length}}/{{stores.length}} entries
+                    </span>
+                </div>
+            </div>
+        </div>
+        <table class="table table-bordered table-striped table-responsive">
+            <thead>
+                <tr>
+                    <th>
+                        <div class="th">
+                            S.No.
+                            <span class="glyphicon glyphicon-chevron-up"
+                                  data-ng-click="order('Email')"
+                                  data-ng-class="{active: row == 'Email'}"></span>
+                            <span class="glyphicon glyphicon-chevron-down"
+                                  data-ng-click="order('-Email')"
+                                  data-ng-class="{active: row == '-Email'}"></span>
+                        </div>
+                    </th>
+                    <th>
+                        <div class="th">
+                            Customer Name
+                            <span class="glyphicon glyphicon-chevron-up"
+                                  data-ng-click="order('PeopleFirstName')"
+                                  data-ng-class="{active: row == 'PeopleFirstName'}"></span>
+                            <span class="glyphicon glyphicon-chevron-down"
+                                  data-ng-click="order('-PeopleFirstName')"
+                                  data-ng-class="{active: row == '-PeopleFirstName'}"></span>
+                        </div>
+                    </th>
+                    <th>
+                        <div class="th">
+                            Provider Name
+                            <span class="glyphicon glyphicon-chevron-up"
+                                  data-ng-click="order('PeopleFirstName')"
+                                  data-ng-class="{active: row == 'PeopleFirstName'}"></span>
+                            <span class="glyphicon glyphicon-chevron-down"
+                                  data-ng-click="order('-PeopleFirstName')"
+                                  data-ng-class="{active: row == '-PeopleFirstName'}"></span>
+                        </div>
+                    </th>
+                    <th>
+                        <div class="th">
+                          Final Quantity
+                            <span class="glyphicon glyphicon-chevron-up"
+                                  data-ng-click="order('PeopleLastName')"
+                                  data-ng-class="{active: row == 'PeopleLastName'}"></span>
+                            <span class="glyphicon glyphicon-chevron-down"
+                                  data-ng-click="order('-PeopleLastName')"
+                                  data-ng-class="{active: row == '-PeopleLastName'}"></span>
+                        </div>
+                    </th>
+                    <th>
+                        <div class="th">
+                            Price
+                            <span class="glyphicon glyphicon-chevron-up"
+                                  data-ng-click="order('DisplayName')"
+                                  data-ng-class="{active: row == 'DisplayName'}"></span>
+                            <span class="glyphicon glyphicon-chevron-down"
+                                  data-ng-click="order('-DisplayName')"
+                                  data-ng-class="{active: row == '-DisplayName'}"></span>
+                        </div>
+                    </th>
+                    <th>
+                        <div class="th">
+                           Date
+                            <span class="glyphicon glyphicon-chevron-up"
+                                  data-ng-click="order('DisplayName')"
+                                  data-ng-class="{active: row == 'DisplayName'}"></span>
+                            <span class="glyphicon glyphicon-chevron-down"
+                                  data-ng-click="order('-DisplayName')"
+                                  data-ng-class="{active: row == '-DisplayName'}"></span>
+                        </div>
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr data-ng-repeat="trade in currentPageStores">
+                    <td>{{$index+1}}</td>
+                    <td>{{trade.Name}}</td>
+                    <td>{{trade.PeopleFirstName}}</td>
+                    <td ng-hide="{{trade.PeopleID}}"></td>
+                    <td>{{trade.FinalQty}}</td>
+                    <td>{{trade.Price}}</td>
+                    <td>{{trade.Date| date: 'dd/MM/yyyy'}}</td>
+                </tr>
+            </tbody>
+        </table>
+        <footer class="table-footer">
+            <div class="row">
+                <div class="col-md-6 page-num-info">
+                    <span>
+                        Show
+                        <select data-ng-model="numPerPage"
+                                data-ng-options="num for num in numPerPageOpt"
+                                data-ng-change="onNumPerPageChange()"></select>
+                        entries per page
+                    </span>
+                </div>
+                <div class="col-md-6 text-right pagination-container">
+                    <pagination class="pagination-sm"
+                                page="currentPage"
+                                total-items="filteredStores.length"
+                                max-size="4"
+                                on-select-page="select(page)"
+                                items-per-page="numPerPage"
+                                rotate="false"
+                                boundary-links="true"></pagination>
+                </div>
+            </div>
+        </footer>
+    </section>
+</div>
